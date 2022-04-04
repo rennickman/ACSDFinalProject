@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { footballApi } from './apiKeys';
+import './app.css';
+
 import axios from 'axios';
+import Navbar from './components/Navbar/Navbar';
 
 
 function App() {
@@ -40,6 +43,8 @@ function App() {
 
     return (
         <div className="app">
+            <Navbar />
+
             {/* Buttons for testing API calls */}
             <button onClick={fetchTodaysMatches}>Test Todays Matches</button>
             <button onClick={fetchLeagueTable}>Test League Table</button>
