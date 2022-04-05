@@ -1,54 +1,44 @@
 import React, { useState } from 'react';
-import { footballApi } from './apiKeys';
-import './app.css';
-
 import axios from 'axios';
+
+import './app.css';
+import { footballApi } from './apiKeys';
 import Navbar from './components/Navbar/Navbar';
+import League from './components/League/League';
+
 
 
 function App() {
 
-
     const [todaysMatches, setTodaysMatches] = useState([]);
+    const [competition, setCompetition] = useState({});
     const [leagueTable, setLeagueTable] = useState([]);
-    const [cometitionMatches, setCompetitionMatches] = useState([]);
-    
    
 
     // Method for fetching today's matches for subscribed competitions
     const fetchTodaysMatches = async () => {
         const data = await axios.get(footballApi.link + "matches", 
             { headers: { "X-Auth-Token": footballApi.token } });
+        console.log(data.data);
         setTodaysMatches(data.data.matches);
     };
 
 
-    // Method for fetching league table - must enter league ID eg. Prem = PL
-    const fetchLeagueTable = async () => {
-        const data = await axios.get(footballApi.link + "competitions/PL/standings", 
+    // Method for fetching league info and table - must enter league ID eg. Prem = PL
+    const fetchLeagueTable = async (leagueId) => {
+        const data = await axios.get(footballApi.link + "competitions/" + leagueId + "/standings", 
             { headers: { "X-Auth-Token": footballApi.token } });
+        setCompetition(data.data.competition);
         setLeagueTable(data.data.standings[0].table);
     };
 
 
-    // Method for fetching all matches for particular competition - filter by matchday
-    const fetchCompetitionMatches = async () => {
-        const data = await axios.get(footballApi.link + "competitions/PL/matches?matchday=15",
-            { headers: { "X-Auth-Token": footballApi.token } });
-        setCompetitionMatches(data.data.matches);
-    };
-
-    
-    
 
     return (
         <div className="app">
-            <Navbar />
+            <Navbar fetchLeagueTable={fetchLeagueTable} />
 
-            {/* Buttons for testing API calls */}
-            <button onClick={fetchTodaysMatches}>Test Todays Matches</button>
-            <button onClick={fetchLeagueTable}>Test League Table</button>
-            <button onClick={fetchCompetitionMatches}>Test Competition Matches</button>
+            {(leagueTable.length != 0) && <League competition={competition} leagueTable={leagueTable} />}
         </div>
     );
 };

@@ -2,21 +2,37 @@ import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IoMdFootball } from 'react-icons/io';
 
+import { findLeagueId } from '../../helperFunctions';
 import "./navbar.css";
 
 
-const Navbar = () => {
+const Navbar = ({ fetchLeagueTable }) => {
+
+    const [searchValue, setSearchValue] = useState("");
 
 
-    // Toggle value for opening and closing menu
+    // Toggle value for opening and closing mobile menu
     const [toggle, setToggle] = useState(false);
 
-    // Methods for toggling and closing menu
+    // Methods for toggling and closing mobile menu
     const handleToggle = () => setToggle(!toggle);
     const handleClose = () => setToggle(false);
 
 
+    // Handle search functionality
+    const handleSearch = e => {
+        e.preventDefault();
+        // Find the leagueId
+        const searchId = findLeagueId(searchValue);
+        // Fetch the league info and table
+        fetchLeagueTable(searchId);
+        // Close the mobile menu if opened
+        handleClose();
+    }
 
+
+
+    
     return (
         <div className='navbar'>
             <div className="navbar_wrapper">
@@ -28,7 +44,7 @@ const Navbar = () => {
                         Football App
                     </div>
 
-                    {/* Icon for toggling the Mobile Menu */}
+                    {/* Icon for toggling the Mobile Menu - hidden unless small screen */}
                     <div className="navbar_toggle" onClick={handleToggle}>
                         {toggle ? <FaTimes className='navbar_toggle_icon1' /> : <FaBars className='navbar_toggle_icon2' />}
                     </div>
@@ -36,13 +52,15 @@ const Navbar = () => {
 
                     {/* Search Bar and Links - Put as a list for mobile menu */}
                     <ul className={toggle ? "nav_section active" : "nav_section"}>
+                        
                         {/* Search Bar - button is hidden to allow submit by pressing enter */}
                         <li className='searchbar_container'>
                             <form>
                                 <input
-                                    className='searchbar' type="text" placeholder='Search for League'
+                                    className='searchbar' type="text" placeholder='Search for League' value={searchValue}
+                                    onChange={e => setSearchValue(e.target.value)}
                                 />
-                                <button type='submit' style={{ display: "none" }}></button>
+                                <button onClick={handleSearch} type='submit' style={{ display: "none" }}></button>
                             </form>
                         </li>
 
