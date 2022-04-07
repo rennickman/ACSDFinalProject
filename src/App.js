@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import './app.css';
@@ -7,11 +7,13 @@ import Navbar from './components/Navbar/Navbar';
 import League from './components/League/League';
 
 function App() {
-
-    const [todaysMatches, setTodaysMatches] = useState([]);
+    //All Matches for specified league
+    const [matches, setMatches] = useState([]);
+    //League Name
     const [competition, setCompetition] = useState({});
+    //League Table
     const [leagueTable, setLeagueTable] = useState([]);
-//test
+    //Top Goal Scorer
     const [topScorersTable, setTopScorersTable] = useState([]);
 
 /* Commenting ou till we decide which way to code.
@@ -34,34 +36,43 @@ function App() {
     };
  */   
 
-    // Combined Method - Table and Goal Scorers
-    const fetchLeagueData = (leagueId) => {
-        const getLeagueTable = axios.get(footballApi.link + "competitions/" + leagueId + "/standings", 
-        { headers: { "X-Auth-Token": footballApi.token } });
-        const getLeagueTopGSs = axios.get(footballApi1.link + "competitions/" + leagueId + "/scorers", 
-        { headers: { "X-Auth-Token": footballApi1.token } });
+    // Combined Method - All Relevant League Data
+    const fetchLeagueData = async (leagueId) => {
+        //Fetching Data via API
+        const getLeagueTable = await axios.get(footballApi.link + "competitions/" + leagueId + "/standings", 
+            { headers: { "X-Auth-Token": footballApi.token } });
+        const getLeagueTopGSs = await axios.get(footballApi1.link + "competitions/" + leagueId + "/scorers", 
+            { headers: { "X-Auth-Token": footballApi1.token } });
+        const getMatches = await axios.get(footballApi.link + "competitions/" + leagueId + "/matches", 
+           { headers: { "X-Auth-Token": footballApi.token } });
 
-        axios.all([getLeagueTable, getLeagueTopGSs]).then(
+        axios.all([getLeagueTable, getLeagueTopGSs, getMatches]).then(
             axios.spread((...allLeagueData) => {
                 const leagueCompetitionName = allLeagueData[0].data.competition
                 const leagueStandingData = allLeagueData[0].data.standings[0].table
                 const leagueTopGSsData = allLeagueData[1].data.scorers
-
-                console.log(leagueCompetitionName, leagueStandingData, leagueTopGSsData)
-
+                const leagueMatchesData = allLeagueData[2].data.matches
+                //console.log
+                console.log(leagueCompetitionName, leagueStandingData, leagueTopGSsData, leagueMatchesData)
+                //setting 
                 setCompetition(leagueCompetitionName);
                 setLeagueTable(leagueStandingData);
                 setTopScorersTable(leagueTopGSsData);
+                setMatches(leagueMatchesData);
             })
         )
     }
-    useEffect(() => {
-        fetchLeagueData();
-      }, [])
+
     return (
         <div className="app">
             <Navbar /*fetchLeagueTable={fetchLeagueTable}*/ fetchAllLeagueData={fetchLeagueData}/>
-            {(leagueTable.length !== 0) && <League competition={competition} leagueTable={leagueTable} topScorersTable={topScorersTable}/>}  
+            {(leagueTable.length !== 0) && 
+                <League 
+                    competition={competition} 
+                    leagueTable={leagueTable} 
+                    topScorersTable={topScorersTable}
+                    matches={matches}/>
+            }  
         </div>
     );
 };
