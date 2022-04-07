@@ -6,7 +6,7 @@ import { findLeagueId } from '../../helperFunctions';
 import "./navbar.css";
 
 
-const Navbar = ({ fetchLeagueTable }) => {
+const Navbar = ({ /*fetchLeagueTable,*/ fetchAllLeagueData }) => {
 
     const [searchValue, setSearchValue] = useState("");
 
@@ -25,13 +25,11 @@ const Navbar = ({ fetchLeagueTable }) => {
         // Find the leagueId
         const searchId = findLeagueId(searchValue);
         // Fetch the league info and table
-        fetchLeagueTable(searchId);
+        // Commenting till we decide which way to go - fetchLeagueTable(searchId);
+        fetchAllLeagueData(searchId);
         // Close the mobile menu if opened
         handleClose();
     }
-
-
-
     
     return (
         <div className='navbar'>
