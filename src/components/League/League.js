@@ -1,7 +1,7 @@
 import React from 'react';
 import LeagueMatches from '../All League Matches/LeagueMatches';
 import Team from '../Team/Team';
-import TopGoalScorer from '../Top Goal Scorers/TopGoalScorer';
+import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
 
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
