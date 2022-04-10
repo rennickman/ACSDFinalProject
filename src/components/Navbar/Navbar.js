@@ -10,7 +10,7 @@ import { useAuth, logOutUser } from '../../firebase';
 
 
 
-const Navbar = ({ /*fetchLeagueTable,*/ fetchAllLeagueData }) => {
+const Navbar = ({ fetchAllLeagueData }) => {
 
     // Value being searched for in search bar
     const [searchValue, setSearchValue] = useState("");
@@ -39,7 +39,6 @@ const Navbar = ({ /*fetchLeagueTable,*/ fetchAllLeagueData }) => {
         // Find the leagueId
         const searchId = findLeagueId(searchValue);
         // Fetch the league info and table
-        // Commenting till we decide which way to go - fetchLeagueTable(searchId);
         fetchAllLeagueData(searchId);
         // Close the mobile menu if opened
         handleClose();
@@ -65,7 +64,7 @@ const Navbar = ({ /*fetchLeagueTable,*/ fetchAllLeagueData }) => {
 
     
     return (
-        <div className='navbar'>
+        <div className='navbar-n'>
             <div className="navbar_wrapper">
                 <div className="navbar_container container">
 

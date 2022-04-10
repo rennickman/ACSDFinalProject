@@ -1,14 +1,10 @@
 import React from 'react';
-
-import LeagueMatches from '../LeagueMatches/LeagueMatches';
+import LeagueMatches from '../All League Matches/LeagueMatches';
 import Team from '../Team/Team';
-import TopGoalScorer from '../TopGoalScorer/TopGoalScorer';
-
+import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
 
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
-
-
     
     return (
         <div className='league'>
@@ -20,12 +16,12 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
             <div className="clubs">
                 <h3>List of Clubs:</h3>
                 {leagueTable.map((team, index) => <Team team={team} key={index} />)}
-            </div>
+            </div>   
             <br></br>
             <div className="clubs">
                 <h3>Top Goal Scorers</h3>
                 {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
-            </div>
+            </div>     
             <br></br>
             <div className="allMatches">
                 <h3>Results and Fixtures</h3>
@@ -34,7 +30,5 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
         </div>
     );
 };
-
-
 
 export default League;
