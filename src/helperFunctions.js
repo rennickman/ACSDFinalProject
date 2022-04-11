@@ -26,7 +26,7 @@ export const findLeagueId = leagueName => {
     };
 };
 
-// Object to display the leagues in Leagues List page
+// Object to display the leagues in Leagues page
 export const mapLeagues = [
     {'name': 'Premier League', 'logo': 'pl-l-logo.jpg'},
     {'name': 'Bundesliga', 'logo': 'bundesliga-logo.jpg'},
