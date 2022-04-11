@@ -1,0 +1,6 @@
+#allMatches{
+  background-color: darkgrey;
+  width: 800px;
+  max-height: 845px;
+  overflow-y: auto;
+}

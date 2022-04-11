@@ -6,9 +6,11 @@ import { footballApi, footballApi1 } from './apiKeys';
 import Navbar from './components/Navbar/Navbar';
 import League from './components/League/League';
 
+
 function App() {
     //All Matches for specified league
     const [matches, setMatches] = useState([]);
+    const [gameWeekCounter, setGameWeekCounter] = useState(1);
     //League Name
     const [competition, setCompetition] = useState({});
     //League Table
@@ -35,7 +37,6 @@ function App() {
         console.log(data.data.standings[0].table)
     };
  */   
-
     // Combined Method - All Relevant League Data
     const fetchLeagueData = async (leagueId) => {
         //Fetching Data via API
@@ -60,19 +61,19 @@ function App() {
                 setTopScorersTable(leagueTopGSsData);
                 setMatches(leagueMatchesData);
             })
-        )
-    }
-
+        );
+    } 
+    
     return (
         <div className="app">
-            <Navbar /*fetchLeagueTable={fetchLeagueTable}*/ fetchAllLeagueData={fetchLeagueData}/>
+            <Navbar fetchAllLeagueData={fetchLeagueData}/>
             {(leagueTable.length !== 0) && 
                 <League 
                     competition={competition} 
                     leagueTable={leagueTable} 
                     topScorersTable={topScorersTable}
                     matches={matches}/>
-            }  
+            }   
         </div>
     );
 };

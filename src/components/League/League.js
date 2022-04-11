@@ -1,8 +1,9 @@
 import React from 'react';
 import LeagueMatches from '../All League Matches/LeagueMatches';
+import Scroll from '../All League Matches/Scroll';
 import Team from '../Team/Team';
 import TopGoalScorer from '../Top Goal Scorers/TopGoalScorer';
-
+import './league.css'
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
     
@@ -23,9 +24,14 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                 {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
             </div>     
             <br></br>
-            <div className="allMatches">
-                <h3>Results and Fixtures</h3>
-                {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}
+            <div className='test'>
+                <div id="allMatches">
+                    <h3>Results and Fixtures </h3>
+                    <div className='dave'>
+                    {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}
+                    </div>
+                </div>
+                <Scroll/>
             </div>     
         </div>
     );
