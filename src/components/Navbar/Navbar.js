@@ -99,6 +99,13 @@ const Navbar = ({ fetchAllLeagueData }) => {
 
                         {/* Live Scores Link */}
                         <li className="link_container" onClick={handleClose}>
+                                <Link to="/leagueslist" className="link">
+                                    Leagues
+                                </Link>
+                        </li>
+
+                        {/* Live Scores Link */}
+                        <li className="link_container" onClick={handleClose}>
                             <div className="link">
                                 Live Scores
                             </div>

@@ -14,9 +14,11 @@ export const findLeagueId = leagueName => {
         case "serie a":
             return "SA";
         case "la liga":
+        case "primera division":
             return "PD";
         case "the championship":
         case "championship":
+        case "efl championship":
             return "ELC";
         default:
             alert("League not found");
@@ -24,6 +26,15 @@ export const findLeagueId = leagueName => {
     };
 };
 
+// Object to display the leagues in Leagues List page
+export const mapLeagues = [
+    {'name': 'Premier League', 'logo': 'pl-l-logo.jpg'},
+    {'name': 'Bundesliga', 'logo': 'bundesliga-logo.jpg'},
+    {'name': 'Ligue 1', 'logo': 'ligue-1-logo.jpg'},
+    {'name': 'Serie A', 'logo': 'serie-a-logo.jpg'},
+    {'name': 'Primera Division', 'logo': 'la-liga-logo.jpg'},
+    {'name': 'EFL Championship', 'logo': 'english-championship-logo.jpg'},
+];
 
 // Takes the name of a club and returns the search ID
 export const findClubId = clubName => {
@@ -82,5 +93,8 @@ export const findClubId = clubName => {
         case "norwich city":
         case "norwich":
             return "68";
+        default:
+            alert("Club not found");
+            return "66";
     };
 };
