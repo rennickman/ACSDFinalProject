@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home/Home';
-import LeaguesList from './pages/Leagues List/LeaguesList';
+import LeaguesList from './pages/Leagues/Leagues';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 
@@ -15,7 +14,7 @@ function App() {
                 <Route path="/" exact element={<Home />} />
 
                 {/* Home Route */}
-                <Route path="/leagueslist" exact element={<LeaguesList />} />
+                <Route path="/leagues" exact element={<LeaguesList />} />
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />
