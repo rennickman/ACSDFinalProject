@@ -6,6 +6,7 @@ import './home.css';
 import { footballApi, footballApi1 } from '../../apiKeys';
 import Navbar from '../../components/Navbar/Navbar';
 import League from '../../components/League/League';
+import Footer from '../../components/Footer/Footer';
 
 
 
@@ -77,7 +78,9 @@ const Home = () => {
                 topScorersTable={topScorersTable}
                 matches={matches} />
             } 
+            <Footer/>
         </div>
+        
     );
 };
 
