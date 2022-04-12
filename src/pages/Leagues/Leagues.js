@@ -18,7 +18,7 @@ const LeaguesList = () => {
                 {
                     mapLeagues.map((i, index) => {
                         return (
-                            <Link to='/league' state={i.name} className="link" key={index}>
+                            <Link to={'/leagues/' + i.name} state={i.name} className="link" key={index}>
                                 <div  className="card-style">
                                     <div  className="card-body-style" >
                                         <div>

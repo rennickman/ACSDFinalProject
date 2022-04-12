@@ -18,7 +18,7 @@ function App() {
                 <Route path="/leagues" exact element={<LeaguesList />} />
 
                 {/* League Displayed Route */}
-                <Route path="/league" exact element={<LeagueDisplayed />} />
+                <Route path="/leagues/:name" exact element={<LeagueDisplayed />} />
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />

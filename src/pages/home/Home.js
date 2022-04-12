@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {Tabs, Tab} from 'react-bootstrap';
 
 import './home.css';
 import { footballApi, footballApi1 } from '../../apiKeys';
@@ -69,13 +70,7 @@ const Home = () => {
     return (
         <div className='home'>
             <Navbar /*fetchLeagueTable={fetchLeagueTable}*/ fetchAllLeagueData={fetchLeagueData} />
-            {(leagueTable.length !== 0) &&
-                <League
-                    competition={competition}
-                    leagueTable={leagueTable}
-                    topScorersTable={topScorersTable}
-                    matches={matches} />
-            }  
+
         </div>
     );
 };
