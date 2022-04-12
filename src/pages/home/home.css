@@ -1,14 +1,15 @@
 
-.content{
-    display: flex;
+.home-content{
+    display: grid;
     justify-content: center;
 }
 
 
 .home-img{
-    width: 1000px;
-    height: 500px;
+    width: 950px;
+    height: 425px;
     display: flex;
+    margin: 1%;
 
 }
 

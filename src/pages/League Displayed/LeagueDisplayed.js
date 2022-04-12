@@ -63,7 +63,7 @@ const LeagueDisplayed = () => {
                 leagueTable={leagueTable}
                 topScorersTable={topScorersTable}
                 matches={matches} />
-        } 
+            } 
     </div>
     );
 };
