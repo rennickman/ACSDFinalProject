@@ -44,8 +44,9 @@ const LeaguesList = () => {
             })
         );
     };
+    // Submitt from a when a league is selected
     const handleSubmission = (name) =>{
-        // Find the leagueId
+        // Find the leagueId from helperFunctions
         const searchId = findLeagueId(name);
         // Fetch the league info and table
         fetchLeagueData(searchId);
