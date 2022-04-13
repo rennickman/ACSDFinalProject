@@ -6,7 +6,7 @@ import axios from 'axios';
 import './home.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import { footballApi1 } from '../../apiKeys';
+import { footballApi1, footballApi } from '../../apiKeys';
 
 
 
@@ -30,7 +30,7 @@ const Home = () => {
         async function fetchData() {
             try {
                 const getTodaysMatches = await axios.get(footballApi1.link + "/matches",
-                { headers: { "X-Auth-Token": footballApi1.token } });
+                { headers: { "X-Auth-Token": footballApi.token } });
                 setTodaysMatches(getTodaysMatches);
                 setLoading(false);
             } catch {
@@ -51,16 +51,18 @@ const Home = () => {
             alert("Please type a league");
         }
     }
-    
+
     //If Data from Today's matches is not ready renders Loading...:
     if(loading){
         return (
             <div className='home'>
                 <Navbar />
                 <div className='home-content'>
-                    <div className='home-img'>
-                        <img src="gods-hand.jpg" alt="God's hand"></img>
-                    </div>
+                        <div className='home-hero'>
+                            <div className='home-img'>
+                                <img src="gods-hand.jpg" alt="God's hand"></img>
+                            </div>
+                        </div>
                     <div className='home-search-window'>
                         <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
                         <Tab eventKey="league" title="League">
@@ -113,9 +115,11 @@ const Home = () => {
             <div className='home'>
                 <Navbar />
                 <div className='home-content'>
-                    <div className='home-img'>
-                        <img src="gods-hand.jpg" alt="God's hand"></img>
-                    </div>
+                        <div className='home-hero'>
+                            <div className='home-img'>
+                                <img src="gods-hand.jpg" alt="God's hand"></img>
+                            </div>
+                        </div>
                     <div className='home-search-window'>
                         <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
                         <Tab eventKey="league" title="League">

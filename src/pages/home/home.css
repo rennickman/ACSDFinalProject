@@ -4,11 +4,17 @@
     justify-content: center;
 }
 
+/*Justifies the image to center*/
+.home-hero{
+    display: flex;
+    justify-content: center;
+}
+
 /*hero image*/
 .home-img{
     width: 950px;
     height: 425px;
-    margin: 7% 5% 5% 3%;
+    margin: 7% 5% 3% 5%;
 
 }
 

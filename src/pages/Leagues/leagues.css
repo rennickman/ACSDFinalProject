@@ -35,9 +35,6 @@
     display: flex;
     align-items: center;
 }
-/* .card-body-style div:nth-child(1) .card-child{
-    border-radius: 100%
-} */
 
 .card-body-style div:nth-child(2){
     padding: 0% 3% 0% 7%;
