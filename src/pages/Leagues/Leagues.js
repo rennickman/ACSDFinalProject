@@ -11,7 +11,7 @@ const LeaguesList = () => {
             <div className='content' >
                 <div  className='leagues-title' >
                     <h1>Leagues</h1>
-                    <h3>SEASSON 2021-2021</h3>
+                    <h3>SEASON 2021-2021</h3>
                 </div>
             </div>
             <div  className='leagues-list' >

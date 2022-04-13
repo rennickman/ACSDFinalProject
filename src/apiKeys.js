@@ -8,3 +8,7 @@ export const footballApi1 = {
     link: "https://api.football-data.org/v2/",
     token: "1cfee8f9f61b44f4b23a018e25914193"
 };
+export const footballApi2 = {
+    link: "https://api.football-data.org/v2/",
+    token: "6714f12b78e949bb817b1aff3faa958a"
+};

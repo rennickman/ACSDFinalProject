@@ -1,78 +1,189 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {Tabs, Tab, Form, Button, Row, Col} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import {Tabs, Tab} from 'react-bootstrap';
 
 import './home.css';
-import { footballApi, footballApi1 } from '../../apiKeys';
 import Navbar from '../../components/Navbar/Navbar';
-import League from '../../components/League/League';
+import Footer from '../../components/Footer/Footer';
+import { footballApi1 } from '../../apiKeys';
 
 
 
 
 const Home = () => {
 
-    //All Matches for specified league
-    const [matches, setMatches] = useState([]);
-    //League Name
-    const [competition, setCompetition] = useState({});
-    //League Table
-    const [leagueTable, setLeagueTable] = useState([]);
-    //Top Goal Scorer
-    const [topScorersTable, setTopScorersTable] = useState([]);
+    // Value being searched for in search bar
+    const [searchValue, setSearchValue] = useState("");
 
-    /* Commenting ou till we decide which way to code.
-        // Method for fetching today's matches for subscribed competitions
-        const fetchTodaysMatches = async () => {
-            const data = await axios.get(footballApi.link + "matches", 
-                { headers: { "X-Auth-Token": footballApi.token } });
-            console.log(data.data);
-            setTodaysMatches(data.data.matches);
-        };
-        // Method for fetching league info and table - must enter league ID eg. Prem = PL
-        const fetchLeagueTable = async (leagueId) => {
-            const data = await axios.get(footballApi.link + "competitions/" + leagueId + "/standings", 
-                { headers: { "X-Auth-Token": footballApi.token } });
-            setCompetition(data.data.competition);
-            setLeagueTable(data.data.standings[0].table);
-            console.log(data.data.standings[0].table)
-        };
-     */
+    // Value being searched for in search bar
+    const [loading, setLoading] = useState(true);
 
-    // Combined Method - All Relevant League Data
-    const fetchLeagueData = async (leagueId) => {
-        //Fetching Data via API
-        const getLeagueTable = await axios.get(footballApi.link + "competitions/" + leagueId + "/standings",
-            { headers: { "X-Auth-Token": footballApi.token } });
-        const getLeagueTopGSs = await axios.get(footballApi1.link + "competitions/" + leagueId + "/scorers",
-            { headers: { "X-Auth-Token": footballApi1.token } });
-        const getMatches = await axios.get(footballApi.link + "competitions/" + leagueId + "/matches",
-            { headers: { "X-Auth-Token": footballApi.token } });
+    // Value being searched for in search bar
+    const [todaysMatches, setTodaysMatches] = useState({});
 
-        axios.all([getLeagueTable, getLeagueTopGSs, getMatches]).then(
-            axios.spread((...allLeagueData) => {
-                const leagueCompetitionName = allLeagueData[0].data.competition
-                const leagueStandingData = allLeagueData[0].data.standings[0].table
-                const leagueTopGSsData = allLeagueData[1].data.scorers
-                const leagueMatchesData = allLeagueData[2].data.matches
-                //console.log
-                console.log(leagueCompetitionName, leagueStandingData, leagueTopGSsData, leagueMatchesData)
-                //setting 
-                setCompetition(leagueCompetitionName);
-                setLeagueTable(leagueStandingData);
-                setTopScorersTable(leagueTopGSsData);
-                setMatches(leagueMatchesData);
-            })
+    // React-router-dom Method for pushing to different page
+    const history = useNavigate()
+
+    //Gets today's matches
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const getTodaysMatches = await axios.get(footballApi1.link + "/matches",
+                { headers: { "X-Auth-Token": footballApi1.token } });
+                setTodaysMatches(getTodaysMatches);
+                setLoading(false);
+            } catch {
+                // Throw an alert if there were any problems retrieving data from the API
+                console.log("There was a problem retrieving data for Today's matches");
+            }
+        }
+        fetchData();
+    },[todaysMatches]);
+
+    //Handles a sumission for the league tab
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(searchValue){
+            //Sends the search value to the LeagueDIsplayed page to make the API call by 'state'
+            history('/leagues/' + searchValue, {state: searchValue});
+        } else {
+            alert("Please type a league");
+        }
+    }
+    
+    //If Data from Today's matches is not ready renders Loading...:
+    if(loading){
+        return (
+            <div className='home'>
+                <Navbar />
+                <div className='home-content'>
+                    <div className='home-img'>
+                        <img src="gods-hand.jpg" alt="God's hand"></img>
+                    </div>
+                    <div className='home-search-window'>
+                        <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
+                        <Tab eventKey="league" title="League">
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>League</Form.Label>
+                                    <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setSearchValue(e.target.value)}/>
+                                </Form.Group>
+                                <Button variant="success" type="submit" onClick={handleSubmit} >
+                                    Go
+                                </Button>
+                            </Form>
+                        </Tab>
+                        <Tab eventKey="match" title="Match">
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Match</Form.Label>
+                                    <Form.Control type="text" placeholder="Type first team here" />
+                                    <Form.Control type="text" placeholder="Type second team here" />
+                                </Form.Group>
+                                <Button variant="primary" disabled>
+                                    Go
+                                </Button>
+                            </Form>
+                        </Tab>
+                        <Tab eventKey="team" title="Team">
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Team</Form.Label>
+                                    <Form.Control type="text" placeholder="Type league name here" />
+                                </Form.Group>
+                                <Button variant="primary" disabled>
+                                    Go
+                                </Button>
+                            </Form>
+                        </Tab>
+                        </Tabs>
+                    </div>
+                    <div>
+                        <h1>Loading Today's Matches...</h1>
+                    </div>
+                </div>
+                <Footer/>
+            </div>
+            
         );
-    };
-
-
-    return (
-        <div className='home'>
-            <Navbar /*fetchLeagueTable={fetchLeagueTable}*/ fetchAllLeagueData={fetchLeagueData} />
-
-        </div>
-    );
+    //If Data from Today's matches is ready renders the matches:
+    } else {
+        return (
+            <div className='home'>
+                <Navbar />
+                <div className='home-content'>
+                    <div className='home-img'>
+                        <img src="gods-hand.jpg" alt="God's hand"></img>
+                    </div>
+                    <div className='home-search-window'>
+                        <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
+                        <Tab eventKey="league" title="League">
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>League</Form.Label>
+                                    <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setSearchValue(e.target.value)}/>
+                                </Form.Group>
+                                <Button variant="success" type="submit" onClick={handleSubmit} >
+                                    Go
+                                </Button>
+                            </Form>
+                        </Tab>
+                        <Tab eventKey="match" title="Match">
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Match</Form.Label>
+                                    <Form.Control type="text" placeholder="Type first team here" />
+                                    <Form.Control type="text" placeholder="Type second team here" />
+                                </Form.Group>
+                                <Button variant="primary" disabled>
+                                    Go
+                                </Button>
+                            </Form>
+                        </Tab>
+                        <Tab eventKey="team" title="Team">
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Team</Form.Label>
+                                    <Form.Control type="text" placeholder="Type league name here" />
+                                </Form.Group>
+                                <Button variant="primary" disabled>
+                                    Go
+                                </Button>
+                            </Form>
+                        </Tab>
+                        </Tabs>
+                    </div>
+                    <div>
+                        <h1>Today's Matches</h1>
+                        {todaysMatches.data.matches.map((match, index) => 
+                            <div key={index}>
+                                <h3>{match.competition.name}</h3>
+                                <Row>
+                                    <Col>
+                                        <h5>Status: {match.status + " " + new Date(match.utcDate)}.</h5>
+                                    </Col>
+                                    <Col>
+                                        <h5>{match.homeTeam.name}</h5>
+                                    </Col>
+                                    <Col>
+                                        <p>
+                                            {match.score.fullTime.homeTeam} - {match.score.fullTime.awayTeam}
+                                        </p>
+                                    </Col>
+                                    <Col>
+                                        <h5>{match.awayTeam.name}</h5>
+                                    </Col>
+                                </Row>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <Footer/>
+            </div>
+            
+        );
+    }
 };
 
 

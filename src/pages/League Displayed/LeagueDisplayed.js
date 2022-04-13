@@ -6,9 +6,13 @@ import League from '../../components/League/League';
 import './leaguedisplayed.css';
 import Navbar from '../../components/Navbar/Navbar';
 import { findLeagueId } from '../../helperFunctions';
-import { footballApi, footballApi1 } from '../../apiKeys';
+import { footballApi, footballApi1, footballApi2 } from '../../apiKeys';
 
 const LeagueDisplayed = () => {
+
+    // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
+    const query = useLocation();
+
     //All Matches for specified league
     const [matches, setMatches] = useState([]);
     //League Name
@@ -21,7 +25,7 @@ const LeagueDisplayed = () => {
     // Combined Method - All Relevant League Data
     const fetchLeagueData = async (leagueId) => {
         //Fetching Data via API
-        const getLeagueTable = await axios.get(footballApi.link + "competitions/" + leagueId + "/standings",
+        const getLeagueTable = await axios.get(footballApi2.link + "competitions/" + leagueId + "/standings",
             { headers: { "X-Auth-Token": footballApi.token } });
         const getLeagueTopGSs = await axios.get(footballApi1.link + "competitions/" + leagueId + "/scorers",
             { headers: { "X-Auth-Token": footballApi1.token } });
@@ -45,14 +49,17 @@ const LeagueDisplayed = () => {
         );
     };
 
-    // Renders useLocation so it takes the league name sent through a League's Link by 'state'
-    const query = useLocation();
-    // Send the legue name to findLeagueId
-    const searchId = findLeagueId(query.state);
-    // Starts the API call to render data for that League
     useEffect(() => {
-    fetchLeagueData(searchId);
-    },[]);
+        function fetchData() {
+            if (query.state) {
+                // Send the legue name to findLeagueId
+                const searchId = findLeagueId(query.state);
+                // Starts the API call to render data for that League
+                fetchLeagueData(searchId);
+            }
+        }
+        fetchData();
+    },[query.state]);
     
     return(
         <div className='home'>
