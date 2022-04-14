@@ -36,6 +36,9 @@ export const mapLeagues = [
     {'name': 'EFL Championship', 'logo': 'english-championship-logo.jpg'},
 ];
 
+
+
+
 // Takes the name of a club and returns the search ID
 export const findClubId = clubName => {
 

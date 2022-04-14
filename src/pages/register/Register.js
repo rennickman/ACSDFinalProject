@@ -1,14 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './register.css';
 import Navbar from '../../components/Navbar/Navbar';
-import { registerUser } from '../../firebase';
+import { registerUser, setUserInfo } from '../../firebase';
 
 
 
 
 const Register = () => {
+
+    const [secondPage, setSecondPage] = useState(false);
+    const [userUid, setUserUid] = useState("");
+   
+
 
 
     // Setting up references for form inputs
@@ -16,6 +21,7 @@ const Register = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordVerifyRef = useRef();
+    const favouriteTeamRef = useRef();
     
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
@@ -35,9 +41,15 @@ const Register = () => {
         } else {
             try {
                 // Register User - Functionality imported from Firebase.js
-                await registerUser(emailRef.current.value, passwordRef.current.value);
+                const data = await registerUser(emailRef.current.value, passwordRef.current.value);
+                setUserUid(data.user.uid);
+
+                // Reset Input fields
+                emailRef.current.value = "";
+                passwordRef.current.value = "";
+
                 // Push user to HomePage if registration was successful
-                history("/");
+                setSecondPage(true);
 
             } catch {
                 // Throw an alert if there were any problems - NB! fill out more later
@@ -47,41 +59,87 @@ const Register = () => {
     };
 
 
-    return (
-        <div className="register">
-            <Navbar />
+    // Method for saving users favourite team and username to firebase database
+    const handleSetUserInfo = async e => {
+        e.preventDefault();
 
-            <div className='signUpForm'>
-                <div className="loginWrapper">
-                    <div className="loginLeft">
-                        {/* Register Logo */}
-                        <h3 className="loginLogo">Football App</h3>
+        setUserInfo(userUid, usernameRef.current.value, favouriteTeamRef.current.value);
+        
+        // Push user to HomePage if registration was successful
+        history("/");
+    };
 
-                        {/* Register Message */}
-                        <span className="loginDesc">Sign up for extra benefits!!</span>
-                    </div>
+    
 
-                    <div className="loginRight">
-                        <form className="loginBox">
-                            {/* Register Inputs */}
-                            <input placeholder="Username" required ref={usernameRef} className="loginInput" />
-                            <input placeholder="Email" required ref={emailRef} className="loginInput" type="email" />
-                            <input placeholder="Password" required ref={passwordRef} className="loginInput" type="password" minLength="6" />
-                            <input placeholder="Verify Password" required ref={passwordVerifyRef} className="loginInput" type="password" />
 
-                            {/* Register Button - Handles Registration */}
-                            <button className="loginButton" onClick={handleRegistration} type="submit">Sign Up</button>
 
-                            {/* Login Button - Switches to Login Page */}
-                            <button className="loginRegisterButton" onClick={() => history("/login")}>Log Into Account</button>
-                        </form>
+    if (!secondPage) {
+        return (
+            <div className="register">
+                <Navbar />
+
+                <div className='signUpForm'>
+                    <div className="loginWrapper">
+                        <div className="loginLeft">
+                            {/* Register Logo */}
+                            <h3 className="loginLogo">Football App</h3>
+
+                            {/* Register Message */}
+                            <span className="loginDesc">Sign up for extra benefits!!</span>
+                        </div>
+
+                        <div className="loginRight">
+                            <form className="loginBox">
+                                {/* Register Inputs */}
+                                <input placeholder="Email"  required ref={emailRef} className="loginInput" type="email" />
+                                <input placeholder="Password" required ref={passwordRef} className="loginInput" type="password" minLength="6" />
+                                <input placeholder="Verify Password" required ref={passwordVerifyRef} className="loginInput" type="password" />
+
+                                {/* Register Button - Handles Registration */}
+                                <button className="loginButton" onClick={handleRegistration} type="submit">Sign Up</button>
+
+                                {/* Login Button - Switches to Login Page */}
+                                <button className="loginRegisterButton" onClick={() => history("/login")}>Log Into Account</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-       
-    );
+        );
+    } else {
+        return (
+            <div className="register">
+                <Navbar />
+
+                <div className='signUpForm'>
+                    <div className="loginWrapper">
+                        <div className="loginLeft">
+                            {/* Register Logo */}
+                            <h3 className="loginLogo">Football App</h3>
+
+                            {/* Register Message */}
+                            <span className="loginDesc">Get updates on your favourite team</span>
+                        </div>
+
+                        <div className="loginRight">
+                            <form className="loginBox">
+                                {/* Register Inputs */}
+                                <input placeholder="Username" required ref={usernameRef} className="loginInput" type="text" />
+                                <input placeholder="Favourite Team" required ref={favouriteTeamRef} className="loginInput" type="text" />
+
+                                {/* Register Button - Handles Registration */}
+                                <button className="loginButton" onClick={handleSetUserInfo} type="submit">Submit</button>
+
+                                {/* Login Button - Switches to Login Page */}
+                                <button className="loginRegisterButton" onClick={() => history("/login")}>Log Into Account</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    
 };
 
 

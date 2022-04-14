@@ -1,5 +1,11 @@
+.home {
+    display: flex;
+    width: 100%;
+}
+
 /*Justifies all content to center*/
 .home-content{
+    flex: 12;
     display: grid;
     justify-content: center;
 }

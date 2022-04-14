@@ -1,0 +1,29 @@
+.sidebar {
+    flex: 2;
+    background: grey;
+    color: white;
+    height: 100vh;
+}
+
+.sidebarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome {
+    margin-top: 20px;
+}
+
+.crestContainer {
+    margin-top: 20px;
+}
+
+.crest {
+    height: 125px;
+    width: 125px;
+}
+
+.clubName {
+    margin: 15px;
+}

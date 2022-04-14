@@ -21,6 +21,8 @@ const Navbar = ({ fetchAllLeagueData }) => {
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
 
+    
+
 
 
     // Toggle value for opening and closing mobile menu
@@ -43,6 +45,7 @@ const Navbar = ({ fetchAllLeagueData }) => {
         // Close the mobile menu if opened
         handleClose();
     };
+
 
 
     

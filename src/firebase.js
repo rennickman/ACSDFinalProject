@@ -2,12 +2,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
+import { getDatabase, ref, set } from 'firebase/database';
 
 
 // Configuration for Firebase app
 const firebaseConfig = {
     apiKey: "AIzaSyDQzL6sTuxE2DtjUFYYazi1vQOcfNjI6EU",
     authDomain: "acsdfinalproject.firebaseapp.com",
+    databaseURL: "https://acsdfinalproject-default-rtdb.firebaseio.com/",
     projectId: "acsdfinalproject",
     storageBucket: "acsdfinalproject.appspot.com",
     messagingSenderId: "553696870170",
@@ -18,6 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const database = getDatabase(app);
 
 
 
@@ -51,3 +54,20 @@ export const useAuth = () => {
 
     return currentUser;
 };
+
+
+// Method for saving user info to database
+export const setUserInfo = (userUid , username, favouriteTeam) => {
+
+    set(ref(database, 'users/' + userUid), {
+        username: username,
+        favouriteTeam: favouriteTeam
+    });
+};
+
+export { database, ref }
+
+
+
+
+
