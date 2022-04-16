@@ -4,6 +4,7 @@ import { OddsApi1 } from '../../apiKeys';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import OddsResults from '../../components/Odds Comps/OddsResults';
+import Odds from './Odds';
  
 function OddsLeaguesDisplayed() {
   //UseStates used
@@ -20,6 +21,7 @@ function OddsLeaguesDisplayed() {
     const results = getOdds.data
     setOdds(results);
     setLoading(true);
+    console.log(results);
   }
   useEffect(() => {
     fetchOddsData();
@@ -38,8 +40,11 @@ function OddsLeaguesDisplayed() {
             away_team_odds={odd.bookmakers[0].markets[0].outcomes[1].price}
             draw={odd.bookmakers[0].markets[0].outcomes[2].price}
             title={odd.bookmakers[0].title}
+            date={odd.commence_time}
+            competitionName={odd.sport_title}
             />
         )}
+        <Footer/>
     </div>
   );
 } 
