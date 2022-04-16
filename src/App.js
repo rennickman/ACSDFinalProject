@@ -6,6 +6,8 @@ import LeaguesList from './pages/Leagues/Leagues';
 import LeagueDisplayed from './pages/League Displayed/LeagueDisplayed';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import Odds from './pages/OddsPages/Odds';
+import OddsLeaguesDisplayed from './pages/OddsPages/OddsLeaguesDisplayed';
 
 function App() {
     return (
@@ -25,6 +27,12 @@ function App() {
 
                 {/* Register Route */}
                 <Route path="/register" element={<Register />} />
+
+                {/* Odds Route */}
+                <Route path="/odds" element={<Odds />} />
+
+                {/* League Displayed Route */}
+                <Route path="/odds/:code_link" exact element={<OddsLeaguesDisplayed/>} />
             </Routes>
         </Router>
     );

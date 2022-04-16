@@ -106,7 +106,13 @@ const Navbar = ({ fetchAllLeagueData }) => {
                                     Leagues
                                 </Link>
                         </li>
-
+                        {/* Odds */}
+                        <li className="link_container" onClick={handleClose}>
+                                 <Link to="/odds" className="link">
+                                    Odds
+                                </Link>
+                        </li>
+                        
                         {/* Live Scores Link */}
                         <li className="link_container" onClick={handleClose}>
                             <div className="link">

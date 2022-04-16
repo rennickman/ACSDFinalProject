@@ -12,3 +12,11 @@ export const footballApi2 = {
     link: "https://api.football-data.org/v2/",
     token: "6714f12b78e949bb817b1aff3faa958a"
 };
+
+// API info for odds
+export const OddsApi1 = {
+    link1: "https://api.the-odds-api.com/v4/sports/",
+    link2: "/odds/?apiKey=",
+    token3: "546b45d09c5f4b95ea5b253d23174387",
+    link4:  "&regions=eu&markets=h2h"
+}

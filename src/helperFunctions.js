@@ -36,8 +36,15 @@ export const mapLeagues = [
     {'name': 'EFL Championship', 'logo': 'english-championship-logo.jpg'},
 ];
 
-
-
+// Export Odds league codes
+export const mapOddsLeagues = [
+    {'code_link': 'soccer_epl', 'name': 'Premier League'},
+    {'code_link': 'soccer_germany_bundesliga', 'name': 'Bundesliga'},
+    {'code_link': 'soccer_france_ligue_one', 'name': 'Ligue 1'},
+    {'code_link': 'soccer_italy_serie_a', 'name': 'Serie A'},
+    {'code_link': 'soccer_spain_la_liga', 'name': 'Primera Division'},
+    {'code_link': 'soccer_efl_champ', 'name': 'EFL Championship'},
+  ];
 
 // Takes the name of a club and returns the search ID
 export const findClubId = clubName => {
