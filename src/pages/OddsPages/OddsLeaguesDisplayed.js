@@ -5,7 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import OddsResults from '../../components/Odds Comps/OddsResults';
 import Odds from './Odds';
- 
+import { format } from 'date-fns'
 function OddsLeaguesDisplayed() {
   //UseStates used
   const [odds, setOdds] = useState([]);
@@ -26,7 +26,19 @@ function OddsLeaguesDisplayed() {
   useEffect(() => {
     fetchOddsData();
   }, [oddsCode])
-  
+  //test 
+  //Date Format
+  const dateFormatting = () => {
+    const dateTest = '2022-04-17T13:15:00Z'; 
+  const letSee = format(new Date(dateTest), 'k.m dd-MM-yyyy')
+  console.log(dateTest)
+  console.log(letSee)
+    
+  }
+
+useEffect(() => {
+  dateFormatting();
+}, [])
   return (
     <div>
       <Navbar/>
