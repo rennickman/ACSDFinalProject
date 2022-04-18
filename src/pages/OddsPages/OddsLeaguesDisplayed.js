@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+
 import { OddsApi1 } from '../../apiKeys';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import OddsResults from '../../components/Odds Comps/OddsResults';
-import Odds from './Odds';
-import { format } from 'date-fns'
+
 function OddsLeaguesDisplayed() {
   //UseStates used
   const [odds, setOdds] = useState([]);
@@ -21,7 +21,6 @@ function OddsLeaguesDisplayed() {
     const results = getOdds.data
     setOdds(results);
     setLoading(true);
-    console.log(results);
   }
   useEffect(() => {
     fetchOddsData();
@@ -42,7 +41,7 @@ function OddsLeaguesDisplayed() {
             title={odd.bookmakers[0].title}
             date={odd.commence_time}
             competitionName={odd.sport_title}
-            />
+            />  
         )}
         <Footer/>
     </div>
