@@ -3,27 +3,19 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { IoMdFootball } from 'react-icons/io';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { findLeagueId } from '../../helperFunctions';
 import "./navbar.css";
 import { useAuth, logOutUser } from '../../firebase';
 
 
 
 
-const Navbar = ({ fetchAllLeagueData }) => {
-
-    // Value being searched for in search bar
-    const [searchValue, setSearchValue] = useState("");
+const Navbar = () => {
 
     // Get current user if logged in
     const currentUser = useAuth();
 
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
-
-    
-
-
 
     // Toggle value for opening and closing mobile menu
     const [toggle, setToggle] = useState(false);
@@ -32,23 +24,6 @@ const Navbar = ({ fetchAllLeagueData }) => {
     const handleToggle = () => setToggle(!toggle);
     const handleClose = () => setToggle(false);
 
-
-
-
-    // Handle search functionality
-    const handleSearch = e => {
-        e.preventDefault();
-        // Find the leagueId
-        const searchId = findLeagueId(searchValue);
-        // Fetch the league info and table
-        fetchAllLeagueData(searchId);
-        // Close the mobile menu if opened
-        handleClose();
-    };
-
-
-
-    
     // Method for logging out User
     const handleLogOut = async e => {
         e.preventDefault();
@@ -88,28 +63,18 @@ const Navbar = ({ fetchAllLeagueData }) => {
 
                     {/* Search Bar and Links - Put as a list for mobile menu */}
                     <ul className={toggle ? "nav_section active" : "nav_section"}>
-                        
-                        {/* Search Bar - button is hidden to allow submit by pressing enter */}
-                        <li className='searchbar_container'>
-                            <form>
-                                <input
-                                    className='searchbar' type="text" placeholder='Search for League' value={searchValue}
-                                    onChange={e => setSearchValue(e.target.value)}
-                                />
-                                <button onClick={handleSearch} type='submit' style={{ display: "none" }}></button>
-                            </form>
+
+                        {/* Home Link */}
+                        <li className="link_container" onClick={handleClose}>
+                                <Link to="/" className="link">
+                                    Home
+                                </Link>
                         </li>
 
                         {/* Live Scores Link */}
                         <li className="link_container" onClick={handleClose}>
                                 <Link to="/leagues" className="link">
                                     Leagues
-                                </Link>
-                        </li>
-                        {/* Odds */}
-                        <li className="link_container" onClick={handleClose}>
-                                 <Link to="/odds" className="link">
-                                    Odds
                                 </Link>
                         </li>
                         
@@ -120,20 +85,12 @@ const Navbar = ({ fetchAllLeagueData }) => {
                             </div>
                         </li>
 
-                        {/* Live Standings Link */}
+                        {/* Odds */}
                         <li className="link_container" onClick={handleClose}>
-                            <div className="link">
-                                Standings
-                            </div>
+                                 <Link to="/odds" className="link">
+                                    Odds
+                                </Link>
                         </li>
-
-                        {/* Top Scorers Link */}
-                        <li className="link_container" onClick={handleClose}>
-                            <div className="link">
-                                Top Scorers
-                            </div>
-                        </li>
-
 
                         {/* Log In / Log Out Button */}
                         <li onClick={handleClose} className="signup_container">

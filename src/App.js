@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import LeaguesList from './pages/Leagues/Leagues';
 import LeagueDisplayed from './pages/League Displayed/LeagueDisplayed';
+import TeamDisplayed from './pages/Team Displayed/TeamDisplayed';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Odds from './pages/OddsPages/Odds';
@@ -21,6 +22,9 @@ function App() {
 
                 {/* League Displayed Route */}
                 <Route path="/leagues/:name" exact element={<LeagueDisplayed />} />
+
+                {/* Tean Displayed Route */}
+                <Route path="/:name" exact element={<TeamDisplayed />} />
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />

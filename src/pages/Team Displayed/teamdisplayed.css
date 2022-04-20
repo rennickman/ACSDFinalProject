@@ -1,7 +1,7 @@
-.league-displayed {
+.team-displayed {
     display: flex;
     width: 100%;
 }
-.league-container {
+.team-container {
     flex: 12;
 }

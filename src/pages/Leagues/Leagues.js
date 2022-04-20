@@ -1,17 +1,17 @@
 import {Link} from 'react-router-dom';
+import { useAuth } from '../../firebase';
+
 import './leagues.css';
 import Navbar from '../../components/Navbar/Navbar';
-import { mapLeagues } from '../../helperFunctions';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { useAuth } from '../../firebase';
+import { mapLeagues } from '../../helperFunctions';
+import Footer from '../../components/Footer/Footer';
 
 const LeaguesList = () => {
 
 
     // Get current user if logged in
     const currentUser = useAuth();
-
-
 
     return (
         <>
@@ -50,7 +50,9 @@ const LeaguesList = () => {
                     </div>
                 </div>
             </div>
-                
+
+            <Footer />
+
         </>
     );
 };

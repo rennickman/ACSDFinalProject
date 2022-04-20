@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import {Tabs, Tab, Form, Button, Row, Col} from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom';
+import {Tabs, Tab, Form, Button} from 'react-bootstrap';
+import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../../firebase';
 
 import './home.css';
 import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
-import { footballApi1, footballApi } from '../../apiKeys';
-import { useAuth } from '../../firebase';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import { mapAPIs } from '../../apiKeys';
+import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
+import Footer from '../../components/Footer/Footer';
+
 
 
 
@@ -16,7 +18,10 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 const Home = () => {
 
     // Value being searched for in search bar
-    const [searchValue, setSearchValue] = useState("");
+    const [LeagueSearchValue, setLeagueSearchValue] = useState("");
+
+    // Value being searched for in search bar
+    const [TeamSearchValue, setTeamSearchValue] = useState("");
 
     // Value being searched for in search bar
     const [loading, setLoading] = useState(true);
@@ -24,39 +29,69 @@ const Home = () => {
     // Value being searched for in search bar
     const [todaysMatches, setTodaysMatches] = useState({});
 
+    // Renders any error that shoud be displayed on the home page
+    let error = useLocation();
+
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
-
-
 
     // Get current user if logged in
     const currentUser = useAuth();
 
-
-
+    //Renders the error if there is any
+    if(error.state){
+        alert(error.state);
+        error.state = "";
+    }
 
     //Gets today's matches
     useEffect(() => {
         async function fetchData() {
-            try {
-                const getTodaysMatches = await axios.get(footballApi1.link + "/matches",
-                { headers: { "X-Auth-Token": footballApi1.token } });
-                setTodaysMatches(getTodaysMatches);
-                setLoading(false);
-            } catch {
-                // Throw an alert if there were any problems retrieving data from the API
-                console.log("There was a problem retrieving data for Today's matches");
-            }
+            //Makes API calls to different token keys untill one is successful
+            var apiCall = false;
+            var i = 0;
+            do{
+                try{
+                    //Fetches the data from the API where i is the API in apiKeys' array
+                    const getTodaysMatches = await axios.get(mapAPIs[i].link + "/matches",
+                    { headers: { "X-Auth-Token": mapAPIs[i].token } });
+                    //If the status of the request is ok it stores matches in useState, stops the loop, and displays the data in the webpage
+                    if(getTodaysMatches.status ===  200){
+                        setTodaysMatches(getTodaysMatches);
+                        apiCall = false;
+                        setLoading(false);
+                    }
+                }catch {
+                    //If an error is catched keeps the loop running so it makes another call to another apiKey
+                    console.log(`There was an error retrieving the data from the API token ${i}`);
+                    apiCall = true;
+                    setLoading(true);
+                }
+
+                i++;
+                //Runs three times because that's the number of keys that we have
+            } while(apiCall && i<3);
         }
         fetchData();
-    },[todaysMatches]);
+    },[]);
 
     //Handles a sumission for the league tab
-    const handleSubmit = (e) => {
+    const handleleLeagueSubmit = (e) => {
         e.preventDefault();
-        if(searchValue){
+        if(LeagueSearchValue){
             //Sends the search value to the LeagueDIsplayed page to make the API call by 'state'
-            history('/leagues/' + searchValue, {state: searchValue});
+            history('/leagues/' + LeagueSearchValue, {state: LeagueSearchValue});
+        } else {
+            alert("Please type a league");
+        }
+    }
+
+    //Handles a sumission for the team tab
+    const handleTeamSubmit = (e) => {
+        e.preventDefault();
+        if(TeamSearchValue){
+            //Sends the search value to the LeagueDIsplayed page to make the API call by 'state'
+            history('/' + TeamSearchValue, {state: TeamSearchValue});
         } else {
             alert("Please type a league");
         }
@@ -83,9 +118,9 @@ const Home = () => {
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Label>League</Form.Label>
-                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setSearchValue(e.target.value)}/>
+                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setLeagueSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
-                                    <Button variant="success" type="submit" onClick={handleSubmit} >
+                                    <Button variant="success" type="submit" onClick={handleleLeagueSubmit} >
                                         Go
                                     </Button>
                                 </Form>
@@ -106,9 +141,9 @@ const Home = () => {
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Label>Team</Form.Label>
-                                        <Form.Control type="text" placeholder="Type league name here" />
+                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setTeamSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
-                                    <Button variant="primary" disabled>
+                                    <Button variant="success" type="submit" onClick={handleTeamSubmit} >
                                         Go
                                     </Button>
                                 </Form>
@@ -146,9 +181,9 @@ const Home = () => {
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Label>League</Form.Label>
-                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setSearchValue(e.target.value)}/>
+                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setLeagueSearchValue(e.target.value)}/>
                                     </Form.Group>
-                                    <Button variant="success" type="submit" onClick={handleSubmit} >
+                                    <Button variant="success" type="submit" onClick={handleleLeagueSubmit} >
                                         Go
                                     </Button>
                                 </Form>
@@ -169,9 +204,9 @@ const Home = () => {
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
                                         <Form.Label>Team</Form.Label>
-                                        <Form.Control type="text" placeholder="Type league name here" />
+                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setTeamSearchValue(e.target.value)}/>
                                     </Form.Group>
-                                    <Button variant="primary" disabled>
+                                    <Button variant="success" type="submit" onClick={handleTeamSubmit} >
                                         Go
                                     </Button>
                                 </Form>
@@ -181,25 +216,7 @@ const Home = () => {
                         <div>
                             <h1>Today's Matches</h1>
                             {todaysMatches.data.matches.map((match, index) => 
-                                <div key={index}>
-                                    <h3>{match.competition.name}</h3>
-                                    <Row>
-                                        <Col>
-                                            <h5>Status: {match.status + " " + new Date(match.utcDate)}.</h5>
-                                        </Col>
-                                        <Col>
-                                            <h5>{match.homeTeam.name}</h5>
-                                        </Col>
-                                        <Col>
-                                            <p>
-                                                {match.score.fullTime.homeTeam} - {match.score.fullTime.awayTeam}
-                                            </p>
-                                        </Col>
-                                        <Col>
-                                            <h5>{match.awayTeam.name}</h5>
-                                        </Col>
-                                    </Row>
-                                </div>
+                                <TodaysMatches match={match} index={index}/>
                             )}
                         </div>
                     </div>
