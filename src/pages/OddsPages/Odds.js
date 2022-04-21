@@ -1,12 +1,10 @@
 import {Link} from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
 import { mapOddsLeagues } from '../../helperFunctions';
 
 const Odds = () => {
 
   return (
     <div>
-      <Navbar/>
        <div className='leagues-list' >
           {
             mapOddsLeagues.map((OddsLeague, index) => {

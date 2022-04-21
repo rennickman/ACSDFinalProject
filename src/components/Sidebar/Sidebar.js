@@ -1,54 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import './sidebar.css';
-import { database, ref,  } from '../../firebase';
-import { onValue } from 'firebase/database';
-import { footballApi } from '../../apiKeys';
-import { findClubId } from '../../helperFunctions';
-
-
-const Sidebar = ({ userUid }) => {
-
-    const [username, setUsername] = useState();
-    const [favouriteTeam, setFavouriteTeam] = useState();
 
 
 
-    const fetchTeamInfo = async (club) => {
-
-        // Find the club Id
-        const clubId = findClubId(club);
-
-        // Fetch Team Infomation
-        const data = await axios.get(footballApi.link + "/teams/" + clubId,
-            { headers: { "X-Auth-Token": footballApi.token } }); 
-        
-        setFavouriteTeam(data.data);
-    }
-
-
-
-    // Fetch User Info from Database when component is rendered
-    useEffect(() => {
-        // Database reference
-        const userInfoRef = ref(database, 'users/' + userUid);
-
-        // Take snapshop of database and store User info in state
-        onValue(userInfoRef, snapshot => {
-            const data = snapshot.val();
-            setUsername(data.username);
-            fetchTeamInfo(data.favouriteTeam);
-        });
-    }, [userUid]);
-
-
+const Sidebar = ({ username, favouriteTeam }) => {
 
     
-
-    
-
-
 
     
     return (

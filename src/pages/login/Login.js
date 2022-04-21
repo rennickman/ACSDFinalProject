@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './login.css';
-import Navbar from '../../components/Navbar/Navbar';
 import { logInUser } from '../../firebase';
 
 
@@ -40,7 +39,6 @@ const Login = () => {
 
     return (
         <div className='login'>
-            <Navbar />
 
             <div className="signUpForm">
                 <div className="loginWrapper">

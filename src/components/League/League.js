@@ -1,12 +1,16 @@
 import React from 'react';
 import LeagueMatches from '../All League Matches/LeagueMatches';
 import Scroll from '../All League Matches/Scroll';
+import LeagueTable from '../LeagueTable/LeagueTable';
 import Team from '../Team/Team';
 import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
 
 import './league.css'
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
+
+    
+
     
     return (
         <div className='league'>
@@ -15,10 +19,17 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                 <h2>{competition.area.name}</h2>
             </div>
 
+            <LeagueTable standings={leagueTable} />
+
+
+            {/** 
             <div className="clubs">
                 <h3>List of Clubs:</h3>
                 {leagueTable.map((team, index) => <Team team={team} key={index} />)}
-            </div>   
+            </div>
+            **/}
+
+
             <br></br>
             <div className="clubs">
                 <h3>Top Goal Scorers</h3>
@@ -29,6 +40,7 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                 <h3>Results and Fixtures</h3>
                 {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}
             </div>   
+            
             <Scroll/>  
         </div>
     );

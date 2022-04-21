@@ -2,8 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 import { OddsApi1 } from '../../apiKeys';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/Navbar/Navbar';
 import OddsResults from '../../components/Odds Comps/OddsResults';
 
 function OddsLeaguesDisplayed() {
@@ -28,7 +26,6 @@ function OddsLeaguesDisplayed() {
 
   return (
     <div>
-      <Navbar/>
       {
         loading && 
         odds.map((odd, index) => 
@@ -43,7 +40,6 @@ function OddsLeaguesDisplayed() {
             competitionName={odd.sport_title}
             />  
         )}
-        <Footer/>
     </div>
   );
 } 

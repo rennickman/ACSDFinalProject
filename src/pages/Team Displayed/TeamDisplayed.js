@@ -4,12 +4,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 
 import './teamdisplayed.css';
-import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
 import TeamMatch from '../../components/Team Match/TeamMatch';
-import Footer from '../../components/Footer/Footer';
+
 
 const TeamDisplayed = () => {
 
@@ -138,9 +137,7 @@ const TeamDisplayed = () => {
     } else if(loading){
         //Id the API call hasn't arrived yet renders Loading...
         return (
-            <>
-                <Navbar />
-                
+            <>      
                 <div className='team-displayed'>
                     {currentUser && <Sidebar userUid={currentUser.uid} />}
                     <div className='team-container'>
@@ -148,15 +145,11 @@ const TeamDisplayed = () => {
                     </div>
                 </div>
 
-                <Footer />
-
             </>
         )
     } else {
         return (
             <>
-                <Navbar />
-
                 <div className='team-displayed'>
                     {currentUser && <Sidebar userUid={currentUser.uid} />}
                     <div className='team-container'>
@@ -176,9 +169,6 @@ const TeamDisplayed = () => {
                         }
                     </div>
                 </div>
-
-                <Footer />
-
             </>
         )
     }

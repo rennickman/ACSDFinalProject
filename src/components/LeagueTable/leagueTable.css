@@ -1,0 +1,13 @@
+.leagueTable {
+    display: flex;
+    align-items: center;
+}
+
+.table {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    border: 3px solid black;
+    width: 300px;
+}
+

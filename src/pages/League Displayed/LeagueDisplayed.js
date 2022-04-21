@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../firebase';
 
 import './leaguedisplayed.css';
-import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapCompetitions } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
 import League from '../../components/League/League';
-import Footer from '../../components/Footer/Footer';
 
-const LeagueDisplayed = () => {
+
+const LeagueDisplayed = ({ username, favouriteTeam }) => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
@@ -19,8 +17,6 @@ const LeagueDisplayed = () => {
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
 
-    // Get current user if logged in
-    const currentUser = useAuth();
 
     //Error for Home page
     const [error, setError] = useState("");
@@ -114,9 +110,8 @@ const LeagueDisplayed = () => {
         //Renders the page
         return(
             <>  
-                <Navbar />
                 <div className='league-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
                     <div className='league-container'>
                         <League
                             competition={competition}
@@ -125,21 +120,18 @@ const LeagueDisplayed = () => {
                             matches={matches} />
                     </div>
                 </div>
-                <Footer />
             </>
         );
     } else {
         //Renders Loading
         return(
             <>  
-                <Navbar />
                 <div className='league-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
                     <div className='league-container'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
-                <Footer />
             </>
         );
     }
