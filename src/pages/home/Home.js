@@ -2,20 +2,18 @@ import React, { useState, useEffect } from 'react';
 import {Tabs, Tab, Form, Button} from 'react-bootstrap';
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../../firebase';
 
 import './home.css';
-import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
 import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
-import Footer from '../../components/Footer/Footer';
 
 
 
 
 
-const Home = () => {
+
+const Home = ({ userUid }) => {
 
     // Value being searched for in search bar
     const [LeagueSearchValue, setLeagueSearchValue] = useState("");
@@ -35,8 +33,7 @@ const Home = () => {
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
 
-    // Get current user if logged in
-    const currentUser = useAuth();
+    
 
     //Renders the error if there is any
     if(error.state){
@@ -101,10 +98,8 @@ const Home = () => {
     if(loading){
         return (
             <>
-                <Navbar />
-
                 <div className='home'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+                    {userUid && <Sidebar userUid={userUid} />}
 
                     <div className='home-content'>
                             <div className='home-hero'>
@@ -156,7 +151,6 @@ const Home = () => {
                     </div>
                 </div>
 
-                <Footer />
             </>
             
         );
@@ -164,10 +158,8 @@ const Home = () => {
     } else {
         return (
             <>  
-                <Navbar />
-
                 <div className='home'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+                    {userUid && <Sidebar userUid={userUid} />}
 
                     <div className='home-content'>
                             <div className='home-hero'>
@@ -221,8 +213,6 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
-                <Footer />
             </>
         );
     }

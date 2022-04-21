@@ -1,24 +1,18 @@
 import {Link} from 'react-router-dom';
-import { useAuth } from '../../firebase';
-
 import './leagues.css';
-import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapLeagues } from '../../helperFunctions';
-import Footer from '../../components/Footer/Footer';
-
-const LeaguesList = () => {
 
 
-    // Get current user if logged in
-    const currentUser = useAuth();
+const LeaguesList = ({ userUid }) => {
+
+
+
 
     return (
         <>
-            <Navbar />
-            
             <div className='leagues'>
-                {currentUser && <Sidebar userUid={currentUser.uid} />}
+                {userUid && <Sidebar userUid={userUid} />}
 
                 <div className="leaguesContainer">
                     <div className='content' >
@@ -50,8 +44,6 @@ const LeaguesList = () => {
                     </div>
                 </div>
             </div>
-
-            <Footer />
 
         </>
     );

@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './register.css';
-import Navbar from '../../components/Navbar/Navbar';
 import { registerUser, setUserInfo } from '../../firebase';
 
 
@@ -76,7 +75,6 @@ const Register = () => {
     if (!secondPage) {
         return (
             <div className="register">
-                <Navbar />
 
                 <div className='signUpForm'>
                     <div className="loginWrapper">
@@ -109,7 +107,6 @@ const Register = () => {
     } else {
         return (
             <div className="register">
-                <Navbar />
 
                 <div className='signUpForm'>
                     <div className="loginWrapper">

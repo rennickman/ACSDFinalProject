@@ -9,19 +9,30 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Odds from './pages/OddsPages/Odds';
 import OddsLeaguesDisplayed from './pages/OddsPages/OddsLeaguesDisplayed';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import { useAuth } from './firebase';
 
 function App() {
+
+    // Get current user if logged in
+    const currentUser = useAuth();
+
+
     return (
+
         <Router>
+            <Navbar />
+            
             <Routes>
                 {/* Home Route */}
-                <Route path="/" exact element={<Home />} />
+                <Route path="/" exact element={<Home userUid={currentUser?.uid} />} />
 
                 {/* Leagues Route */}
-                <Route path="/leagues" exact element={<LeaguesList />} />
+                <Route path="/leagues" exact element={<LeaguesList userUid={currentUser?.uid} />} />
 
                 {/* League Displayed Route */}
-                <Route path="/leagues/:name" exact element={<LeagueDisplayed />} />
+                <Route path="/leagues/:name" exact element={<LeagueDisplayed userUid={currentUser?.uid} />} />
 
                 {/* Tean Displayed Route */}
                 <Route path="/:name" exact element={<TeamDisplayed />} />
@@ -38,6 +49,8 @@ function App() {
                 {/* League Displayed Route */}
                 <Route path="/odds/:code_link" exact element={<OddsLeaguesDisplayed/>} />
             </Routes>
+
+            <Footer />
         </Router>
     );
 };
