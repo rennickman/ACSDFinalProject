@@ -1,12 +1,12 @@
 import { Row, Col } from 'react-bootstrap';
 import { format } from 'date-fns'
 
-const TodaysMatches = ({ match, index }) => {
+const TodaysMatches = ({ match}) => {
     //Formatting Time
     const gameDate = format(new Date(`${match.utcDate}`), 'dd-MM-yyyy');
     const gameTime = format(new Date(`${match.utcDate}`), 'k.mm');
     return (
-        <div key={index}>
+        <div>
         <h3>{match.competition.name}</h3>
         <Row>
             <Col>

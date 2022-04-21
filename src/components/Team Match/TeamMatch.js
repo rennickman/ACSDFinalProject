@@ -6,7 +6,7 @@ const TeamMatch = ({ match, index }) => {
     const gameDate = format(new Date(`${match.utcDate}`), 'dd-MM-yyyy');
     const gameTime = format(new Date(`${match.utcDate}`), 'k.mm');
     return (
-        <div key={"match " + index}>
+        <div key={index+4}>
             <Row>
                 <Col>
                     <h5>Status: {match.status + " " + gameDate + " " + gameTime}</h5>
