@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
 
 
 // Configuration for Firebase app
@@ -65,7 +65,7 @@ export const setUserInfo = (userUid , username, favouriteTeam) => {
     });
 };
 
-export { database, ref }
+export { database, ref, onValue }
 
 
 

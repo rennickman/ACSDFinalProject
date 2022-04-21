@@ -13,7 +13,7 @@ import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
 
 
 
-const Home = ({ userUid }) => {
+const Home = ({ username, favouriteTeam }) => {
 
     // Value being searched for in search bar
     const [LeagueSearchValue, setLeagueSearchValue] = useState("");
@@ -99,7 +99,7 @@ const Home = ({ userUid }) => {
         return (
             <>
                 <div className='home'>
-                    {userUid && <Sidebar userUid={userUid} />}
+                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
 
                     <div className='home-content'>
                             <div className='home-hero'>
@@ -159,7 +159,7 @@ const Home = ({ userUid }) => {
         return (
             <>  
                 <div className='home'>
-                    {userUid && <Sidebar userUid={userUid} />}
+                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
 
                     <div className='home-content'>
                             <div className='home-hero'>

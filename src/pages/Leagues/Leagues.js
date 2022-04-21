@@ -4,7 +4,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapLeagues } from '../../helperFunctions';
 
 
-const LeaguesList = ({ userUid }) => {
+const LeaguesList = ({ username, favouriteTeam }) => {
 
 
 
@@ -12,7 +12,7 @@ const LeaguesList = ({ userUid }) => {
     return (
         <>
             <div className='leagues'>
-                {userUid && <Sidebar userUid={userUid} />}
+                {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
 
                 <div className="leaguesContainer">
                     <div className='content' >
