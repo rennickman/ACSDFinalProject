@@ -22,8 +22,8 @@ const Sidebar = ({ userUid }) => {
 
         // Fetch Team Infomation
         const data = await axios.get(footballApi.link + "/teams/" + clubId,
-            { headers: { "X-Auth-Token": footballApi.token } }); 
-        
+            { headers: { "X-Auth-Token": footballApi.token } });
+        // Store in state 
         setFavouriteTeam(data.data);
     }
 
@@ -37,7 +37,9 @@ const Sidebar = ({ userUid }) => {
         // Take snapshop of database and store User info in state
         onValue(userInfoRef, snapshot => {
             const data = snapshot.val();
+            // Store username in state
             setUsername(data.username);
+            // Fetch data about favourite team
             fetchTeamInfo(data.favouriteTeam);
         });
     }, [userUid]);
