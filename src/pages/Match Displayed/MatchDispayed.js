@@ -3,12 +3,12 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 
-import './matchdisplayed.css';
+import './matchDisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
 import Match from '../../components/Match/Match';
 
-const MatchDisplayed = () => {
+const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
@@ -84,31 +84,44 @@ const MatchDisplayed = () => {
         }
     },[query]);
 
+
+
+
+
+
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
         history('/', {state: error});
     } else if(loading){
         //Id the API call hasn't arrived yet renders Loading...
         return (
-            <>
-                <div className='team-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+            <div className='matchDisplayed'>
+                {username && (
+                    <Sidebar username={username} favouriteTeam={favouriteTeam}
+                        favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                )}
+
+                <div className='matchDisplayedContent'>
                     <div className='team-container'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
-            </>
+            </div>
         )
     } else {
         return (
-            <>
-                <div>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+            <div className='matchDisplayed'>
+                {username && (
+                    <Sidebar username={username} favouriteTeam={favouriteTeam}
+                        favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                )}
+
+                <div className="matchDisplayedContent">
                     <div>
                         <Match match={query.state} />
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 

@@ -4,14 +4,14 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 import {Link} from 'react-router-dom'
 
-import './teamdisplayed.css';
+import './teamDisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
 import Match from '../../components/Match/Match';
 
 
-const TeamDisplayed = () => {
+const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
@@ -142,6 +142,9 @@ const TeamDisplayed = () => {
         }
     },[query.state,team,apiLength]);
 
+
+
+
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
         history('/', {state: error});
@@ -150,7 +153,10 @@ const TeamDisplayed = () => {
         return (
             <>      
                 <div className='team-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
                     <div className='team-container'>
                         <h1>Loading...</h1>
                     </div>
@@ -161,7 +167,10 @@ const TeamDisplayed = () => {
         return (
             <>
                 <div className='team-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
                     <div className='team-container'>
                         <h1>{query.state}</h1>
                         {

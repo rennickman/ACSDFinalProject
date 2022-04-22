@@ -3,8 +3,12 @@ import React, { useEffect, useState } from 'react'
 
 import { OddsApi1 } from '../../apiKeys';
 import OddsResults from '../../components/Odds Comps/OddsResults';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import './oddsLeaguesDisplayed.css';
 
-function OddsLeaguesDisplayed() {
+
+
+function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) {
   //UseStates used
   const [odds, setOdds] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,7 +29,13 @@ function OddsLeaguesDisplayed() {
   }, [oddsCode])
 
   return (
-    <div>
+    <div className='oddsLeaguesDisplayed'>
+      {username && (
+        <Sidebar username={username} favouriteTeam={favouriteTeam}
+          favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+      )}
+
+      <div className="oddsLeaguesDisplayedContent">
       {
         loading && 
         odds.map((odd, index) => 
@@ -40,6 +50,7 @@ function OddsLeaguesDisplayed() {
             competitionName={odd.sport_title}
             />  
         )}
+      </div>
     </div>
   );
 } 
