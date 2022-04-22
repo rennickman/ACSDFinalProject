@@ -57,9 +57,14 @@ function App() {
         // Find League Name
         const favouriteLeague = team.activeCompetitions[0].name;
         // Find the Id of the league
-        const favouriteleagueId = findLeagueId(favouriteLeague);
+        let favouriteLeagueId = findLeagueId(favouriteLeague);
+        // Check for bundesliga, seria a bug
+        if (favouriteLeagueId === "TryAgain") {
+            favouriteLeagueId = findLeagueId(team.activeCompetitions[1].name);
+        }
+        console.log(favouriteLeagueId);
         // Fetch Standings
-        const data = await axios.get(sideBarApi.link + "/competitions/" + favouriteleagueId + "/standings",
+        const data = await axios.get(sideBarApi.link + "/competitions/" + favouriteLeagueId + "/standings",
             { headers: { "X-Auth-Token": sideBarApi.token } });
         setFavouriteLeague(data.data.standings[0].table);
     };
@@ -92,7 +97,7 @@ function App() {
     }, [favouriteTeam]);
 
 
-
+    console.log(favouriteTeam);
 
     return (
 
