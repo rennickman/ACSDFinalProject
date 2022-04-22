@@ -13,14 +13,19 @@ import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
 
 
 
-
 const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
-    // Value being searched for in search bar
+    // Value for league search bar
     const [LeagueSearchValue, setLeagueSearchValue] = useState("");
 
-    // Value being searched for in search bar
+    // Value for Team search bar
     const [TeamSearchValue, setTeamSearchValue] = useState("");
+
+    // Value for Team 1 in match search bar
+    const [Team1SearchValue, setTeam1SearchValue] = useState("");
+
+    // Value for 
+    const [Team2SearchValue, setTeam2SearchValue] = useState("");
 
     // Value being searched for in search bar
     const [loading, setLoading] = useState(true);
@@ -35,6 +40,9 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
     const history = useNavigate()
 
     
+
+    //Length of the mapAPIs
+    const apiLength = Object.keys(mapAPIs).length
 
     //Renders the error if there is any
     if(error.state){
@@ -68,10 +76,10 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
 
                 i++;
                 //Runs three times because that's the number of keys that we have
-            } while(apiCall && i<3);
+            } while(apiCall && i<apiLength);
         }
         fetchData();
-    },[]);
+    },[apiLength]);
 
     //Handles a sumission for the league tab
     const handleleLeagueSubmit = (e) => {
@@ -89,7 +97,18 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
         e.preventDefault();
         if(TeamSearchValue){
             //Sends the search value to the LeagueDIsplayed page to make the API call by 'state'
-            history('/' + TeamSearchValue, {state: TeamSearchValue});
+            history('/club/' + TeamSearchValue, {state: TeamSearchValue});
+        } else {
+            alert("Please type a league");
+        }
+    }
+
+    //Handles a sumission for the match tab
+    const handleMatchSubmit = (e) => {
+        e.preventDefault();
+        if(Team1SearchValue && Team2SearchValue){
+            //Sends the search value to the LeagueDIsplayed page to make the API call by 'state'
+            history('/matchsearch/', {state: {team1: Team1SearchValue, team2: Team2SearchValue}});
         } else {
             alert("Please type a league");
         }
@@ -106,11 +125,11 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     )}
 
                     <div className='home-content'>
-                            <div className='home-hero'>
-                                <div className='home-img'>
-                                    <img src="gods-hand.jpg" alt="God's hand"></img>
-                                </div>
+                        <div className='home-hero'>
+                            <div className='home-img'>
+                                <img src="gods-hand.jpg" alt="God's hand"></img>
                             </div>
+                        </div>
                         <div className='home-search-window'>
                             <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
                             <Tab eventKey="league" title="League">
@@ -124,29 +143,30 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                                     </Button>
                                 </Form>
                             </Tab>
-                            <Tab eventKey="match" title="Match">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Match</Form.Label>
-                                        <Form.Control type="text" placeholder="Type first team here" />
-                                        <Form.Control type="text" placeholder="Type second team here" />
-                                    </Form.Group>
-                                    <Button variant="primary" disabled>
-                                        Go
-                                    </Button>
-                                </Form>
-                            </Tab>
                             <Tab eventKey="team" title="Team">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Team</Form.Label>
-                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setTeamSearchValue(e.target.value.toLowerCase())}/>
+                                        <Form.Label>Club</Form.Label>
+                                        <Form.Control type="text" name="league" placeholder="Type club name here" onChange={e => setTeamSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleTeamSubmit} >
                                         Go
                                     </Button>
                                 </Form>
                             </Tab>
+                            <Tab eventKey="match" title="Match">
+                                <Form>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                        <Form.Label>Match</Form.Label>
+                                        <Form.Control type="text" placeholder="Type first club here" onChange={e => setTeam1SearchValue(e.target.value.toLowerCase())} />
+                                        <Form.Control type="text" placeholder="Type second club here" onChange={e => setTeam2SearchValue(e.target.value.toLowerCase())} />
+                                    </Form.Group>
+                                    <Button variant="success" type="submit" onClick={handleMatchSubmit} >
+                                        Go
+                                    </Button>
+                                </Form>
+                            </Tab>
+
                             </Tabs>
                         </div>
                         <div>
@@ -187,18 +207,6 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                                     </Button>
                                 </Form>
                             </Tab>
-                            <Tab eventKey="match" title="Match">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Match</Form.Label>
-                                        <Form.Control type="text" placeholder="Type first team here" />
-                                        <Form.Control type="text" placeholder="Type second team here" />
-                                    </Form.Group>
-                                    <Button variant="primary" disabled>
-                                        Go
-                                    </Button>
-                                </Form>
-                            </Tab>
                             <Tab eventKey="team" title="Team">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -210,12 +218,24 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                                     </Button>
                                 </Form>
                             </Tab>
+                            <Tab eventKey="match" title="Match">
+                                <Form>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                        <Form.Label>Match</Form.Label>
+                                        <Form.Control type="text" placeholder="Type first club here" onChange={e => setTeam1SearchValue(e.target.value.toLowerCase())} />
+                                        <Form.Control type="text" placeholder="Type second club here" onChange={e => setTeam2SearchValue(e.target.value.toLowerCase())} />
+                                    </Form.Group>
+                                    <Button variant="success" type="submit" onClick={handleMatchSubmit} >
+                                        Go
+                                    </Button>
+                                </Form>
+                            </Tab>
                             </Tabs>
                         </div>
                         <div>
                             <h1>Today's Matches</h1>
                             {todaysMatches.data.matches.map((match, index) => 
-                                <TodaysMatches match={match} index={index}/>
+                                <TodaysMatches match={match} key={index}/>
                             )}
                         </div>
                     </div>

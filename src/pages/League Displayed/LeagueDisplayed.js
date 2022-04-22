@@ -35,13 +35,15 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
         return competition.name.includes(query.state);
     });
 
+    //Length of the mapAPIs
+    const apiLength = Object.keys(mapAPIs).length
+
     // Combined Method - All Relevant League Data
     const fetchLeagueData = async (leagueId) => {
         //Makes API calls to different token keys untill one is successful
         var apiCall = false;
         var i = 0;
         do{
-            console.log(i)
             try{
 
                 //Fetching the standings, top scorers and matches from the API where i is the API in apiKeys' array
@@ -72,9 +74,9 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
                     );
                     apiCall = false;
                 }
-            }catch {
+            }catch{
                 //If it is the third error it redirects to the home page and send the error "Too many requests"
-                if (i===2){
+                if (i===apiLength-1){
                     setError("Too many requests, try again later")
                     console.log("Too many requests, try again later")
                 }else{
@@ -86,7 +88,7 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
 
             i++;
             //Runs three times because that's the number of keys that we have
-        } while(apiCall && i<3);
+        } while(apiCall && i<apiLength);
     };
 
     //Renders the API call
