@@ -107,10 +107,16 @@ function App() {
                 />} />
 
                 {/* Leagues Route */}
-                <Route path="/leagues" exact element={<LeaguesList username={username} favouriteTeam={favouriteTeam} />} />
+                <Route 
+                    path="/leagues" exact element={<LeaguesList username={username} favouriteTeam={favouriteTeam} 
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
+                />} />
 
                 {/* League Displayed Route */}
-                <Route path="/leagues/:name" exact element={<LeagueDisplayed username={username} favouriteTeam={favouriteTeam} />} />
+                <Route 
+                    path="/leagues/:name" exact element={<LeagueDisplayed username={username} favouriteTeam={favouriteTeam} 
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}/>} 
+                />
 
                 {/* Tean Displayed Route */}
                 <Route path="/club/:name" exact element={<TeamDisplayed />} />

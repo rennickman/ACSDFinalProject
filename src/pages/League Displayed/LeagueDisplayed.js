@@ -9,7 +9,7 @@ import { mapAPIs } from '../../apiKeys';
 import League from '../../components/League/League';
 
 
-const LeagueDisplayed = ({ username, favouriteTeam }) => {
+const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
@@ -111,7 +111,10 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
         return(
             <>  
                 <div className='league-displayed'>
-                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
                     <div className='league-container'>
                         <League
                             competition={competition}
@@ -127,7 +130,10 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
         return(
             <>  
                 <div className='league-displayed'>
-                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
                     <div className='league-container'>
                         <h1>Loading...</h1>
                     </div>
