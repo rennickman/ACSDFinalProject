@@ -4,13 +4,13 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 import {Link} from 'react-router-dom';
 
-import './matchdisplayed.css';
+import './matchsearch.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
 import Match from '../../components/Match/Match';
 
-const MatchSearch = () => {
+const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
@@ -146,9 +146,12 @@ const MatchSearch = () => {
         //Id the API call hasn't arrived yet renders Loading...
         return (
             <>
-                <div className='team-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
-                    <div className='team-container'>
+                <div  className='search-displayed'>
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
+                    <div className='search-container'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
@@ -157,9 +160,12 @@ const MatchSearch = () => {
     } else {
         return (
             <>
-                <div>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
-                    <div>
+                <div className='search-displayed'>
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
+                    <div className='search-container'>
                         {
                             teamMatches.map((league, index) => 
                                 <div key={-index}>

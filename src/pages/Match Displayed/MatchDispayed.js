@@ -8,16 +8,13 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
 import Match from '../../components/Match/Match';
 
-const MatchDisplayed = () => {
+const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
 
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
-
-    // Get current user if logged in
-    const currentUser = useAuth();
 
     //Error for Home page
     const [error, setError] = useState("");
@@ -31,6 +28,17 @@ const MatchDisplayed = () => {
     //Length of the mapAPIs
     const apiLength = Object.keys(mapAPIs).length
 
+    // // Fetch Team Fixtures
+    // const data2 = await axios.get(sideBarApi.link + "/teams/" + clubId + "/matches/",
+    //     { headers: { "X-Auth-Token": sideBarApi.token } });
+    // setFavouriteFixtures(data2.data.matches);
+
+    // // Method to find last 5 matches
+    // const findLast5Matches = () => {
+    //     const results = favouriteFixtures?.filter(match => match.status === "FINISHED");
+    //     const last5 = results.slice(-5).reverse();
+    //     setLast5Matches(last5);
+    // };
 
     useEffect(() => {
         //If a query came trhought useLocation and a team id was found for that query
@@ -91,9 +99,12 @@ const MatchDisplayed = () => {
         //Id the API call hasn't arrived yet renders Loading...
         return (
             <>
-                <div className='team-displayed'>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
-                    <div className='team-container'>
+                <div className='match-displayed'>
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
+                    <div className='match-container'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
@@ -102,9 +113,12 @@ const MatchDisplayed = () => {
     } else {
         return (
             <>
-                <div>
-                    {currentUser && <Sidebar userUid={currentUser.uid} />}
-                    <div>
+                <div className='match-displayed'>
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
+                    <div className='match-container'>
                         <Match match={query.state} />
                     </div>
                 </div>

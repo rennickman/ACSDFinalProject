@@ -1,7 +1,7 @@
-.match-displayed {
+.search-displayed {
     display: flex;
     width: 100%;
 }
-.match-container {
+.search-container {
     flex: 12;
 }

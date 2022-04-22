@@ -125,13 +125,19 @@ function App() {
                 />
 
                 {/* Team Displayed Route */}
-                <Route path="/club/:name" exact element={<TeamDisplayed />} />
+                <Route path="/club/:name" exact element={<TeamDisplayed username={username} favouriteTeam={favouriteTeam} 
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
+                />} />
 
                 {/* Match Search Route */}
-                <Route path="/matchsearch/" exact element={<MatchSearch />} />
+                <Route path="/matchsearch/" exact element={<MatchSearch username={username} favouriteTeam={favouriteTeam} 
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
+                />} />
 
                 {/* Match Displayed Route */}
-                <Route path="/match/" exact element={<MatchDisplayed />} />
+                <Route path="/match/" exact element={<MatchDisplayed username={username} favouriteTeam={favouriteTeam} 
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
+                />} />
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />
