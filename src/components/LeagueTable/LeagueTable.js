@@ -10,7 +10,6 @@ import './leagueTable.css';
 const LeagueTable = ({ standings }) => {
 
 
-
     return (
         <div className='leagueTable'>
             <table className='table'>

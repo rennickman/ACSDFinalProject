@@ -32,6 +32,8 @@ export const findLeagueId = leagueName => {
         case "championship":
         case "efl championship":
             return "ELC";
+        case "uefa champions league":
+            return "TryAgain"
         default:
             alert("League not found");
             return "";

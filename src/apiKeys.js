@@ -49,3 +49,8 @@ export const OddsApi1 = {
     token3: "546b45d09c5f4b95ea5b253d23174387",
     link4:  "&regions=eu&markets=h2h"
 }
+
+export const sideBarApi = {
+    link: "https://api.football-data.org/v2/",
+    token: "126492b463104215885bd26236dc9c58"
+}
