@@ -81,9 +81,10 @@ const TeamDisplayed = () => {
 
                 //Leagues array for all the matches by leagues that a club plays in
                 let matchesByLeagues = [];
-
+                const status = ["SCHEDULED", "FINISHED"]
                 //Loops throught the leagues array, sending to matchesByLeagues an object containing the name of the league and an array with all the matches for that league
                 for(var k = 0; k<leagues.length; k++) {
+                    for(var m = 0; m<status.length; m++){
                         //Makes API calls to different token keys untill one is successful
                         var apiCall2 = false;
                         var l = 0;
@@ -91,7 +92,7 @@ const TeamDisplayed = () => {
                             try{
                                 //Fetching the leagues that that the team is involved via API
                                 const getMatches = await axios.get(mapAPIs[l].link + "competitions/" + leagues[k] + "/matches",
-                                { headers: { "X-Auth-Token": mapAPIs[l].token } });
+                                { headers: { "X-Auth-Token": mapAPIs[l].token }, params:{status: status[m]} });
                                 console.log(getMatches)
                                 //If the status of the request is ok it stores the league name and all maches in matchesByLeague array
                                 if(getMatches.status ===  200){
@@ -99,8 +100,10 @@ const TeamDisplayed = () => {
                                     const matchesArray = getMatches.data.matches.filter((match)=>{
                                         return match.awayTeam.id === team.id || match.homeTeam.id === team.id;
                                     });
-                                    //Stores in matchesByLeagues all the matches that the team is playing for each league is playing in
-                                    matchesByLeagues.push({leagueName: getMatches.data.competition.name, matches: matchesArray});
+                                    if(matchesArray.length){
+                                        //Stores in matchesByLeagues all the matches that the team is playing for each league is playing in
+                                        matchesByLeagues.push({leagueName: getMatches.data.competition.name + " " + status[m], matches: matchesArray});
+                                    }
                                     apiCall2 = false;
                                 }
                             }catch {
@@ -117,6 +120,7 @@ const TeamDisplayed = () => {
                             l++;
                             //Runs three times because that's the number of keys that we have
                         } while(apiCall2 && l<apiLength);
+                    }
                 }
                 //sets matchesByLeague in the useStete in order to display it in the web page
                 setTeamMatches(matchesByLeagues);
@@ -128,7 +132,7 @@ const TeamDisplayed = () => {
             //If the state has come but there was no matches fot the team queried
             setError("There were no matches for that Club")
         }
-    },[query.state,team]);
+    },[query.state,team,apiLength]);
     console.log(teamMatches);
 
     if (error) {
@@ -144,7 +148,6 @@ const TeamDisplayed = () => {
                         <h1>Loading...</h1>
                     </div>
                 </div>
-
             </>
         )
     } else {

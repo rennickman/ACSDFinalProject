@@ -4,11 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 
 import './matchdisplayed.css';
-import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
-import Footer from '../../components/Footer/Footer';
+import TeamMatch from '../../components/Team Match/TeamMatch';
 
 const MatchDisplayed = () => {
 
@@ -39,9 +38,6 @@ const MatchDisplayed = () => {
     const team2 = Object.values(clubId).find((competition) => {
         return competition.name.includes(query.state.team2);
     });
-
-    //Stores teams id in an array for loop to use
-    const teams = [team1, team2];
 
     //Length of the mapAPIs
     const apiLength = Object.keys(mapAPIs).length
@@ -74,7 +70,7 @@ const MatchDisplayed = () => {
                         }
                     }catch {
                         //If it is the third error it redirects to the home page and send the error "Too many requests"
-                        if (!leaguesForTeams && i===teams.length-1 && i===apiLength-1){
+                        if (!leaguesForTeams && i===apiLength-1){
                             setError("Too many requests, try again later")
                             console.log("Too many requests, try again later")
                         }else{
@@ -106,9 +102,10 @@ const MatchDisplayed = () => {
                                     const matchesArray = getMatches.data.matches.filter((match)=>{
                                         return (match.awayTeam.id === team1.id && match.homeTeam.id === team2.id) || (match.awayTeam.id === team2.id && match.homeTeam.id === team1.id);
                                     });
+                                    console.log(matchesArray)
                                     //Stores in matchesByLeagues all the matches that the team is playing for each league is playing in
                                     if (matchesArray.length){
-                                        matchesByLeagues.push({matches: matchesArray});
+                                        matchesByLeagues.push({leagueName: getMatches.data.competition.name, matches: matchesArray});
                                     }
                                     apiCall2 = false;
                                 }
@@ -128,8 +125,11 @@ const MatchDisplayed = () => {
                         } while(apiCall2 && m<apiLength);
                 }
                 //sets matchesByLeague in the useStete in order to display it in the web page
-                setTeamMatches(matchesByLeagues);
-                setLoading(false);
+                if(matchesByLeagues.length){
+                    setTeamMatches(matchesByLeagues);
+                    setLoading(false);
+                }
+
             }
             fetchData();
 
@@ -147,28 +147,20 @@ const MatchDisplayed = () => {
         //Id the API call hasn't arrived yet renders Loading...
         return (
             <>
-                <Navbar />
-                
                 <div className='team-displayed'>
                     {currentUser && <Sidebar userUid={currentUser.uid} />}
                     <div className='team-container'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
-
-                <Footer />
-
             </>
         )
     } else {
         return (
             <>
-                <Navbar />
-
-                <div className='team-displayed'>
+                <div>
                     {currentUser && <Sidebar userUid={currentUser.uid} />}
-                    <div className='team-container'>
-                        {/* <h1>{query.state}</h1>
+                    <div>
                         {
                             teamMatches.map((league, index) => 
                                 <div key={index}>
@@ -181,12 +173,9 @@ const MatchDisplayed = () => {
                                 </div>
                             )
 
-                        } */}
+                        }
                     </div>
                 </div>
-
-                <Footer />
-
             </>
         )
     }

@@ -74,7 +74,7 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
                     );
                     apiCall = false;
                 }
-            }catch {
+            }catch{
                 //If it is the third error it redirects to the home page and send the error "Too many requests"
                 if (i===apiLength-1){
                     setError("Too many requests, try again later")

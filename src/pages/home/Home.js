@@ -10,9 +10,6 @@ import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
 
 
 
-
-
-
 const Home = ({ username, favouriteTeam }) => {
 
     // Value for league search bar
@@ -79,7 +76,7 @@ const Home = ({ username, favouriteTeam }) => {
             } while(apiCall && i<apiLength);
         }
         fetchData();
-    },[]);
+    },[apiLength]);
 
     //Handles a sumission for the league tab
     const handleleLeagueSubmit = (e) => {
