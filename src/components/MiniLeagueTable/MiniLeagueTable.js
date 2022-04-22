@@ -14,6 +14,7 @@ const MiniLeagueTable = ({ standings }) => {
         <div className='leagueTable'>
             <table className='table'>
                 <tr>
+                    <th scope="col">Pos</th>
                     <th scope="col">Club</th>
                     <th scope='col'>GP</th>
                     <th scope='col'>GD</th>
@@ -22,6 +23,7 @@ const MiniLeagueTable = ({ standings }) => {
 
                 {standings.map((team) => (
                     <tr>
+                        <td>{team.position}</td>
                         <th scope="row">{team.team.name}</th>
                         <td>{team.playedGames}</td>
                         <td>{team.goalDifference}</td>
