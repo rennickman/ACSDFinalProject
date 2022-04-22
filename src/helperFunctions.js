@@ -52,12 +52,12 @@ export const mapLeagues = [
 
 // Export Odds league codes
 export const mapOddsLeagues = [
-    {'code_link': 'soccer_epl', 'name': 'Premier League'},
-    {'code_link': 'soccer_germany_bundesliga', 'name': 'Bundesliga'},
-    {'code_link': 'soccer_france_ligue_one', 'name': 'Ligue 1'},
-    {'code_link': 'soccer_italy_serie_a', 'name': 'Serie A'},
-    {'code_link': 'soccer_spain_la_liga', 'name': 'Primera Division'},
-    {'code_link': 'soccer_efl_champ', 'name': 'EFL Championship'},
+    {'code_link': 'soccer_epl', 'name': 'Premier League', logo: 'pl-l-logo.jpg'},
+    {'code_link': 'soccer_germany_bundesliga', 'name': 'Bundesliga', logo: 'bundesliga-logo.jpg'},
+    {'code_link': 'soccer_france_ligue_one', 'name': 'Ligue 1', logo: 'ligue-1-logo.jpg'},
+    {'code_link': 'soccer_italy_serie_a', 'name': 'Serie A', logo: 'serie-a-logo.jpg'},
+    {'code_link': 'soccer_spain_la_liga', 'name': 'Primera Division', logo: 'la-liga-logo.jpg'},
+    {'code_link': 'soccer_efl_champ', 'name': 'EFL Championship', logo: 'english-championship-logo.jpg'},
   ];
 
 // Object to search a team by name and find the id

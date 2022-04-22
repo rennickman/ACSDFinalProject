@@ -6,7 +6,8 @@ import { footballApi3, config, config1, config2 } from '../../apiKeys'
 import CurrentGameWeek from '../../components/Game Week Comps/CurrentGameWeek'
 import './gameWeekMatches.css'
 
-function GameWeekMatches() {
+
+const GameWeekMatches = () => {
 
   //Game Week Counters
   const [matchDayCounter, setMatchDayCounter] = useState("1")
@@ -73,7 +74,7 @@ function GameWeekMatches() {
          return (
            <Container key={index}>  
            <br/>
-           <h2>Games This Week</h2>
+           <h2>Games This Week in: </h2>
              {everyLeague.map((currentGW) =>
               <Link to={'/match/'} state={currentGW} key={currentGW.id} className='match_links'>
                <CurrentGameWeek key={currentGW.id}
