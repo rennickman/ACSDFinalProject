@@ -1,12 +1,12 @@
 import { Row, Col } from 'react-bootstrap';
 import { format } from 'date-fns'
 
-const TeamMatch = ({ match, index }) => {
+const Match = ({ match, index }) => {
     //Formatting Time
     const gameDate = format(new Date(`${match.utcDate}`), 'dd-MM-yyyy');
     const gameTime = format(new Date(`${match.utcDate}`), 'k.mm');
     return (
-        <div key={index+4}>
+        <div key={index+20}>
             <Row>
                 <Col>
                     <h5>Status: {match.status + " " + gameDate + " " + gameTime}</h5>
@@ -27,4 +27,4 @@ const TeamMatch = ({ match, index }) => {
     );
 };
 
-export default TeamMatch;
+export default Match;

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import Home from './pages/home/Home';
+import Home from './pages/Home/Home';
 import LeaguesList from './pages/Leagues/Leagues';
 import LeagueDisplayed from './pages/League Displayed/LeagueDisplayed';
 import TeamDisplayed from './pages/Team Displayed/TeamDisplayed';
-import MatchDisplayed from './pages/Match Displayed/MatchDisplayed';
+import MatchSearch from './pages/Match Search/MatchSearch';
+import MatchDisplayed from './pages/Match Displayed/MatchDispayed';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Odds from './pages/OddsPages/Odds';
@@ -78,11 +79,14 @@ function App() {
                 {/* League Displayed Route */}
                 <Route path="/leagues/:name" exact element={<LeagueDisplayed username={username} favouriteTeam={favouriteTeam} />} />
 
-                {/* Tean Displayed Route */}
+                {/* Team Displayed Route */}
                 <Route path="/club/:name" exact element={<TeamDisplayed />} />
 
-                {/* Tean Displayed Route */}
-                <Route path="/matchsearch/" exact element={<MatchDisplayed />} />
+                {/* Match Search Route */}
+                <Route path="/matchsearch/" exact element={<MatchSearch />} />
+
+                {/* Match Displayed Route */}
+                <Route path="/match/" exact element={<MatchDisplayed />} />
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />

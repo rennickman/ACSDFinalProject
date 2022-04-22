@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
+import {Link} from 'react-router-dom';
 
 import './matchdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
-import TeamMatch from '../../components/Team Match/TeamMatch';
+import Match from '../../components/Match/Match';
 
-const MatchDisplayed = () => {
+const MatchSearch = () => {
 
     // Renders useLocation so it takes the league name sent through a League's Link or Home Search bar by 'state'
     const query = useLocation();
@@ -71,10 +72,10 @@ const MatchDisplayed = () => {
                     }catch {
                         //If it is the third error it redirects to the home page and send the error "Too many requests"
                         if (!leaguesForTeams && i===apiLength-1){
-                            setError("Too many requests, try again later")
-                            console.log("Too many requests, try again later")
+                            setError("Too many requests, try again later");
+                            console.log("Too many requests, try again later");
                         }else{
-                            //If an error is catched keeps the loop running so it makes another call to another apiKey
+                            //If an error is stops the loop
                             apiCall = true;
                         }
                     }
@@ -102,7 +103,6 @@ const MatchDisplayed = () => {
                                     const matchesArray = getMatches.data.matches.filter((match)=>{
                                         return (match.awayTeam.id === team1.id && match.homeTeam.id === team2.id) || (match.awayTeam.id === team2.id && match.homeTeam.id === team1.id);
                                     });
-                                    console.log(matchesArray)
                                     //Stores in matchesByLeagues all the matches that the team is playing for each league is playing in
                                     if (matchesArray.length){
                                         matchesByLeagues.push({leagueName: getMatches.data.competition.name, matches: matchesArray});
@@ -116,7 +116,7 @@ const MatchDisplayed = () => {
                                     console.log("Too many requests, try again later")
                                 }else{
                                     //If another error than 429 is catched exits the loop
-                                    apiCall2 = false;  
+                                    apiCall2 = true;  
                                 }
                             }
 
@@ -138,7 +138,6 @@ const MatchDisplayed = () => {
             setError("There were no matches for those Clubs")
         }
     },[query.state,team1,team2,apiLength]);
-    console.log(teamMatches);
 
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
@@ -163,11 +162,13 @@ const MatchDisplayed = () => {
                     <div>
                         {
                             teamMatches.map((league, index) => 
-                                <div key={index}>
+                                <div key={-index}>
                                     <h1>{league.leagueName}</h1>
                                     {
                                         league.matches.map((match, index)=>
-                                        <TeamMatch match={match} index={index} />
+                                        <Link to={'/match/'} state={match} key={index}>
+                                            <Match match={match} />
+                                        </Link>
                                         )
                                     }
                                 </div>
@@ -180,9 +181,8 @@ const MatchDisplayed = () => {
         )
     }
 
-
 };
 
 
 
-export default MatchDisplayed;
+export default MatchSearch;

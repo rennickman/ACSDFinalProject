@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 import './leagueTable.css';
 
@@ -8,7 +9,6 @@ import './leagueTable.css';
 
 const LeagueTable = ({ standings }) => {
 
-    console.log(standings);
 
 
     return (
@@ -28,7 +28,7 @@ const LeagueTable = ({ standings }) => {
                 
                 {standings.map((team, index) => (
                     <tr>
-                        <th scope="row">{team.team.name}</th>
+                        <th scope="row"><Link to={'/club/' + team.team.name} state={team.team.name.toLowerCase()}>{team.team.name}</Link></th>
                         <td>{team.playedGames}</td>
                         <td>{team.won}</td>
                         <td>{team.draw}</td>

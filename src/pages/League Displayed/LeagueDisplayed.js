@@ -17,7 +17,6 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
 
-
     //Error for Home page
     const [error, setError] = useState("");
 
@@ -80,7 +79,7 @@ const LeagueDisplayed = ({ username, favouriteTeam }) => {
                     setError("Too many requests, try again later")
                     console.log("Too many requests, try again later")
                 }else{
-                    //If an error is catched keeps the loop running so it makes another call to another apiKey
+                    //If an error is catched stops the loop
                     console.log(`There was an error retrieving the data from the API ${i}`)
                     apiCall = true;
                 }
