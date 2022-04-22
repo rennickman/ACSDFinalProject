@@ -3,3 +3,13 @@
   max-height: 800px;
   overflow-y: scroll;
 }
+/*top gs matches*/
+#top_gs_table{
+  margin-bottom: 2px;
+}
+.top_gs_title{
+  width: 200px;
+}
+#tgs_title{
+  text-align: center;
+}
