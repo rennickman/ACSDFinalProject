@@ -3,6 +3,7 @@ import {Tabs, Tab, Form, Button} from 'react-bootstrap';
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 
+
 import './home.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
@@ -10,7 +11,9 @@ import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
 
 
 
-const Home = ({ username, favouriteTeam }) => {
+
+
+const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
     // Value for league search bar
     const [LeagueSearchValue, setLeagueSearchValue] = useState("");
@@ -116,7 +119,10 @@ const Home = ({ username, favouriteTeam }) => {
         return (
             <>
                 <div className='home'>
-                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
 
                     <div className='home-content'>
                         <div className='home-hero'>
@@ -177,7 +183,10 @@ const Home = ({ username, favouriteTeam }) => {
         return (
             <>  
                 <div className='home'>
-                    {username && <Sidebar username={username} favouriteTeam={favouriteTeam} />}
+                    {username && (
+                        <Sidebar username={username} favouriteTeam={favouriteTeam}
+                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                    )}
 
                     <div className='home-content'>
                             <div className='home-hero'>

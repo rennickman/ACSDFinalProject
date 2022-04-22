@@ -14,9 +14,11 @@ import OddsLeaguesDisplayed from './pages/OddsPages/OddsLeaguesDisplayed';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import { useAuth, database, ref, onValue } from './firebase';
-import { footballApi } from './apiKeys';
+import { sideBarApi } from './apiKeys';
 import { findClubId } from './helperFunctions';
+import { findLeagueId } from './helperFunctions';
 import GameWeekMatches from './pages/GameWeek/GameWeekMatches';
+
 
 
 
@@ -28,19 +30,40 @@ function App() {
 
     const [username, setUsername] = useState();
     const [favouriteTeam, setFavouriteTeam] = useState();
+    const [favouriteLeague, setFavouriteLeague] = useState();
+    const [favouriteFixtures, setFavouriteFixtures] = useState();
 
 
+    // Fetch Info about the favourite club of user
     const fetchTeamInfo = async (club) => {
 
         // Find the club Id
         const clubId = findClubId(club);
 
         // Fetch Team Infomation
-        const data = await axios.get(footballApi.link + "/teams/" + clubId,
-            { headers: { "X-Auth-Token": footballApi.token } });
+        const data = await axios.get(sideBarApi.link + "/teams/" + clubId,
+            { headers: { "X-Auth-Token": sideBarApi.token } });
         // Store in state 
         setFavouriteTeam(data.data);
-    }
+
+        // Fetch Team Fixtures
+        const data2 = await axios.get(sideBarApi.link + "/teams/" + clubId + "/matches/",
+            { headers: { "X-Auth-Token": sideBarApi.token } });
+        setFavouriteFixtures(data2.data.matches);
+    };
+
+    // Fetch Info about the league of the favourite club of user
+    const fetchLeagueInfo = async (team) => {
+        // Find League Name
+        const favouriteLeague = team.activeCompetitions[0].name;
+        // Find the Id of the league
+        const favouriteleagueId = findLeagueId(favouriteLeague);
+        // Fetch Standings
+        const data = await axios.get(sideBarApi.link + "/competitions/" + favouriteleagueId + "/standings",
+            { headers: { "X-Auth-Token": sideBarApi.token } });
+        setFavouriteLeague(data.data.standings[0].table);
+    };
+
 
 
 
@@ -61,6 +84,14 @@ function App() {
         }
     }, [currentUser]);
 
+    // Fetches Favourite Leagueue when favourite Team changes
+    useEffect(() => {
+       if (favouriteTeam) {
+           fetchLeagueInfo(favouriteTeam);
+       }
+    }, [favouriteTeam]);
+
+
 
 
     return (
@@ -70,7 +101,10 @@ function App() {
             
             <Routes>
                 {/* Home Route */}
-                <Route path="/" exact element={<Home username={username} favouriteTeam={favouriteTeam} />} />
+                <Route 
+                    path="/" exact element={<Home username={username} favouriteTeam={favouriteTeam} 
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
+                />} />
 
                 {/* Leagues Route */}
                 <Route path="/leagues" exact element={<LeaguesList username={username} favouriteTeam={favouriteTeam} />} />
