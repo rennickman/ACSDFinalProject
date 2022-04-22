@@ -25,6 +25,21 @@ export const footballApi2 = {
     token: "6714f12b78e949bb817b1aff3faa958a"
 };
 
+//dedicated headers for current game week page (intensive API calls)
+export const config = {
+    headers:{"X-Auth-Token":"a2cf6fa547064a6a9d80531db3796c20"} 
+  }
+  export const config1 = {
+    headers:{"X-Auth-Token":"475f186119564ee8816f3734b4f34d9e"} 
+  }
+  export const config2 = {
+    headers:{"X-Auth-Token":"f7e8387bdf784af68184cfd714a2a167"} 
+  }
+  export const footballApi3 = {
+    link1: "http://api.football-data.org/v2/competitions/",
+    link2: "/matches?matchday="
+  };
+
 // API info for odds
 export const OddsApi1 = {
     link1: "https://api.the-odds-api.com/v4/sports/",

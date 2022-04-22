@@ -80,9 +80,9 @@ const Navbar = () => {
                         
                         {/* Live Scores Link */}
                         <li className="link_container" onClick={handleClose}>
-                            <div className="link">
-                                Live Scores
-                            </div>
+                            <Link to="/current_game_week_matches" className="link">
+                               Current Game Week
+                            </Link> 
                         </li>
 
                         {/* Odds */}

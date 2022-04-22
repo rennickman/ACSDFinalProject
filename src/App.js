@@ -16,6 +16,7 @@ import Footer from './components/Footer/Footer';
 import { useAuth, database, ref, onValue } from './firebase';
 import { footballApi } from './apiKeys';
 import { findClubId } from './helperFunctions';
+import GameWeekMatches from './pages/GameWeek/GameWeekMatches';
 
 
 
@@ -94,6 +95,10 @@ function App() {
 
                 {/* League Displayed Route */}
                 <Route path="/odds/:code_link" exact element={<OddsLeaguesDisplayed/>} />
+
+                {/* Game Week */}
+                <Route path="/current_game_week_matches" element={<GameWeekMatches />} />
+
             </Routes>
 
             <Footer />
