@@ -110,8 +110,8 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                                     <div className='team'>{nextMatch?.awayTeam.name}</div>
                                 </div>
                                 
-                                <div className='date'>22/2/22</div>
-                                <div className='time'>4.50pm</div>
+                                <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
+                                <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
                             </div>
 
                             {/* last 5 Games */}
@@ -119,7 +119,7 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                                 {last5Matches?.map(match => (
                                     
                                     <div className='result'>
-                                        <div style={{ fontSize: "12px"}}>2/22/2</div>
+                                        <div style={{ fontSize: "12px" }}>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</div>
                                         <div>
                                             <span className='resultName'>{match.homeTeam.name}</span> 
                                             <span className='resultScore'>{match.score.fullTime.homeTeam}</span>
