@@ -69,7 +69,7 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
                             setLeagueTable(leagueStandingData);
                             setTopScorersTable(leagueTopGSsData);
                             setMatches(leagueMatchesData);
-                            console.log(allLeagueData[2].data.matches)
+                            console.log(leagueTopGSsData)
                         })
                     );
                     apiCall = false;

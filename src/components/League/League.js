@@ -34,7 +34,7 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                 <h3 className='league_table_titles'>Top Goal Scorers</h3>
                 <Container>
                  <Container>
-                 <Table striped bordered hover variant="light" id='top_gs_table'>
+                 <Table striped bordered hover id='top_gs_table'>
                   <thead>
                    <tr>
                     <th className='top_gs_title'> Name </th>
