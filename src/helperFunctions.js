@@ -47,7 +47,7 @@ export const mapLeagues = [
     {name: 'Ligue 1', logo: 'ligue-1-logo.jpg'},
     {name: 'Serie A', logo: 'serie-a-logo.jpg'},
     {name: 'Primera Division', logo: 'la-liga-logo.jpg'},
-    {name: 'ELF Championship', logo: 'english-championship-logo.jpg'},
+    {name: 'EFL Championship', logo: 'english-championship-logo.jpg'},
 ];
 
 // Export Odds league codes
