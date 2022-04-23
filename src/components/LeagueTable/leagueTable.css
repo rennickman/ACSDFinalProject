@@ -1,6 +1,13 @@
 .leagueTable {
     display: flex;
+    justify-content: center;
+}
+
+.tableContainer {
+    display: flex;
     align-items: center;
+    width: 900px;
+    margin-bottom: 20px;
 }
 
 .table {
@@ -8,6 +15,6 @@
     margin-right: 20px;
     text-align: center;
     border: 3px solid black;
-    width: 300px;
 }
+
 

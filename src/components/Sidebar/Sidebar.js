@@ -145,9 +145,9 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
             <div className='sidebar'>
                 <div className="sidebarContainer">
                     {username && (
-                        
                         <div className="userSection">
-                            <div className='username'>Welcome back {username}</div>
+                            {/* Username */}
+                            <div className='username'>Welcome {username}</div>
 
                             {/* Club Crest */}
                             <div className="crestContainer">
@@ -161,23 +161,38 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                         </div>
                     )}
 
-                    
                     {last5Matches?.length && (
                         <div className="sidebarFixtures">
                             {/* Next Match */}
                             <div className="nextGame">
-                                <p>Next Game:</p>
-                                <h4>{nextMatch?.homeTeam.name} Vs</h4>
-                                <h4>{nextMatch?.awayTeam.name}</h4>
+                                <div className='heading'>Next Game:</div>
+                                <div className="teams">
+                                    <div className='team'>{nextMatch?.homeTeam.name} Vs</div>
+                                    <div className='team'>{nextMatch?.awayTeam.name}</div>
+                                </div>
+
+                                <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
+                                <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
                             </div>
 
                             {/* last 5 Games */}
                             <div className="lastGames">
                                 {last5Matches?.map(match => (
-                                    <p>{match.homeTeam.name} {match.score.fullTime.homeTeam} {match.awayTeam.name} {match.score.fullTime.awayTeam} </p>
+
+                                    <div className='result'>
+                                        <div style={{ fontSize: "12px" }}>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</div>
+                                        <div>
+                                            <span className='resultName'>{match.homeTeam.name}</span>
+                                            <span className='resultScore'>{match.score.fullTime.homeTeam}</span>
+                                        </div>
+                                        <div className='awayTeam'>
+                                            <span className='resultName'>{match.awayTeam.name}</span>
+                                            <span className='resultScore'>{match.score.fullTime.awayTeam}</span>
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
-                        </div> 
+                        </div>
                     )}
                 </div>
             </div>

@@ -27,7 +27,7 @@ const MiniLeagueTable = ({ standings }) => {
                         <th scope="row">{team.team.name}</th>
                         <td>{team.playedGames}</td>
                         <td>{team.goalDifference}</td>
-                        <td>{team.points}</td>
+                        <th scope="row">{team.points}</th>
                     </tr>
                 ))}
 
