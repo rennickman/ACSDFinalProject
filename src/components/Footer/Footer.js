@@ -15,7 +15,7 @@ function Footer() {
           <Link to="/" className='footer_logo_title'>
             <div id='footer_logo_title_container'>
                <IoMdFootball className="navbar_icon" />
-               Football App
+               Football Hub
             </div>
           </Link>
           <Navbar.Toggle />
@@ -60,7 +60,7 @@ function Footer() {
       <Container>
        <Row>
          <Col>
-         <p id='copyright'>Copyright © 2022 Football App</p>
+         <p id='copyright'>Copyright © 2022 Football Hub</p>
          </Col>
        </Row>
       </Container>

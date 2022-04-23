@@ -80,7 +80,7 @@ const Register = () => {
                     <div className="loginWrapper">
                         <div className="loginLeft">
                             {/* Register Logo */}
-                            <h3 className="loginLogo">Football App</h3>
+                            <h3 className="loginLogo">Football Hub</h3>
 
                             {/* Register Message */}
                             <span className="loginDesc">Sign up for extra benefits!!</span>
