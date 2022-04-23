@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 import './matchdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
+import { mapLeagues } from '../../helperFunctions';
 import Match from '../../components/Match/Match';
 
 const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
@@ -27,6 +28,10 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
     //Length of the mapAPIs
     const apiLength = Object.keys(mapAPIs).length
 
+    //Finds the img for the competition
+    const competition = Object.values(mapLeagues).find((competition) => {
+        return competition.name.includes(query.state.competition.name.toLowerCase());
+    });
     // // Fetch Team Fixtures
     // const data2 = await axios.get(sideBarApi.link + "/teams/" + clubId + "/matches/",
     //     { headers: { "X-Auth-Token": sideBarApi.token } });
@@ -112,11 +117,24 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
     } else {
         return (
             <>
-                <div className='match-displayed'>
+                <div className='matchDisplayed'>
                     {username && (
                         <Sidebar username={username} favouriteTeam={favouriteTeam}
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
+                    <Link to={'/leagues/' + query.state.competition.name.toLowerCase()} state={query.state.competition.name.toLowerCase()}>
+                        <div className='matchDisplayedHero'>
+                            <div className='matchDisplayedImg'>
+                                <img src={"../"+competition.logo} alt={query.state.competition.name + ' logo'}></img>
+                            </div>
+                            <div>
+                                <div ><h1>{query.state.competition.name}</h1></div >
+                            </div>
+                            <div>
+                                <div ><h3>{query.state.competition.area.name}</h3></div >
+                            </div>
+                        </div>
+                    </Link>
                     <div className='matchDisplayedContent'>
                         <Match match={query.state} />
                     </div>

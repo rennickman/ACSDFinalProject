@@ -125,21 +125,6 @@ function App() {
                 />
 
                 {/* Team Displayed Route */}
-<<<<<<< HEAD
-                <Route path="/club/:name" exact element={<TeamDisplayed username={username} favouriteTeam={favouriteTeam} 
-                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
-                />} />
-
-                {/* Match Search Route */}
-                <Route path="/matchsearch/" exact element={<MatchSearch username={username} favouriteTeam={favouriteTeam} 
-                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
-                />} />
-
-                {/* Match Displayed Route */}
-                <Route path="/match/" exact element={<MatchDisplayed username={username} favouriteTeam={favouriteTeam} 
-                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
-                />} />
-=======
                 <Route 
                     path="/club/:name" exact element={<TeamDisplayed username={username} favouriteTeam={favouriteTeam}
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
@@ -156,7 +141,6 @@ function App() {
                     path="/match/" exact element={<MatchDisplayed username={username} favouriteTeam={favouriteTeam}
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
                 />
->>>>>>> 62cf03dfbd5a7c0c0aa50e7a6aef067c6fa74bfb
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />

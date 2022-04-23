@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../firebase';
 import {Link} from 'react-router-dom';
 
 import './matchSearch.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { clubId } from '../../helperFunctions';
+import { clubId, mapCompetitions } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
 import Match from '../../components/Match/Match';
 
@@ -17,9 +16,6 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
 
     // React-router-dom Method for pushing to different page
     const history = useNavigate()
-
-    // Get current user if logged in
-    const currentUser = useAuth();
 
     //Error for Home page
     const [error, setError] = useState("");
@@ -64,7 +60,14 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
                         if(getTeamLeagues.status ===  200){
                             //Stores in an array the leagues' codes for that teams
                             for (let k = 0; k<getTeamLeagues.data.activeCompetitions.length; k++) {
-                                leaguesForTeams.push(getTeamLeagues.data.activeCompetitions[k].code);
+                                // Sends the competition name to check if it's one of the availables ones
+                                const competition = Object.values(mapCompetitions).find((competition) => {
+                                    return competition.name.includes(getTeamLeagues.data.activeCompetitions[k].name.toLowerCase());
+                                });
+                                if(competition){
+                                    leaguesForTeams.push(competition.code);
+                                }
+
                             }
                             //Stops the loop
                             apiCall = false;
