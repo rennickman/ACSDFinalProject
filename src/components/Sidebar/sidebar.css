@@ -1,24 +1,13 @@
 .sidebar {
     flex: 2;
     background: grey;
-    color: white;
-    height: calc(100%);
+    color: black;
+    height: 100%;
     position: sticky;
     top: 80px;
 }
 
-/* Styling the Scrollbar */
-::-webkit-scrollbar {
-    width: 5px;
-}
 
-::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgb(179, 179, 179);
-}
 
 .sidebarContainer {
     display: flex;
@@ -26,12 +15,24 @@
     align-items: center;
 }
 
-.welcome {
-    margin-top: 20px;
+.userSection {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 15px;
+    height: 250px;
+    width: 250px;
+    justify-content: space-between;
+    padding: 15px;
+    border: 1px solid black;
+}
+
+.username {
+    font-size: 18px
 }
 
 .crestContainer {
-    margin-top: 20px;
+    margin-bottom: px;
 }
 
 .crest {
@@ -40,5 +41,68 @@
 }
 
 .clubName {
-    margin: 15px;
+    font-size: 22px
+}
+
+.sidebarFixtures {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.nextGame {
+    width: 250px;
+    height: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.heading {
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.team {
+    font-size: 22px;
+}
+
+.date {
+    font-size: 16px;
+}
+
+.time {
+    font-size: 14px;
+}
+
+.lastGames {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    text-align: right;
+    
+}
+
+.result {
+    padding-right: 35px;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    display: flex;
+    justify-items: center;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+.resultName {
+    margin-right: 10px;
+}
+
+.awayTeam {
+    border-bottom: 1px solid #000;
 }
