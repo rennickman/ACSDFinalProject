@@ -1,3 +1,20 @@
-#Results_Fixtures{
+#game_week_r_f, .game_date_r_f{
+  color: black;
+  transition: .75s;
+}
+#game_week_r_f:hover{
+  color: #fff;
+  transition: .75s;
+  background-color: #1c2237;
+}
+/*aligning headers and text in game week cards*/
+#game_date_r_f{
+  text-align: right;
+}
+.r_f_data{
   text-align: center;
+}
+#r_f_link{
+  text-decoration: none;
+  color: black;
 }

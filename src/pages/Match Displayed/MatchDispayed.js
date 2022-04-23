@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../firebase';
 
 import './matchdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -99,12 +98,12 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
         //Id the API call hasn't arrived yet renders Loading...
         return (
             <>
-                <div className='match-displayed'>
+                <div className='matchDisplayed'>
                     {username && (
                         <Sidebar username={username} favouriteTeam={favouriteTeam}
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
-                    <div className='match-container'>
+                    <div className='matchDisplayedContent'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
@@ -118,7 +117,7 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                         <Sidebar username={username} favouriteTeam={favouriteTeam}
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
-                    <div className='match-container'>
+                    <div className='matchDisplayedContent'>
                         <Match match={query.state} />
                     </div>
                 </div>

@@ -42,64 +42,63 @@ const Navbar = () => {
 
     
     return (
-        <div className='navbar-n'>
-            <div className="navbar_wrapper">
-                <div className="navbar_container container">
+            <div className="navbarWrapper">
+                <div className="navbarContainer">
 
                     {/* Logo Section */}
-                    <div className="navbar_logo" onClick={handleClose}>
+                    <div className="navbarLogo" onClick={handleClose}>
                         <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-                            <IoMdFootball className="navbar_icon" />
+                            <IoMdFootball className="navbarIcon" />
                             Football App
                         </Link>
                     </div>
                     
 
                     {/* Icon for toggling the Mobile Menu - hidden unless small screen */}
-                    <div className="navbar_toggle" onClick={handleToggle}>
-                        {toggle ? <FaTimes className='navbar_toggle_icon1' /> : <FaBars className='navbar_toggle_icon2' />}
+                    <div className="navbarToggle" onClick={handleToggle}>
+                        {toggle ? <FaTimes className='navbarToggleIcon1' /> : <FaBars className='navbarToggleIcon2' />}
                     </div>
 
 
                     {/* Search Bar and Links - Put as a list for mobile menu */}
-                    <ul className={toggle ? "nav_section active" : "nav_section"}>
+                    <ul className={toggle ? "navSection active" : "navSection"}>
 
                         {/* Home Link */}
-                        <li className="link_container" onClick={handleClose}>
-                                <Link to="/" className="link">
+                        <li className="linkContainer" onClick={handleClose}>
+                                <Link to="/" className="navLink">
                                     Home
                                 </Link>
                         </li>
 
                         {/* Live Scores Link */}
-                        <li className="link_container" onClick={handleClose}>
-                                <Link to="/leagues" className="link">
+                        <li className="linkContainer" onClick={handleClose}>
+                                <Link to="/leagues" className="navLink">
                                     Leagues
                                 </Link>
                         </li>
                         
                         {/* Live Scores Link */}
-                        <li className="link_container" onClick={handleClose}>
-                            <Link to="/current_game_week_matches" className="link">
+                        <li className="linkContainer" onClick={handleClose}>
+                            <Link to="/current_game_week_matches" className="navLink">
                                Current Game Week
                             </Link> 
                         </li>
 
                         {/* Odds */}
-                        <li className="link_container" onClick={handleClose}>
-                                 <Link to="/odds" className="link">
+                        <li className="linkContainer" onClick={handleClose}>
+                            <Link to="/odds" className="navLink">
                                     Odds
                                 </Link>
                         </li>
 
                         {/* Log In / Log Out Button */}
-                        <li onClick={handleClose} className="signup_container">
+                        <li onClick={handleClose} className="signupContainer">
                             {currentUser ? (
-                                <button className="signup_button" onClick={handleLogOut}>
+                                <button className="signupButton" onClick={handleLogOut}>
                                     Log Out
                                 </button>
                             ) : (
-                                <button className="signup_button" onClick={() => history("/login")}>
+                                <button className="signupButton" onClick={() => history("/login")}>
                                     Log In
                                 </button>
                             )}
@@ -108,7 +107,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        
     );
 };
 

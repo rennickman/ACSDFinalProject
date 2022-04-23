@@ -125,6 +125,7 @@ function App() {
                 />
 
                 {/* Team Displayed Route */}
+<<<<<<< HEAD
                 <Route path="/club/:name" exact element={<TeamDisplayed username={username} favouriteTeam={favouriteTeam} 
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
                 />} />
@@ -138,6 +139,24 @@ function App() {
                 <Route path="/match/" exact element={<MatchDisplayed username={username} favouriteTeam={favouriteTeam} 
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}
                 />} />
+=======
+                <Route 
+                    path="/club/:name" exact element={<TeamDisplayed username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
+                />
+
+                {/* Match Search Route */}
+                <Route 
+                    path="/matchsearch/" exact element={<MatchSearch username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
+                />
+
+                {/* Match Displayed Route */}
+                <Route 
+                    path="/match/" exact element={<MatchDisplayed username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
+                />
+>>>>>>> 62cf03dfbd5a7c0c0aa50e7a6aef067c6fa74bfb
 
                 {/* Login Route */}
                 <Route path="/login" element={<Login />} />
@@ -146,13 +165,22 @@ function App() {
                 <Route path="/register" element={<Register />} />
 
                 {/* Odds Route */}
-                <Route path="/odds" element={<Odds />} />
+                <Route 
+                    path="/odds" element={<Odds username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
+                />
 
                 {/* League Displayed Route */}
-                <Route path="/odds/:code_link" exact element={<OddsLeaguesDisplayed/>} />
+                <Route 
+                    path="/odds/:code_link" exact element={<OddsLeaguesDisplayed username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague}/>} 
+                />
 
                 {/* Game Week */}
-                <Route path="/current_game_week_matches" element={<GameWeekMatches />} />
+                <Route 
+                    path="/current_game_week_matches" element={<GameWeekMatches username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />} 
+                />
 
             </Routes>
 

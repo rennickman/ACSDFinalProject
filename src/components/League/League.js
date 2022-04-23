@@ -1,6 +1,7 @@
 import React from 'react';
+import { Container, Table } from 'react-bootstrap';
 import LeagueMatches from '../All League Matches/LeagueMatches';
-import Scroll from '../All League Matches/Scroll';
+import Scroller from '../All League Matches/Scroll';
 import LeagueTable from '../LeagueTable/LeagueTable';
 import Team from '../Team/Team';
 import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
@@ -28,20 +29,34 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                 {leagueTable.map((team, index) => <Team team={team} key={index} />)}
             </div>
             **/}
-
-
             <br></br>
             <div className="clubs">
-                <h3>Top Goal Scorers</h3>
-                {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
+                <h3 id='tgs_title'>Top Goal Scorers</h3>
+                <Container>
+                 <Container>
+                 <Table striped bordered hover variant="light" id='top_gs_table'>
+                  <thead>
+                   <tr>
+                    <th className='top_gs_title'> Name </th>
+                    <th className='top_gs_title'> Goals Scored </th>
+                    <th className='top_gs_title'> Club </th>
+                   </tr>
+                  </thead>
+                </Table>
+               </Container>
+               {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
+               </Container>
             </div>     
-            <br></br>
-            <div id="allMatches">
-                <h3>Results and Fixtures</h3>
-                {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}
-            </div>   
-            
-            <Scroll/>  
+            <br></br><Container>
+                <h3>Results and Fixtures</h3>  
+              </Container>
+            <Container id="allMatches">
+              
+              <Container>
+                {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}  
+              </Container>
+            </Container>   
+            <Scroller/>
         </div>
     );
 };

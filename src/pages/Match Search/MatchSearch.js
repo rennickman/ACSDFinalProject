@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 import {Link} from 'react-router-dom';
 
-import './matchsearch.css';
+import './matchSearch.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
@@ -145,27 +145,27 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
     } else if(loading){
         //Id the API call hasn't arrived yet renders Loading...
         return (
-            <>
-                <div  className='search-displayed'>
-                    {username && (
-                        <Sidebar username={username} favouriteTeam={favouriteTeam}
-                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
-                    )}
-                    <div className='search-container'>
+            <div className='matchSearch'>
+                {username && (
+                    <Sidebar username={username} favouriteTeam={favouriteTeam}
+                        favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                )}
+                <div className='matchSearchContent'>
+                    <div className='team-container'>
                         <h1>Loading...</h1>
                     </div>
                 </div>
-            </>
+            </div>
         )
     } else {
         return (
-            <>
-                <div className='search-displayed'>
-                    {username && (
-                        <Sidebar username={username} favouriteTeam={favouriteTeam}
-                            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
-                    )}
-                    <div className='search-container'>
+            <div className="matchSearch">
+                {username && (
+                    <Sidebar username={username} favouriteTeam={favouriteTeam}
+                        favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+                )}
+                <div className='matchSearchContent'>
+                    <div>
                         {
                             teamMatches.map((league, index) => 
                                 <div key={-index}>
@@ -179,11 +179,10 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
                                     }
                                 </div>
                             )
-
                         }
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 

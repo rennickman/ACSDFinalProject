@@ -142,6 +142,9 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
         }
     },[query.state,team,apiLength]);
 
+
+
+
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
         history('/', {state: error});

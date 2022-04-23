@@ -1,7 +1,8 @@
-.match-displayed {
+.matchDisplayed {
     display: flex;
     width: 100%;
 }
-.match-container {
+
+.matchDisplayedContent {
     flex: 12;
 }

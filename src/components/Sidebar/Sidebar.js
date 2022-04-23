@@ -42,19 +42,14 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
         
         // Top of the table
         if (leaguePosition <= 4) {
-            console.log("top");
             const filteredArray = league.slice(0, 7);
             setFilteredLeague(filteredArray);
 
         } else if (leaguePosition >= (favouriteLeague.length - 3)) {
-            console.log("bottom");
             const filteredArray = league.slice(favouriteLeague.length - 7, favouriteLeague.length);
             setFilteredLeague(filteredArray);
 
         } else if (leaguePosition > 4 && leaguePosition < (favouriteLeague.length - 3) ) {
-            console.log("middle");
-            console.log(leaguePosition - 4);
-            console.log(leaguePosition + 3);
             const filteredArray = league.slice(leaguePosition - 4, leaguePosition + 3);
             setFilteredLeague(filteredArray);
         }
@@ -79,7 +74,7 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
 
 
     
-    console.log(filteredLeague);
+    console.log(nextMatch);
 
 
 
@@ -89,11 +84,9 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
             <div className='sidebar'>
                 <div className="sidebarContainer">
                     {username && (
-                        <>
-                            <div className="welcome">
-                                <h4>Welcome {username}</h4>
-                            </div>
-
+                        <div className="userSection">
+                            {/* Username */}
+                            <div className='username'>Welcome {username}</div>
 
                             {/* Club Crest */}
                             <div className="crestContainer">
@@ -104,24 +97,40 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                             <div className="clubName">
                                 <p>{favouriteTeam?.name}</p>
                             </div>
-                        </>
-                    )}
-
-                    {/* Next Match */}
-                    {last5Matches?.length && (
-                        < div className="nextGame">
-                            <p>Next Game:</p>
-                            <h4>{nextMatch?.homeTeam.name} Vs</h4>
-                            <h4>{nextMatch?.awayTeam.name}</h4>
                         </div>
                     )}
 
-                    {/* Last 5 Matches */}
                     {last5Matches?.length && (
-                        <div className="lastGames">
-                            {last5Matches?.map(match => (
-                                <p>{match.homeTeam.name} {match.score.fullTime.homeTeam} {match.awayTeam.name} {match.score.fullTime.awayTeam} </p>
-                            ))}
+                        <div className="sidebarFixtures">
+                            {/* Next Match */}
+                            <div className="nextGame">
+                                <div className='heading'>Next Game:</div>
+                                <div className="teams">
+                                    <div className='team'>{nextMatch?.homeTeam.name} Vs</div>
+                                    <div className='team'>{nextMatch?.awayTeam.name}</div>
+                                </div>
+                                
+                                <div className='date'>22/2/22</div>
+                                <div className='time'>4.50pm</div>
+                            </div>
+
+                            {/* last 5 Games */}
+                            <div className="lastGames">
+                                {last5Matches?.map(match => (
+                                    
+                                    <div className='result'>
+                                        <div style={{ fontSize: "12px"}}>2/22/2</div>
+                                        <div>
+                                            <span className='resultName'>{match.homeTeam.name}</span> 
+                                            <span className='resultScore'>{match.score.fullTime.homeTeam}</span>
+                                        </div>
+                                        <div className='awayTeam'>
+                                            <span className='resultName'>{match.awayTeam.name}</span>
+                                            <span className='resultScore'>{match.score.fullTime.awayTeam}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     )}
 
@@ -136,11 +145,9 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
             <div className='sidebar'>
                 <div className="sidebarContainer">
                     {username && (
-                        <>
-                            <div className="welcome">
-                                <h4>Welcome {username}</h4>
-                            </div>
-
+                        
+                        <div className="userSection">
+                            <div className='username'>Welcome back {username}</div>
 
                             {/* Club Crest */}
                             <div className="crestContainer">
@@ -151,25 +158,26 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                             <div className="clubName">
                                 <p>{favouriteTeam?.name}</p>
                             </div>
-                        </>
-                    )}
-
-                    {/* Next Match */}
-                    {last5Matches?.length && (
-                        < div className="nextGame">
-                            <p>Next Game:</p>
-                            <h4>{nextMatch?.homeTeam.name} Vs</h4>
-                            <h4>{nextMatch?.awayTeam.name}</h4>
                         </div>
                     )}
 
-                    {/* Last 5 Matches */}
+                    
                     {last5Matches?.length && (
-                        <div className="lastGames">
-                            {last5Matches?.map(match => (
-                                <p>{match.homeTeam.name} {match.score.fullTime.homeTeam} {match.awayTeam.name} {match.score.fullTime.awayTeam} </p>
-                            ))}
-                        </div>
+                        <div className="sidebarFixtures">
+                            {/* Next Match */}
+                            <div className="nextGame">
+                                <p>Next Game:</p>
+                                <h4>{nextMatch?.homeTeam.name} Vs</h4>
+                                <h4>{nextMatch?.awayTeam.name}</h4>
+                            </div>
+
+                            {/* last 5 Games */}
+                            <div className="lastGames">
+                                {last5Matches?.map(match => (
+                                    <p>{match.homeTeam.name} {match.score.fullTime.homeTeam} {match.awayTeam.name} {match.score.fullTime.awayTeam} </p>
+                                ))}
+                            </div>
+                        </div> 
                     )}
                 </div>
             </div>

@@ -4,10 +4,11 @@ import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { footballApi3, config, config1, config2 } from '../../apiKeys'
 import CurrentGameWeek from '../../components/Game Week Comps/CurrentGameWeek'
+import Sidebar from '../../components/Sidebar/Sidebar'
+
 import './gameWeekMatches.css'
 
-
-const GameWeekMatches = () => {
+const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
   //Game Week Counters
   const [matchDayCounter, setMatchDayCounter] = useState("1")
@@ -68,7 +69,13 @@ const GameWeekMatches = () => {
   const AllLeagues = [ plMatches, saMatches, fl1Matches, bl1Matches, elcMatches, pdMatches ] 
 
   return (
-    <div>
+    <div class="gameWeekMatches">
+      {username && (
+        <Sidebar username={username} favouriteTeam={favouriteTeam}
+          favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+      )}
+      <div className="gameWeekMatchesContent">
+        
         <Container>
         {AllLeagues.map((everyLeague, index) => {
          return (
@@ -87,6 +94,7 @@ const GameWeekMatches = () => {
          ) 
        })}
         </Container>
+      </div>
     </div>
   )
 }
