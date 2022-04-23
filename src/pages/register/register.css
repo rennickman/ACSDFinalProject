@@ -28,7 +28,7 @@
 .loginLogo {
     font-size: 50px;
     font-weight: 800;
-    color: #1775ee;
+    color: #1c2237;
     margin-bottom: 10px;
 }
 
@@ -48,6 +48,11 @@
     justify-content: space-between;
 }
 
+.loginButton:hover {
+    transform: scale(1.025);
+    transition: all 0.3s ease;
+}
+
 /* Username, Email and Password Inputs */
 .loginInput {
     height: 50px;
@@ -62,13 +67,14 @@
     outline: none;
 }
 
+
 /* Register Button */
 .loginButton {
     height: 50px;
     border-radius: 10px;
-    border: none;
-    background-color: #1775ee;
-    color: white;
+    border: 1px solid #1c2237;
+    background-color: #8cf009;
+    color: #1c2237;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
@@ -80,10 +86,15 @@
     align-self: center;
     height: 50px;
     border-radius: 10px;
-    border: none;
-    background-color: #42b72a;
-    color: white;
+    border: 1px solid #1c2237;
+    background-color: #ff4073;
+    color: #1c2237;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
 }
+
+.loginRegisterButton:hover {
+    transform: scale(1.025);
+    transition: all 0.3s ease;
+}   

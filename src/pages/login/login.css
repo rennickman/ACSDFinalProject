@@ -67,7 +67,7 @@
     height: 50px;
     border-radius: 10px;
     border: none;
-    background-color: #1775ee;
+    background-color: #ff4073;;
     color: white;
     font-size: 20px;
     font-weight: 500;
@@ -84,11 +84,6 @@
     cursor: not-allowed;
 }
 
-/* Forgot Password */
-.loginForgot {
-    text-align: center;
-    color: #1775ee;
-}
 
 /* Register Button */
 .loginRegisterButton {
