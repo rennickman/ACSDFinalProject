@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Table } from 'react-bootstrap';
 import LeagueMatches from '../All League Matches/LeagueMatches';
-import Scroll from '../All League Matches/Scroll';
+import Scroller from '../All League Matches/Scroll';
 import LeagueTable from '../LeagueTable/LeagueTable';
 import Team from '../Team/Team';
 import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
@@ -47,13 +47,16 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
                </Container>
             </div>     
-            <br></br>
-            <div id="allMatches">
-                <h3>Results and Fixtures</h3>
-                {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}
-            </div>   
-            
-            <Scroll/>  
+            <br></br><Container>
+                <h3>Results and Fixtures</h3>  
+              </Container>
+            <Container id="allMatches">
+              
+              <Container>
+                {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}  
+              </Container>
+            </Container>   
+            <Scroller/>
         </div>
     );
 };

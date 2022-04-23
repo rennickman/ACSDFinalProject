@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 import {Link} from 'react-router-dom'
 
-import './teamDisplayed.css';
+import './teamdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';

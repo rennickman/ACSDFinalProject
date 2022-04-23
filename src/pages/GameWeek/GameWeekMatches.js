@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { footballApi3, config, config1, config2 } from '../../apiKeys'
 import CurrentGameWeek from '../../components/Game Week Comps/CurrentGameWeek'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import './gameWeekMatches.css'
 
+import './gameWeekMatches.css'
 
 const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 

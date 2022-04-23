@@ -1,7 +1,7 @@
 #allMatches{
-  width: 500px;
-  max-height: 800px;
+  height: 650px;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 /*top gs matches*/
 #top_gs_table{
