@@ -1,0 +1,30 @@
+#match_container, .match_headers{
+    text-decoration: none;
+    color: black;
+    transition: .75s;
+  }
+  #match_container:hover{
+    text-decoration: none;
+    color: #fff;
+    transition: .75s;
+    background-color: #1c2237;
+  }
+  /*aligning headers and text in game week cards*/
+  #match_header{
+    text-align: right;
+  }
+  .teams{
+    text-align: center;
+  }
+  #match_time{
+    padding-top: 50px;
+  }
+  #match_matches_title{
+    text-align: center;
+  }
+  /*Club Crests*/
+  .match_crests{
+    width: 75px;
+    height: 95px;
+    margin-bottom: 10px;
+  }

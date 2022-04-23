@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
+import LoadingSpin from "react-loading-spin";
 
 import './leaguedisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -135,7 +136,7 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='league-container'>
-                        <h1>Loading...</h1>
+                        <LoadingSpin />
                     </div>
                 </div>
             </>
