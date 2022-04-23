@@ -42,12 +42,12 @@ export const findLeagueId = leagueName => {
 
 // Object to display the leagues in Leagues page
 export const mapLeagues = [
-    {name: 'Premier League', logo: 'pl-l-logo.jpg'},
-    {name: 'Bundesliga', logo: 'bundesliga-logo.jpg'},
-    {name: 'Ligue 1', logo: 'ligue-1-logo.jpg'},
-    {name: 'Serie A', logo: 'serie-a-logo.jpg'},
-    {name: 'Primera Division', logo: 'la-liga-logo.jpg'},
-    {name: 'EFL Championship', logo: 'english-championship-logo.jpg'},
+    {name: 'premier league', logo: 'pl-l-logo.jpg'},
+    {name: 'bundesliga', logo: 'bundesliga-logo.jpg'},
+    {name: 'ligue 1', logo: 'ligue-1-logo.jpg'},
+    {name: 'serie A', logo: 'serie-a-logo.jpg'},
+    {name: 'primera division', logo: 'la-liga-logo.jpg'},
+    {name: 'elf championship', logo: 'english-championship-logo.jpg'},
 ];
 
 // Export Odds league codes
