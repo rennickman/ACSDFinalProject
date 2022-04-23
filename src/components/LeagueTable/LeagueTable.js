@@ -13,7 +13,7 @@ const LeagueTable = ({ standings }) => {
     return (
         <div className='leagueTable'>
             <div className="tableContainer">
-                <table className='table'>
+                <table className='table'> 
                     <tr>
                         <th scope="col">Pos</th>
                         <th scope="col">Club</th>
