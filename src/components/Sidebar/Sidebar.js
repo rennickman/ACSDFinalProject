@@ -75,7 +75,7 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
 
     
     
-
+    console.log(nextMatch);
 
 
 
@@ -110,8 +110,15 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                                     <div className='team'>{nextMatch?.awayTeam.name}</div>
                                 </div>
                                 
-                                <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
-                                <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
+                                <div className="datesAndCrestsContainer">
+                                    <div className="nextCrestContainer">
+                                        <img src="" alt="" className='nextCrest' />
+                                    </div>
+                                    <div className="dateAndTime">
+                                        <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
+                                        <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* last 5 Games */}
