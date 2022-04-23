@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../firebase';
 
-import './matchDisplayed.css';
+import './matchdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
 import Match from '../../components/Match/Match';

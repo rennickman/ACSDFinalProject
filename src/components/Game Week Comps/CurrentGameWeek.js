@@ -5,9 +5,10 @@ import { format } from 'date-fns'
 import { mapOddsLeagues } from "../../helperFunctions";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import './currentGameWeek.css'
+import { clubCrests } from "../../apiKeys";
 
 const CurrentGameWeek = (props) => {
-  const { home, away, time, leagueName } = props;
+  const { home, away, time, leagueName, crestHome, crestAway } = props;
   const [ leagueTitle, setLeagueTitle ] = useState("")  
 
   //time formatting
@@ -50,12 +51,14 @@ const CurrentGameWeek = (props) => {
         <Card.Body id="game_week_container">
           <Row>
             <Col sm={5} className='teams'>
+              <img className='game_week_crests' src={clubCrests.link1 + crestHome + clubCrests.link2}></img>
               <h5>{home}</h5>
             </Col>
             <Col sm={2} className='teams'>
-              <Card.Text> {gameTime} </Card.Text>
+              <Card.Text id='game_week_time'> {gameTime} </Card.Text>
             </Col>
             <Col sm={5} className='teams'>
+              <img className='game_week_crests' src={clubCrests.link1 + crestAway + clubCrests.link2}></img>
               <h5>{away}</h5>
             </Col>
           </Row>
