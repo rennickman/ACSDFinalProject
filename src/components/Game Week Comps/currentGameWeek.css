@@ -1,0 +1,18 @@
+#game_week_container, .game_week_headers{
+  text-decoration: none;
+  color: black;
+  transition: .75s;
+}
+#game_week_container:hover{
+  text-decoration: none;
+  color: #fff;
+  transition: .75s;
+  background-color: #1c2237;
+}
+/*aligning headers and text in game week cards*/
+#game_date_header{
+  text-align: right;
+}
+.teams{
+  text-align: center;
+}
