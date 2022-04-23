@@ -2,7 +2,8 @@ import React from 'react'
 import { Container, Navbar, Card, Col, Row } from 'react-bootstrap';
 import { IoMdFootball } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-
+import { animateScroll as scroll } from 'react-scroll'
+import { IoMdArrowDropupCircle } from 'react-icons/io';
 import './footer.css'
 function Footer() {
   return (
@@ -33,33 +34,28 @@ function Footer() {
             </Container>
 
            {/*Links*/}
-           <Col className='footer_links'> 
+           <Col sm={3} className='footer_links'> 
             <div className='footer_link_container'>
               <Link to="/" className='footer_link_name'> Home </Link>
-            </div>   
+            </div> 
+            </Col>  
+            <Col sm={3}>
             <div className='footer_link_container'>
               <Link to="/leagues" className="footer_link_name"> Leagues </Link>
             </div>
            </Col>
-           <Col className='footer_links'> 
+           <Col sm={3} className='footer_links'> 
             <div className='footer_link_container'>
-              <Link to="/home" className="footer_link_name"> Live Scores </Link>
-            </div> 
-            <div className='footer_link_container'>
-              <Link to="/leagues" className="footer_link_name"> Standings </Link>
+              <Link to="/current_game_week_matches" className="footer_link_name"> Current Game Week </Link>
             </div>
-           </Col>
-           <Col className='footer_links'> 
+            </Col>
+            <Col sm={3}>
             <div className='footer_link_container'>
-              <Link to="/home" className="footer_link_name"> Top Scorers </Link>
+              <Link to="/odds" className="footer_link_name"> Odds </Link>
             </div>
-            <div className='footer_link_container'>
-              <Link to="/leagues" className="footer_link_name"> Log in </Link>
-            </div>  
            </Col>
           </Row>
           </Container> 
-
       {/*Copyright*/}            
       <Container>
        <Row>
@@ -68,6 +64,7 @@ function Footer() {
          </Col>
        </Row>
       </Container>
+      <Container id='back_to_top_cont' onClick={() => scroll.scrollToTop()}><IoMdArrowDropupCircle className='back_to_top'/></Container>
     </Card>
   );
 }

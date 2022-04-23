@@ -7,7 +7,11 @@
   padding-left: 10px;
 }
 #odds_card_col_10 {
-  padding-right: 0;}
+  padding-right: 0;
+}
+#odds_card_row{
+  margin-top: 20px;
+}
 
 /*Input*/
 #odds_card_input{
@@ -33,5 +37,10 @@
   transition: .35s;
   width: 65px;
   border-radius: 4px;
+}
+.odds_card_button:hover{
+  background-color: #1c2237;
+  color: #fff;
+  transition: .35s;
 }
 
