@@ -5,7 +5,7 @@ import'./miniLeagueTable.css';
 
 const MiniLeagueTable = ({ standings }) => {
 
-    console.log(standings);
+   
 
 
     return (

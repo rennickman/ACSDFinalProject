@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 import './leaguedisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapCompetitions } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';
 import League from '../../components/League/League';
-
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) => {
 
@@ -135,7 +136,10 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='league-container'>
-                        <h1>Loading...</h1>
+                        <div className="loadingContainer">
+                            <BiDotsHorizontalRounded style={{ fontSize: "100px" }} />
+                        </div>
+                        
                     </div>
                 </div>
             </>
