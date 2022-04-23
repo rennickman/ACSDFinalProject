@@ -31,7 +31,7 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
             **/}
             <br></br>
             <div className="clubs">
-                <h3 id='tgs_title'>Top Goal Scorers</h3>
+                <h3 className='league_table_titles'>Top Goal Scorers</h3>
                 <Container>
                  <Container>
                  <Table striped bordered hover variant="light" id='top_gs_table'>
@@ -48,10 +48,9 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                </Container>
             </div>     
             <br></br><Container>
-                <h3>Results and Fixtures</h3>  
+                <h3 className='league_table_titles'>Results and Fixtures</h3>  
               </Container>
             <Container id="allMatches">
-              
               <Container>
                 {matches.map((leagueMatch, index) => <LeagueMatches leagueMatch={leagueMatch} key={index} />)}  
               </Container>
