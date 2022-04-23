@@ -13,7 +13,7 @@ const MiniLeagueTable = ({ standings }) => {
         
         <div className='leagueTable'>
             
-                <table className='table align-middle' style={{ border: "1.5px solid black", backgroundColor: "white", fontSize: "20px"}}>
+                <table className='table align-middle' style={{ border: "1px solid black", backgroundColor: "white", fontSize: "20px"}}>
                     <thead>
                         <tr>
                             <th scope="col">Pos</th>

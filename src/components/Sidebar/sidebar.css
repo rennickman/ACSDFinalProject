@@ -62,6 +62,29 @@
     background-color: white;
 }
 
+.datesAndCrestsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.nextCrestContainer {
+    height: 40px;
+    width: 40px;
+}
+
+.dateAndTime {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.nextCrest {
+    object-fit: contain;
+    height: 45px;
+    width: 45px;
+}
+
 .heading {
     font-size: 14px;
     text-align: center;

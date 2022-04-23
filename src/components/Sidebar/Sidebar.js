@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 
 import './sidebar.css';
 import MiniLeagueTable from '../MiniLeagueTable/MiniLeagueTable';
+import { clubCrests } from '../../apiKeys';
 
 
 
@@ -112,11 +113,14 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                                 
                                 <div className="datesAndCrestsContainer">
                                     <div className="nextCrestContainer">
-                                        <img src="" alt="" className='nextCrest' />
+                                        <img src={clubCrests.link1 + nextMatch?.homeTeam.id + clubCrests.link2} alt="" className='nextCrest' />
                                     </div>
                                     <div className="dateAndTime">
                                         <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
                                         <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
+                                    </div>
+                                    <div className="nextCrestContainer">
+                                        <img src={clubCrests.link1 + nextMatch?.awayTeam.id + clubCrests.link2} alt="" className='nextCrest' />
                                     </div>
                                 </div>
                             </div>

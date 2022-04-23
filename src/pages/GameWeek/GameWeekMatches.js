@@ -84,7 +84,7 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
               return (
                 <Container key={index}>
                   <br />
-                  <Container ><h2 id='game_week_matches_title'>Game Week Matches</h2></Container>
+                  <Container ><h2 id='game_week_matches_title'></h2></Container>
                   {everyLeague.map((currentGW) =>
                     <Link to={'/match/'} state={currentGW} key={currentGW.id} className='match_links'>
                       <CurrentGameWeek key={currentGW.id}
