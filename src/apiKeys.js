@@ -46,7 +46,7 @@ export const config = {
 export const OddsApi1 = {
     link1: "https://api.the-odds-api.com/v4/sports/",
     link2: "/odds/?apiKey=",
-    token3: "546b45d09c5f4b95ea5b253d23174387",
+    token3: "ceff8291d788ec7e3e87b78d7afa4126",
     link4:  "&regions=eu&markets=h2h"
 }
 
