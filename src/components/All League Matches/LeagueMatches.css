@@ -18,3 +18,24 @@
   text-decoration: none;
   color: black;
 }
+/*Scroller Buttons for results and fixtures*/
+.r_f_icons{
+  font-size: 35px;
+  transition: .5s;
+  border: solid #fff 1px;;
+  border-radius: 100%; 
+}
+.r_f_icons:hover{
+  cursor: pointer ;
+  color: #f00946;
+  border: solid #f00946 5px;;
+  border-radius: 100%; 
+  transition: .5s;
+}
+#r_f_row{
+  margin-top: 20px; 
+  margin-bottom: 20px;
+}
+.r_f_cols{
+  text-align: center;
+}

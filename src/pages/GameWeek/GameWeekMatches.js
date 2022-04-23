@@ -49,6 +49,7 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
        setBl1Matches(bl1Data)
        setElcMatches(elcData)
        setPdMatches(pdData)
+       console.log(pdData)
 
        //setting matchday counters
        const counterForEngItaEspFra = allData[0].data.matches[0].season.currentMatchday
@@ -81,19 +82,22 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
          return (
            <Container key={index}>  
            <br/>
-           <h2>Games This Week in: </h2>
+           <Container ><h2 id='game_week_matches_title'>Game Week Matches</h2></Container>
              {everyLeague.map((currentGW) =>
               <Link to={'/match/'} state={currentGW} key={currentGW.id} className='match_links'>
                <CurrentGameWeek key={currentGW.id}
                  leagueName={currentGW.season.id}
                  home={currentGW.homeTeam.name}
                  away={currentGW.awayTeam.name}
-                 time={currentGW.utcDate} />             
+                 time={currentGW.utcDate}
+                 crestHome={currentGW.homeTeam.id}
+                 crestAway={currentGW.awayTeam.id} />             
              </Link>)}  
            </Container>
          ) 
        })}
         </Container>
+        <br></br>
       </div>
     </div>
   )

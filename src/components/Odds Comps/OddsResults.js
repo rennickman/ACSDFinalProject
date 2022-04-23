@@ -21,11 +21,12 @@ const OddsResults = (props) => {
   const [oddsCalc, setOddsCalc] = useState('');
   const calcEarnings = (`${figure*oddsCalc}`);
   const potentialEarnings = parseFloat(calcEarnings).toFixed(2);
-  
+  //Use State for showing which button was clicked
+  const [ resultName, setResultName] = useState('')
   return (
       <Container>
         {/* Container */}
-        <Row>
+        <Row id='odds_card_row'>
           <Col sm={10} id='odds_card_col_10'>
           <Card>
             {/* Comp Name & Date */}
@@ -61,7 +62,7 @@ const OddsResults = (props) => {
               </Row>
               <br/>
               <Card.Text>
-                <span> These odds are provided by {title}</span>
+                 <span> These odds are provided by {title}</span>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -73,13 +74,14 @@ const OddsResults = (props) => {
             <Card.Header> Earnings Calculator </Card.Header>
             <Card.Body id='test1'>
               <Card.Text>
+                
                 <form className='odds_card_form_input'>
                   <input 
                     id='odds_card_input'
                     placeholder='€€€'
                     type='number'
-                    step='0.1'
-                    min='0'
+                    step='0.01'
+                    min='0.01'
                     value={figure}
                     onChange={(e) => setFigure(e.target.value)}>
                   </input>

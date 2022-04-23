@@ -53,3 +53,8 @@ export const sideBarApi = {
     link: "https://api.football-data.org/v2/",
     token: "126492b463104215885bd26236dc9c58"
 }
+//Image Links
+export const clubCrests = {
+    link1: "https://crests.football-data.org/",
+    link2: ".svg"
+}
