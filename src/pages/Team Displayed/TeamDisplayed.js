@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import { Ellipsis } from 'react-spinners-css';
 
 import './teamdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -162,7 +163,7 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='team-container'>
-                        <h1>Loading...</h1>
+                        <Ellipsis color="#1c2237" size={100} />
                     </div>
                 </div>
             </>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom';
+import { Ellipsis } from 'react-spinners-css';
 
 import './matchSearch.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -155,7 +156,7 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
                 )}
                 <div className='matchSearchContent'>
                     <div className='team-container'>
-                        <h1>Loading...</h1>
+                        <Ellipsis color="#1c2237" size={100} />
                     </div>
                 </div>
             </div>
