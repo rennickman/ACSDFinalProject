@@ -140,9 +140,8 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
             //If the state has come but there was no matches fot the team queried
             setError("There was an error, Please try again later");
         }
-    },[apiLength]);
-    console.log(last5Matches1)
-    console.log(last5Matches2)
+    },[apiLength,loading,query.state]);
+
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
         history('/', {state: error});
