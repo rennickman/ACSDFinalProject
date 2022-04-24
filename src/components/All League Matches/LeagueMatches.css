@@ -39,9 +39,12 @@
   text-align: center;
 }
 .r_f_text{
-  padding-top: 50px;
+  padding-top: 20px;
   font-size: 18px;
   font-weight: bold;
+}
+#week_date_game{
+  text-align: left;
 }
 /*club crests*/
 .leage_matches_crests{
