@@ -196,11 +196,11 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                         <div className='matchLast5Matches'>
                             <h2>Last Five Matches</h2>
                         </div>
-                        <div className="matchLastGames">
+                        <Container className="matchLastGames">
                             <div >
                                 <h3>{query.state.homeTeam.name}</h3>
                                     {last5Matches1?.map(match => (
-                                        <Link to={'/match/'} state={match} >
+                                        <Link to={'/match/'} state={match}>
                                             <Row className='content'>
                                                 <Col>
                                                     <img className='club_crests_last_5' src={clubCrests.link1 +match.homeTeam.id+ clubCrests.link2}></img>
@@ -249,7 +249,7 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                                     </Link>
                                     ))}
                             </div>
-                        </div>
+                        </Container>
                     </div>
                 </div>
             </>

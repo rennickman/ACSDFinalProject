@@ -37,7 +37,7 @@ export const config = {
     headers:{"X-Auth-Token":"f7e8387bdf784af68184cfd714a2a167"} 
   }
   export const footballApi3 = {
-    link1: "http://api.football-data.org/v2/competitions/",
+    link1: "https://api.football-data.org/v2/competitions/",
     link2: "/matches?matchday="
   };
 
