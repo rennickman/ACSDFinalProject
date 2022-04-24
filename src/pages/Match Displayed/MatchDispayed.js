@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { format } from 'date-fns';
-import {Col, Row} from 'react-bootstrap';
+import {Col, Container, Row} from 'react-bootstrap';
 import ReactLoading from 'react-loading';
 
 import './matchdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { mapAPIs } from '../../apiKeys';
+import { clubCrests, mapAPIs } from '../../apiKeys';
 import { mapLeagues, mapOddsLeagues } from '../../helperFunctions';
 import Match from '../../components/Match/Match';
 
@@ -173,9 +173,10 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                             <Link to={'/leagues/' + leagueTitle.toLowerCase()} state={leagueTitle.toLowerCase()}>
                                 <div className='matchDisplayedHero'>
                                     <div>
-                                        <div className='matchDisplayedImg'>
+                                     {/* Breaking the match page 
+                                     <div className='matchDisplayedImg'>
                                             <img src={"../"+competition.logo} alt={leagueTitle + ' logo'}></img>
-                                        </div>
+                                        </div>*/}
                                         <div>
                                             <div ><h2>{leagueTitle}</h2></div >
                                         </div>
@@ -201,18 +202,21 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                                         <Link to={'/match/'} state={match} >
                                             <Row className='content'>
                                                 <Col>
-                                                    <b>{match.homeTeam.name}</b>
+                                                    <img className='club_crests_last_5' src={clubCrests.link1 +match.homeTeam.id+ clubCrests.link2}></img>
+                                                    <br></br>
+                                                    <span className='date_last_5'>{match.homeTeam.name}</span>
+                                                </Col>
+                                                <Col className='score_last_5'>
+                                                 <Container>
+                                                  <b>{match.score.fullTime.homeTeam && match.score.fullTime.homeTeam} - {match.score.fullTime.awayTeam && match.score.fullTime.awayTeam}</b>
+                                                  <br></br>
+                                                  <span className='date_last_5'>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</span>
+                                                 </Container>
                                                 </Col>
                                                 <Col>
-                                                    <b>
-                                                        {match.score.fullTime.homeTeam && match.score.fullTime.homeTeam + " - "} - {match.score.fullTime.awayTeam && match.score.fullTime.awayTeam}
-                                                    </b>
-                                                </Col>
-                                                <Col>
-                                                    <b>{match.awayTeam.name}</b>
-                                                </Col>
-                                                <Col>
-                                                    <b>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</b>
+                                                  <img className='club_crests_last_5' src={clubCrests.link1 +match.awayTeam.id+ clubCrests.link2}></img>
+                                                  <br></br>
+                                                  <span className='date_last_5'>{match.awayTeam.name}</span>
                                                 </Col>
                                             </Row>
                                         </Link>
@@ -223,21 +227,24 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                                 {last5Matches2?.map(match => (
                                     <Link to={'/match/'} state={match} >
                                         <Row className='content'>
-                                            <Col>
-                                                <b>{match.homeTeam.name}</b>
-                                            </Col>
-                                            <Col>
-                                                <b>
-                                                    {match.score.fullTime.homeTeam && match.score.fullTime.homeTeam + " - "} - {match.score.fullTime.awayTeam && match.score.fullTime.awayTeam}
-                                                </b>
-                                            </Col>
-                                            <Col>
-                                                <b>{match.awayTeam.name}</b>
-                                            </Col>
-                                            <Col>
-                                                <b>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</b>
-                                            </Col>
-                                        </Row>
+                                                <Col>
+                                                    <img className='club_crests_last_5' src={clubCrests.link1 +match.homeTeam.id+ clubCrests.link2}></img>
+                                                    <br></br>
+                                                    <span className='date_last_5'>{match.homeTeam.name}</span>
+                                                </Col>
+                                                <Col className='score_last_5'>
+                                                 <Container>
+                                                  <b>{match.score.fullTime.homeTeam && match.score.fullTime.homeTeam} - {match.score.fullTime.awayTeam && match.score.fullTime.awayTeam}</b>
+                                                  <br></br>
+                                                  <span className='date_last_5'>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</span>
+                                                 </Container>
+                                                </Col>
+                                                <Col>
+                                                  <img className='club_crests_last_5' src={clubCrests.link1 +match.awayTeam.id+ clubCrests.link2}></img>
+                                                  <br></br>
+                                                  <span className='date_last_5'>{match.awayTeam.name}</span>
+                                                </Col>
+                                            </Row>
                                     </Link>
                                     ))}
                             </div>
