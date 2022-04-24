@@ -1,55 +1,33 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-
+import { Container, Table, Row, Col } from 'react-bootstrap';
 import './leagueTable.css';
 
-
-
-
-
 const LeagueTable = ({ standings }) => {
-
-
     return (
-        <div className='leagueTable'>
-            <div className="tableContainer">
-                <table className='table'> 
-                    <thead>
-                        <tr>
-                            <th scope="col">Pos</th>
-                            <th scope="col">Club</th>
-                            <th scope='col'>GP</th>
-                            <th scope='col'>W</th>
-                            <th scope='col'>D</th>
-                            <th scope='col'>L</th>
-                            <th scope='col'>GF</th>
-                            <th scope='col'>GA</th>
-                            <th scope='col'>GD</th>
-                            <th scope='col'>Pts</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                        {standings.map((team, index) => (
-                            <tr>
-                                <th scope="row">{team.position}</th>
-                                <Link to={'/club/' + team.team.name} state={team.team.name.toLowerCase()}><th scope="row" className='teamName'>{team.team.name}</th></Link>
-                                <th scope="row">{team.playedGames}</th>
-                                <td>{team.won}</td>
-                                <td>{team.draw}</td>
-                                <td>{team.lost}</td>
-                                <td>{team.goalsFor}</td>
-                                <td>{team.goalsAgainst}</td>
-                                <td>{team.goalDifference}</td>
-                                <th scope="row">{team.points}</th>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <Container id='league_table_container'>
+         {standings.map((team, index) => (
+          <Table responsive id='top_scorer_table' key={index}>
+            <tbody>
+             <tr>
+                <th id='league_table_position' scope="row"><div className='league_table_data'>{team.position}</div></th>
+                <td className='league_table_columns'><img className='club_crests_table' src={team.team.crestUrl}></img></td>
+                <th id='league_table_club_name'><Link id='league_table_link' to={'/club/' + team.team.name} state={team.team.name.toLowerCase()}><div className='league_table_data'>{team.team.name}</div></Link></th>
+                <th className='league_table_columns'scope="row"><div className='league_table_data'>{team.playedGames}</div></th>
+                <td className='league_table_columns'><div className='league_table_data'>{team.won}</div></td>
+                <td className='league_table_columns'><div className='league_table_data'>{team.draw}</div></td>
+                <td className='league_table_columns'><div className='league_table_data'>{team.lost}</div></td>
+                <td className='league_table_columns'><div className='league_table_data'>{team.goalsFor}</div></td>
+                <td className='league_table_columns'><div className='league_table_data'>{team.goalsAgainst}</div></td>
+                <td className='league_table_columns'><div className='league_table_data'>{team.goalDifference}</div></td>
+                <th className='league_table_columns' scope="row"><div className='league_table_data'>{team.points}</div></th>
+             </tr>
+            </tbody>
+          </Table> 
+         ))}
+        </Container>
     );
 };
 
-
 export default LeagueTable;
+
