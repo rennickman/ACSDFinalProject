@@ -26,7 +26,7 @@ const MiniLeagueTable = ({ standings }) => {
 
                     <tbody>
                         {standings.map((team) => (
-                            <tr>
+                            <tr className="teamRow">
                                 <td>{team.position}.</td>
                                 <td>
                                     <div className='smallCrestContainer'>
