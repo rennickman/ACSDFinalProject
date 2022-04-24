@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 import './sidebar.css';
 import MiniLeagueTable from '../MiniLeagueTable/MiniLeagueTable';
@@ -76,7 +77,7 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
 
     
     
-    console.log(nextMatch);
+
 
 
 
@@ -104,42 +105,46 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                     {last5Matches?.length && (
                         <div className="sidebarFixtures">
                             {/* Next Match */}
-                            <div className="nextGame">
-                                <div className='heading'>Next Game:</div>
-                                <div className="teams">
-                                    <div className='team'>{nextMatch?.homeTeam.name} Vs</div>
-                                    <div className='team'>{nextMatch?.awayTeam.name}</div>
+                            <Link style={{ textDecoration: "none", color: "black" }} to={'/match/'} state={nextMatch}>
+                                <div className="nextGame">
+                                    <div className='heading'>Next Game:</div>
+                                    <div className="teams">
+                                        <div className='team'>{nextMatch?.homeTeam.name} Vs</div>
+                                        <div className='team'>{nextMatch?.awayTeam.name}</div>
+                                    </div>
+                                    
+                                    <div className="datesAndCrestsContainer">
+                                        <div className="nextCrestContainer">
+                                            <img src={clubCrests.link1 + nextMatch?.homeTeam.id + clubCrests.link2} alt="" className='nextCrest' />
+                                        </div>
+                                        <div className="dateAndTime">
+                                            <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
+                                            <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
+                                        </div>
+                                        <div className="nextCrestContainer">
+                                            <img src={clubCrests.link1 + nextMatch?.awayTeam.id + clubCrests.link2} alt="" className='nextCrest' />
+                                        </div>
+                                    </div>
                                 </div>
-                                
-                                <div className="datesAndCrestsContainer">
-                                    <div className="nextCrestContainer">
-                                        <img src={clubCrests.link1 + nextMatch?.homeTeam.id + clubCrests.link2} alt="" className='nextCrest' />
-                                    </div>
-                                    <div className="dateAndTime">
-                                        <div className='date'>{format(new Date(`${nextMatch?.utcDate}`), 'dd/MM/yy')}</div>
-                                        <div className='time'>{nextMatch?.utcDate.slice(11, 16)}</div>
-                                    </div>
-                                    <div className="nextCrestContainer">
-                                        <img src={clubCrests.link1 + nextMatch?.awayTeam.id + clubCrests.link2} alt="" className='nextCrest' />
-                                    </div>
-                                </div>
-                            </div>
+                            </Link>
 
                             {/* last 5 Games */}
                             <div className="lastGames">
                                 {last5Matches?.map(match => (
                                     
-                                    <div className='result'>
-                                        <div style={{ fontSize: "12px" }}>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</div>
-                                        <div>
-                                            <span className='resultName'>{match.homeTeam.name}</span> 
-                                            <span className='resultScore'>{match.score.fullTime.homeTeam}</span>
+                                    <Link style={{ textDecoration: "none", color: "black" }} to={'/match/'} state={match}>
+                                        <div className='result'>
+                                            <div style={{ fontSize: "12px" }}>{format(new Date(`${match.utcDate}`), 'dd/MM/yy')}</div>
+                                            <div>
+                                                <span className='resultName'>{match.homeTeam.name}</span> 
+                                                <span className='resultScore'>{match.score.fullTime.homeTeam}</span>
+                                            </div>
+                                            <div className='awayTeam'>
+                                                <span className='resultName'>{match.awayTeam.name}</span>
+                                                <span className='resultScore'>{match.score.fullTime.awayTeam}</span>
+                                            </div>
                                         </div>
-                                        <div className='awayTeam'>
-                                            <span className='resultName'>{match.awayTeam.name}</span>
-                                            <span className='resultScore'>{match.score.fullTime.awayTeam}</span>
-                                        </div>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

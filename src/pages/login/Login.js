@@ -44,13 +44,13 @@ const Login = () => {
                 <div className="loginWrapper">
                     <div className="loginLeft">
                         {/* Login Logo */}
-                        <h3 className="loginLogo">Football App</h3>
+                        <h3 className="loginLogo">Football Hub</h3>
 
                         {/* Login Message */}
                         <span className="loginDesc">Log in for extra benifits</span>
                     </div>
 
-                    <div className="loginRight">
+                    <div className="loginRight" >
                         <form className="loginBox">
                             {/* Login Inputs */}
                             <input placeholder="Email" type="email" required className="loginInput" ref={emailRef} />

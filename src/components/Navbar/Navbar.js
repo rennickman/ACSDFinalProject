@@ -49,7 +49,7 @@ const Navbar = () => {
                     <div className="navbarLogo" onClick={handleClose}>
                         <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
                             <IoMdFootball className="navbarIcon" />
-                            Football App
+                            Football Hub
                         </Link>
                     </div>
                     
