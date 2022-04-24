@@ -93,4 +93,18 @@
     border: 2px solid rgba(0,0,0,.125);
     border-radius: 5px;
     text-align: center;
+    min-width: 500px;
+    max-width: 500px;
+}
+/*club crests for last 5 matches*/
+.club_crests_last_5{
+width: 50px;
+height: 60px;
+}
+/*score text last 5*/
+.score_last_5{
+    padding-top: 20px;
+}
+.date_last_5{
+ font-size: 12px;
 }
