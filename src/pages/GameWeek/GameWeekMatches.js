@@ -69,38 +69,40 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
   //Array for each league
   const AllLeagues = [ plMatches, saMatches, fl1Matches, bl1Matches, elcMatches, pdMatches ] 
 
-  return (
-    <div class="gameWeekMatches">
-      {username && (
-        <Sidebar username={username} favouriteTeam={favouriteTeam}
-          favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
-      )}
-      <div className="gameWeekMatchesContent">
-        
-        <Container>
-        {AllLeagues.map((everyLeague, index) => {
-         return (
-           <Container key={index}>  
-           <br/>
-           <Container ><h2 id='game_week_matches_title'>Game Week Matches</h2></Container>
-             {everyLeague.map((currentGW) =>
-              <Link to={'/match/'} state={currentGW} key={currentGW.id} className='match_links'>
-               <CurrentGameWeek key={currentGW.id}
-                 leagueName={currentGW.season.id}
-                 home={currentGW.homeTeam.name}
-                 away={currentGW.awayTeam.name}
-                 time={currentGW.utcDate}
-                 crestHome={currentGW.homeTeam.id}
-                 crestAway={currentGW.awayTeam.id} />             
-             </Link>)}  
-           </Container>
-         ) 
-       })}
-        </Container>
-        <br></br>
+  if (plMatches.length !== 0) {
+    return (
+      <div class="gameWeekMatches">
+        {username && (
+          <Sidebar username={username} favouriteTeam={favouriteTeam}
+            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+        )}
+        <div className="gameWeekMatchesContent">
+
+          <Container>
+            {AllLeagues.map((everyLeague, index) => {
+              return (
+                <Container key={index}>
+                  <br />
+                  <Container ><h2 id='game_week_matches_title'></h2></Container>
+                  {everyLeague.map((currentGW) =>
+                    <Link to={'/match/'} state={currentGW} key={currentGW.id} className='match_links'>
+                      <CurrentGameWeek key={currentGW.id}
+                        leagueName={currentGW.season.id}
+                        home={currentGW.homeTeam.name}
+                        away={currentGW.awayTeam.name}
+                        time={currentGW.utcDate}
+                        crestHome={currentGW.homeTeam.id}
+                        crestAway={currentGW.awayTeam.id} />
+                    </Link>)}
+                </Container>
+              )
+            })}
+          </Container>
+          <br></br>
+        </div>
       </div>
-    </div>
   )
 }
+}
 
-export default GameWeekMatches
+export default GameWeekMatches;

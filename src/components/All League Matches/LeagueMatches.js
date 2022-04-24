@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import { format } from 'date-fns';
 
 import './LeagueMatches.css';
+import { clubCrests } from '../../apiKeys';
 const LeagueMatches = ({ leagueMatch }) => {
 
 //Formatting Time
@@ -22,13 +23,15 @@ const gameDate = format(new Date(`${leagueMatch.utcDate}`), 'dd-MM-yyyy');
               <Card.Body id="game_week_container">
                 <Row>
                   <Col sm={5} className='r_f_data'>
-                    <h5 id='r_f_text'>{leagueMatch.homeTeam.name}</h5>
+                    <img className='leage_matches_crests' src={clubCrests.link1 + leagueMatch.homeTeam.id + clubCrests.link2}></img>
+                    <h5>{leagueMatch.homeTeam.name}</h5>
                   </Col>
                   <Col sm={2} className='r_f_data'>
                     <Card.Text className='r_f_text'> {leagueMatch.score.fullTime.homeTeam} - {leagueMatch.score.fullTime.awayTeam} </Card.Text>
                   </Col>
                   <Col sm={5} className='r_f_data'>
-                    <h5 className='r_f_text'>{leagueMatch.awayTeam.name}</h5>
+                  <img className='leage_matches_crests' src={clubCrests.link1 + leagueMatch.awayTeam.id + clubCrests.link2}></img>
+                    <h5>{leagueMatch.awayTeam.name}</h5>
                   </Col>
                 </Row>
               </Card.Body>

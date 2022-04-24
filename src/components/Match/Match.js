@@ -25,7 +25,7 @@ const Match = ({ match, index }) => {
                             <h5>{match.homeTeam.name}</h5>
                             </Col>
                             <Col sm={2} className='teams' id='score'>
-                            <Card.Text id='match_time'> <h1>{match.score.fullTime.homeTeam && match.score.fullTime.homeTeam + " - "} - {match.score.fullTime.awayTeam && match.score.fullTime.awayTeam} </h1></Card.Text>
+                            <Card.Text id='match_time'> <h1>{match.score.fullTime.homeTeam && match.score.fullTime.homeTeam} - {match.score.fullTime.awayTeam && match.score.fullTime.awayTeam} </h1></Card.Text>
                             </Col>
                             <Col sm={5} className='teams'>
                             <img className='match_crests' src={clubCrests.link1 + match.awayTeam.id + clubCrests.link2}></img>

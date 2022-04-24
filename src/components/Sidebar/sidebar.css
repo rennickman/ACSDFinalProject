@@ -25,7 +25,6 @@
     width: 250px;
     justify-content: space-between;
     padding: 15px;
-    
 }
 
 .username {
@@ -60,6 +59,30 @@
     justify-content: center;
     text-align: center;
     border: 1px solid black;
+    background-color: white;
+}
+
+.datesAndCrestsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.nextCrestContainer {
+    height: 40px;
+    width: 40px;
+}
+
+.dateAndTime {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.nextCrest {
+    object-fit: contain;
+    height: 45px;
+    width: 45px;
 }
 
 .heading {

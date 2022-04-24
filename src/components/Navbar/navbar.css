@@ -124,7 +124,7 @@
 .signupButton:hover {
     transition: all 0.3s ease-out;
     background: #ff4073;
-    color: #242424;
+    color: white;
 }
 
 /* Open Menu Icon */

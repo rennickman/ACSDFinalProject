@@ -3,7 +3,6 @@
   transition: .75s;
 }
 #game_week_r_f:hover{
-  color: #fff;
   transition: .75s;
   background-color: #1c2237;
 }
@@ -38,4 +37,14 @@
 }
 .r_f_cols{
   text-align: center;
+}
+.r_f_text{
+  padding-top: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+/*club crests*/
+.leage_matches_crests{
+  width: 75px;
+  height: 95px;
 }

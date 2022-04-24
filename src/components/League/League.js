@@ -9,20 +9,33 @@ import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
 import './league.css'
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
-
-    
-
-    
     return (
-        <div className='league'>
-            <div className="info">
-                <h3>{competition.name}</h3>
-                <h2>{competition.area.name}</h2>
+        <div className='league_table_titles'>
+            <div className="league_table_titles">
+                <h3>{competition.name} Table</h3>
             </div>
-
-            <LeagueTable standings={leagueTable} />
-
-
+            <Container>
+              <Container>
+                <Table id='league_table_header_cont'>
+                  <thead>
+                  <tr>
+                    <th id='league_table_headers_pos' scope='row'>Pos</th>
+                    <th className='league_table_headers'></th>
+                    <th className='league_table_headers_name'></th>
+                    <th className='league_table_headers' id='left_hand_text'>GP</th>
+                    <th className='league_table_headers'>W</th>
+                    <th className='league_table_headers'>D</th>
+                    <th className='league_table_headers'>L</th>
+                    <th className='league_table_headers'>GF</th>
+                    <th className='league_table_headers'>GA</th>
+                    <th className='league_table_headers'>GD</th>
+                    <th className='league_table_headers'>Pts</th>
+                  </tr>
+                  </thead>
+                </Table>
+              </Container> 
+              <LeagueTable standings={leagueTable}/>
+            </Container>
             {/** 
             <div className="clubs">
                 <h3>List of Clubs:</h3>
@@ -34,7 +47,7 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
                 <h3 className='league_table_titles'>Top Goal Scorers</h3>
                 <Container>
                  <Container>
-                 <Table striped bordered hover id='top_gs_table'>
+                 <Table id='top_gs_table'>
                   <thead>
                    <tr>
                     <th className='top_gs_title'> Name </th>
