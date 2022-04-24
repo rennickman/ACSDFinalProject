@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { format } from 'date-fns';
 import {Col, Row} from 'react-bootstrap';
+import { Ellipsis } from 'react-spinners-css';
 
 import './matchdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -155,7 +156,7 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='matchDisplayedContent'>
-                        <h1>Loading...</h1>
+                        <Ellipsis color="#1c2237" size={100} />
                     </div>
                 </div>
             </>

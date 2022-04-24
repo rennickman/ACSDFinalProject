@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import { Ellipsis } from 'react-spinners-css';
 
 import './leaguedisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -136,7 +136,7 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
                     )}
                     <div className='league-container'>
                         <div className="loadingContainer">
-                            <BiDotsHorizontalRounded style={{ fontSize: "100px" }} />
+                            <Ellipsis color="#1c2237" size={100} />
                         </div>
                         
                     </div>

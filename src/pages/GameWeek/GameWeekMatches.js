@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { footballApi3, config, config1, config2 } from '../../apiKeys'
 import CurrentGameWeek from '../../components/Game Week Comps/CurrentGameWeek'
 import Sidebar from '../../components/Sidebar/Sidebar'
+import { Ellipsis } from 'react-spinners-css';
 
 import './gameWeekMatches.css'
 
@@ -101,8 +102,12 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
           <br></br>
         </div>
       </div>
-  )
-}
+    )
+  } else {
+    return (
+    <Ellipsis color="#1c2237" size={100} />
+    )
+  }
 }
 
 export default GameWeekMatches;
