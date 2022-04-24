@@ -73,9 +73,9 @@ const Navbar = () => {
 
                         {/* Live Scores Link */}
                         <li className="linkContainer" onClick={handleClose}>
-                                <Link to="/leagues" className="navLink">
-                                    Leagues
-                                </Link>
+                            <Link data-testid="leaguesLink" to="/leagues" className="navLink">
+                                Leagues
+                            </Link>
                         </li>
                         
                         {/* Live Scores Link */}
@@ -87,19 +87,19 @@ const Navbar = () => {
 
                         {/* Odds */}
                         <li className="linkContainer" onClick={handleClose}>
-                            <Link to="/odds" className="navLink">
-                                    Odds
-                                </Link>
+                            <Link data-testid="oddsLink" to="/odds" className="navLink">
+                                Odds
+                            </Link>
                         </li>
 
                         {/* Log In / Log Out Button */}
                         <li onClick={handleClose} className="signupContainer">
                             {currentUser ? (
-                                <button className="signupButton" onClick={handleLogOut}>
+                            <button data-testid="logoutLink" className="signupButton" onClick={handleLogOut}>
                                     Log Out
                                 </button>
                             ) : (
-                                <button className="signupButton" onClick={() => history("/login")}>
+                                <button data-testid="loginLink" className="signupButton" onClick={() => history("/login")}>
                                     Log In
                                 </button>
                             )}

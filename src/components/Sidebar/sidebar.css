@@ -34,7 +34,8 @@
 }
 
 .username {
-    font-size: 18px
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .crestContainer {
@@ -47,7 +48,8 @@
 }
 
 .clubName {
-    font-size: 22px
+    font-size: 22px;
+    text-decoration: none;
 }
 
 .sidebarFixtures {

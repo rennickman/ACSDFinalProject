@@ -59,13 +59,13 @@ const Login = () => {
                             />
 
                             {/* Login Button */}
-                            <button className="loginButton" onClick={handleLogin} type="submit">
+                            <button data-testid="loginButton" className="loginButton" onClick={handleLogin} type="submit">
                                 log in
                             </button>
 
 
                             {/* Register Button - Pushes to registration page */}
-                            <button className="loginRegisterButton" onClick={() => history("/register")}>
+                            <button data-testid="registrationLink" className="loginRegisterButton" onClick={() => history("/register")}>
                                 Create new Account
                             </button>   
                         </form>

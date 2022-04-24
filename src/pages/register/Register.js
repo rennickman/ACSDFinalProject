@@ -90,14 +90,14 @@ const Register = () => {
                             <form className="loginBox">
                                 {/* Register Inputs */}
                                 <input placeholder="Email"  required ref={emailRef} className="loginInput" type="email" />
-                                <input placeholder="Password" required ref={passwordRef} className="loginInput" type="password" minLength="6" />
-                                <input placeholder="Verify Password" required ref={passwordVerifyRef} className="loginInput" type="password" />
+                                <input data-testid="password" placeholder="Password" required ref={passwordRef} className="loginInput" type="password" minLength="6" />
+                                <input data-testid="verify" placeholder="Verify Password" required ref={passwordVerifyRef} className="loginInput" type="password" />
 
                                 {/* Register Button - Handles Registration */}
-                                <button className="loginButton" onClick={handleRegistration} type="submit">Sign Up</button>
+                                <button data-testid="registerButton" className="loginButton" onClick={handleRegistration} type="submit">Sign Up</button>
 
                                 {/* Login Button - Switches to Login Page */}
-                                <button className="loginRegisterButton" onClick={() => history("/login")}>Log Into Account</button>
+                                <button data-testid="backToLogin" className="loginRegisterButton" onClick={() => history("/login")}>Log Into Account</button>
                             </form>
                         </div>
                     </div>

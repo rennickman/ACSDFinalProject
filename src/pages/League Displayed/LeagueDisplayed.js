@@ -136,7 +136,7 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
                     )}
                     <div className='league-container'>
                         <div className="loadingContainer">
-                            <ReactLoading type="bars" color="#1c2237" height="15%" width="15%" />
+                            <ReactLoading data-testid="leagueLoading" type="bars" color="#1c2237" height="15%" width="15%" />
                         </div>
                         
                     </div>
