@@ -18,9 +18,6 @@ function Footer() {
                Football App
             </div>
           </Link>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-          </Navbar.Collapse>
         </Container>
       </Navbar>
 

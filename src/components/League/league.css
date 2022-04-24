@@ -42,3 +42,33 @@
   text-align: center;
   margin-top: 20px;
 }
+.container ul{
+  justify-content: center;
+}
+.leagueDisplayeHero div:hover{
+  color: black !important;
+  transition: none !important;
+  background-color: white !important;
+}
+.leagueDisplayedHeroContainer{
+  margin: 0% 0% 4% 0%;
+}
+.leagueDisplayeHero{
+  width: 1300px !important;
+  height: 150px !important;
+  margin: 3% 0% 0% 0% !important;
+
+}
+.leagueDisplayeHero > div{
+  width: 750px !important;
+  height: 150px !important;
+
+}
+
+.leagueDisplayedImg{
+  width: 200px!important;
+  height: 120px!important;
+}
+.tab-content{
+  margin-bottom: 5%;
+}

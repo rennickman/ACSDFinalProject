@@ -58,34 +58,34 @@
     height: 100%;
     border-radius: 5px;
 }
-.lastGames{
+.matchLastGames{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0% 0% 5% 0%;
 }
-.lastGames > div{
+.matchLastGames > div{
     border: 2px solid rgba(0,0,0,.125);
     border-radius: 5px;
     padding: 2% 2% 2% 2%;
 }
-.lastGames div h3{
+.matchLastGames div h3{
     text-align: center;
     margin-bottom: 5%;
 }
-.lastGames div a{
+.matchLastGames div a{
     text-decoration: none;
     color:black;
 }
-.lastGames div a div:hover{
+.matchLastGames div a div:hover{
     text-decoration: none;
     color: #fff;
     transition: .75s;
     background-color: #1c2237;
 }
-.last5Matches{
+.matchLast5Matches{
     text-align: center;
-    margin: 0% 0% 4% 0%;
+    margin: 7% 0% 4% 0%;
 
 }
 .content{

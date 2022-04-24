@@ -29,16 +29,21 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
   }, [oddsCode])
   if(loading){
     return (
-      <div className='oddsLeaguesDisplayed'>
-        {username && (
-          <Sidebar username={username} favouriteTeam={favouriteTeam}
-            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
-        )}
-        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
-      </div>
+      <>
+        <div className='oddsLeaguesDisplayed'>
+            {username && (
+                <Sidebar username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+            )}
+            <div className='oddsLeaguesDisplayedContent'>
+                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+            </div>
+        </div>
+      </>
     );
   }else {
     return (
+      <>
       <div className='oddsLeaguesDisplayed'>
         {username && (
           <Sidebar username={username} favouriteTeam={favouriteTeam}
@@ -62,6 +67,7 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
           )}
         </div>
       </div>
+      </>
     );
   }
 

@@ -72,6 +72,7 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
 
   if (plMatches.length !== 0) {
     return (
+      <>
       <div class="gameWeekMatches">
         {username && (
           <Sidebar username={username} favouriteTeam={favouriteTeam}
@@ -102,12 +103,21 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
           <br></br>
         </div>
       </div>
+      </>
     )
   } else {
     return (
-      <div className='gameWeekMatches'>
-        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
-      </div>
+      <>
+        <div className='home'>
+            {username && (
+                <Sidebar username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+            )}
+            <div className='home-content'>
+                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+            </div>
+        </div>
+      </>
     )
   }
 }

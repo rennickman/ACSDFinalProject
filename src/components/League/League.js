@@ -1,17 +1,41 @@
 import React from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table,Tab,Tabs } from 'react-bootstrap';
 import LeagueMatches from '../All League Matches/LeagueMatches';
 import Scroller from '../All League Matches/Scroll';
 import LeagueTable from '../LeagueTable/LeagueTable';
 import Team from '../Team/Team';
 import TopGoalScorer from '../Top Goal Scorers/TopGoalScorers';
+import { mapLeagues} from '../../helperFunctions';
 
 import './league.css'
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
+    //Finds the img for the competition
+    const competitionSearch = Object.values(mapLeagues).find((competition) => {
+        return competition.name.includes(competition.name.toLowerCase());
+    });
+    console.log(competition)
     return (
         <div className='league_table_titles'>
-            <div className="league_table_titles">
+          <Container>
+          <div className='leagueDisplayedHeroContainer'>
+                  <div className='matchDisplayedHero leagueDisplayeHero'>
+                      <div>
+                          <div className='matchDisplayedImg leagueDisplayedImg'>
+                              <img src={"../"+competitionSearch.logo} alt={competition.name + ' logo'}></img>
+                          </div>
+                          <div>
+                              <div ><h2>{competition.name}</h2></div >
+                          </div>
+                          <div>
+                              <div ><h4>{competition.area.name}</h4></div >
+                          </div>
+                      </div>
+                  </div>
+          </div>
+          <Tabs defaultActiveKey="leagueTable" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="leagueTable" title="League Table">
+          <div className="league_table_titles">
                 <h3>{competition.name} Table</h3>
             </div>
             <Container>
@@ -36,30 +60,28 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
               </Container> 
               <LeagueTable standings={leagueTable}/>
             </Container>
-            {/** 
+          </Tab>
+          <Tab eventKey="topScorers" title="Tops Scorers">
             <div className="clubs">
-                <h3>List of Clubs:</h3>
-                {leagueTable.map((team, index) => <Team team={team} key={index} />)}
-            </div>
-            **/}
-            <br></br>
-            <div className="clubs">
-                <h3 className='league_table_titles'>Top Goal Scorers</h3>
-                <Container>
-                 <Container>
-                 <Table id='top_gs_table'>
-                  <thead>
-                   <tr>
-                    <th className='top_gs_title'> Name </th>
-                    <th className='top_gs_title'> Goals Scored </th>
-                    <th className='top_gs_title'> Club </th>
-                   </tr>
-                  </thead>
-                </Table>
-               </Container>
-               {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
-               </Container>
-            </div>     
+                  <h3 className='league_table_titles'>Top Goal Scorers</h3>
+                  <Container>
+                  <Container>
+                    <Table id='top_gs_table'>
+                      <thead>
+                      <tr>
+                        <th className='top_gs_title'> Name </th>
+                        <th className='top_gs_title'> Goals Scored </th>
+                        <th className='top_gs_title'> Club </th>
+                      </tr>
+                      </thead>
+                      </Table>
+                    </Container>
+                    {topScorersTable.map((topScorer, index) => <TopGoalScorer topScorer={topScorer} key={index} />)}
+                </Container>
+              </div> 
+          </Tab>
+          <Tab eventKey="resultsAndFixures" title="Results and Fixtures">
+    
             <br></br><Container>
                 <h3 className='league_table_titles'>Results and Fixtures</h3>  
               </Container>
@@ -69,6 +91,10 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
               </Container>
             </Container>   
             <Scroller/>
+          </Tab>
+
+          </Tabs>
+          </Container>
         </div>
     );
 };

@@ -192,10 +192,10 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                                 <Match match={query.state} className='matchDisplayedMatch'/>
                             </div>
                         </div>
-                        <div className='last5Matches'>
+                        <div className='matchLast5Matches'>
                             <h2>Last Five Matches</h2>
                         </div>
-                        <div className="lastGames">
+                        <div className="matchLastGames">
                             <div >
                                 <h3>{query.state.homeTeam.name}</h3>
                                     {last5Matches1?.map(match => (
