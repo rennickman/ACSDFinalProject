@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Tabs, Tab, Form, Button} from 'react-bootstrap';
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 
 import './home.css';
@@ -169,8 +170,8 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
 
                             </Tabs>
                         </div>
-                        <div>
-                            <h1>Loading Today's Matches...</h1>
+                        <div className='loadingContainer'>
+                            <BiDotsHorizontalRounded style={{ fontSize: "100px" }} />
                         </div>
                     </div>
                 </div>

@@ -27,8 +27,8 @@
 }
 .r_f_icons:hover{
   cursor: pointer ;
-  color: #f00946;
-  border: solid #f00946 5px;;
+  color: #ff4073;
+  border: solid #ff4073 5px;;
   border-radius: 100%; 
   transition: .5s;
 }

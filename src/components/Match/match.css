@@ -1,30 +1,33 @@
-#match_container, .match_headers{
-    text-decoration: none;
-    color: black;
-    transition: .75s;
-  }
-  #match_container:hover{
-    text-decoration: none;
-    color: #fff;
-    transition: .75s;
-    background-color: #1c2237;
-  }
-  /*aligning headers and text in game week cards*/
-  #match_header{
+
+/*aligning headers and text in game week cards*/
+.match_headers div{
+    padding: 0% 3% 0% 3%;
+}
+.match_headers div:nth-child(1){
+    text-align: left;
+}
+.match_headers div:nth-child(2){
     text-align: right;
-  }
-  .teams{
-    text-align: center;
-  }
-  #match_time{
-    padding-top: 50px;
-  }
-  #match_matches_title{
-    text-align: center;
-  }
-  /*Club Crests*/
-  .match_crests{
-    width: 75px;
-    height: 95px;
-    margin-bottom: 10px;
-  }
+}
+.match_status{
+    justify-content:space-around;
+}
+.teams{
+text-align: center;
+}
+#score{
+    display: grid;
+}
+#match_time{
+align-self: center;
+
+}
+#match_matches_title{
+text-align: center;
+}
+/*Club Crests*/
+.match_crests{
+width: 60px;
+height: 80px;
+margin-bottom: 10px;
+}

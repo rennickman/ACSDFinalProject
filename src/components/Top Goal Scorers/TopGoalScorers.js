@@ -1,17 +1,21 @@
 import React from 'react';
 import { Table, Container, Col, Row } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
+import { clubCrests } from '../../apiKeys';
 import './topGoalScorers.css'
 const TopGoalScorer = ({ topScorer }) => {
 
     return (
          <Container>
-         <Table striped bordered hover variant="light" id='top_scorer_table'>
+         <Table striped bordered hover id='top_scorer_table'>
             <tbody>
               <tr>
-               <td className='top_scorer_data'> {topScorer.player.name} </td>
-               <td className='top_scorer_data'> {topScorer.numberOfGoals} </td>
-               <td className='top_scorer_data'> <Link to={'/club/' + topScorer.team.name} state={topScorer.team.name.toLowerCase()}>{topScorer.team.name}</Link> </td>
+               <td className='top_scorer_row'> <div className='top_scorer_data'>{topScorer.player.name}</div></td>
+               <td className='top_scorer_row'> <div className='top_scorer_data'>{topScorer.numberOfGoals}</div></td>
+               <td className='top_scorer_row'>
+                  <img className='top_scorer_club_crest' src={clubCrests.link1 + topScorer.team.id + clubCrests.link2}></img>
+                  <Link id='top_scorer_link' to={'/club/' + topScorer.team.name} state={topScorer.team.name.toLowerCase()}><div id='test'>{topScorer.team.name}</div></Link> 
+                </td>
               </tr>
             </tbody>
             </Table>
