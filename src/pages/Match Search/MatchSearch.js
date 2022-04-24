@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom';
 import ReactLoading from 'react-loading';
 
-import './matchSearch.css';
+import './matchsearch.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId, mapCompetitions } from '../../helperFunctions';
 import { mapAPIs } from '../../apiKeys';

@@ -21,8 +21,7 @@ const OddsResults = (props) => {
   const [oddsCalc, setOddsCalc] = useState('');
   const calcEarnings = (`${figure*oddsCalc}`);
   const potentialEarnings = parseFloat(calcEarnings).toFixed(2);
-  //Use State for showing which button was clicked
-  const [ resultName, setResultName] = useState('')
+
   return (
       <Container>
         {/* Container */}
@@ -100,4 +99,4 @@ const OddsResults = (props) => {
     </Container>
    )
 }
-export default OddsResults;
+export default OddsResults
