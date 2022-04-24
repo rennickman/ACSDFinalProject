@@ -31,6 +31,7 @@ const Navbar = () => {
         try {
             // LogOut User - Functionality imported from Firebase.js
             await logOutUser();
+            window.location.reload();
 
         } catch {
             // Throw an alert if there were any problems - NB! fill out more later
