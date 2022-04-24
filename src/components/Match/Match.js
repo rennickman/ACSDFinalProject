@@ -12,7 +12,7 @@ const Match = ({ match, index }) => {
     const format1 = `${match.status}`.replace("_", " ")
     const format2 = format1.toLowerCase();
     return (
-        <div key={index+20}>
+        <Container key={index+20}>
          <Card >
           <Card.Header>
            <Row className="match_headers">
@@ -38,7 +38,7 @@ const Match = ({ match, index }) => {
              </Row>
             </Card.Body>
            </Card>
-        </div>
+        </Container>
     );
 };
 
