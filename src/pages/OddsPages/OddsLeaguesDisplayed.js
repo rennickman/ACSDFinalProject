@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Ellipsis } from 'react-spinners-css';
+import ReactLoading from 'react-loading';
 
 import { OddsApi1 } from '../../apiKeys';
 import OddsResults from '../../components/Odds Comps/OddsResults';
@@ -34,7 +34,7 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
           <Sidebar username={username} favouriteTeam={favouriteTeam}
             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
         )}
-        <Ellipsis color="#1c2237" size={100} />
+        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
       </div>
     );
   }else {

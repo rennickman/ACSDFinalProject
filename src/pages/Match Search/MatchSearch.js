@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom';
-import { Ellipsis } from 'react-spinners-css';
+import ReactLoading from 'react-loading';
 
 import './matchSearch.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -156,7 +156,7 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
                 )}
                 <div className='matchSearchContent'>
                     <div className='team-container'>
-                        <Ellipsis color="#1c2237" size={100} />
+                        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
                     </div>
                 </div>
             </div>
@@ -173,7 +173,12 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
                         {
                             teamMatches.map((league, index) => 
                                 <div key={-index}>
-                                    <h1>{league.leagueName}</h1>
+                                    <div className='matchSearchMessage'>
+                                            <h1>Choose a Match</h1>
+                                    </div>
+                                    <div className='matchSearchLeagueName'>
+                                            <h1>{league.leagueName}</h1>
+                                    </div>
                                     {
                                         league.matches.map((match, index)=>
                                         <Link to={'/match/'} state={match} key={index}>

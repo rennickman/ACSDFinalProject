@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Tabs, Tab, Form, Button} from 'react-bootstrap';
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
-import { Ellipsis } from 'react-spinners-css';
+import ReactLoading from 'react-loading';
 
 
 import './home.css';
@@ -171,7 +171,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             </Tabs>
                         </div>
                         <div className='loadingContainer'>
-                            <Ellipsis color="#1c2237" size={100} />
+                            <ReactLoading type="bars" color="#1c2237"/>
                         </div>
                     </div>
                 </div>

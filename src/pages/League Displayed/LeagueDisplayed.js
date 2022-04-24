@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Ellipsis } from 'react-spinners-css';
+import ReactLoading from 'react-loading';
 
 import './leaguedisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -136,7 +136,7 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
                     )}
                     <div className='league-container'>
                         <div className="loadingContainer">
-                            <Ellipsis color="#1c2237" size={100} />
+                            <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
                         </div>
                         
                     </div>

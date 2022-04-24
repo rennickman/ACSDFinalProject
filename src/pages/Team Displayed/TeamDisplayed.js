@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom'
-import { Ellipsis } from 'react-spinners-css';
+import ReactLoading from 'react-loading';
 
 import './teamdisplayed.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { clubId, mapCompetitions } from '../../helperFunctions';
-import { mapAPIs } from '../../apiKeys';
+import { mapAPIs,clubCrests } from '../../apiKeys';
 import Match from '../../components/Match/Match';
 
 
@@ -149,7 +149,6 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
 
 
 
-
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
         history('/', {state: error});
@@ -163,7 +162,7 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='team-container'>
-                        <Ellipsis color="#1c2237" size={100} />
+                        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
                     </div>
                 </div>
             </>
@@ -177,20 +176,35 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='team-container'>
-                        <h1>{query.state}</h1>
+                        <div className='teamDisplayedContent'>
+                            <div>
+                                <div className='teamDisplayedHero'>
+                                    <div>
+                                        <div className='teamDisplayedImg'>
+                                        <img className='match_crests' src={clubCrests.link1 + team.id + clubCrests.link2} alt={team.name}></img>
+                                        </div>
+                                        <div>
+                                            <div ><h2>{team.name}</h2></div >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {
                             teamMatches.map((league, index) => 
                                 <div key={-index}>
-                                    <Link to={'/leagues/' + league.leagueName} state={league.leagueName.toLowerCase()}>
-                                        <h1>{league.leagueName}</h1>
-                                    </Link>
+                                    <div className='teamLeagueName'>
+                                        <Link to={'/leagues/' + league.leagueName} state={league.leagueName.toLowerCase()}>
+                                            <h1>{league.leagueName}</h1>
+                                        </Link>
+                                    </div>
 
                                     {
                                         league.matches.map((status, index)=>
                                         <div key={index}>
                                             {
                                                 status.matches.map((match, index)=>
-                                                <div>
+                                                <div className='teamMatch'>
                                                     <Link to={'/match/'} state={match} key={index+10}>
                                                         <Match match={match} />
                                                     </Link>
