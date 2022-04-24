@@ -40,3 +40,8 @@
     justify-content: center;
     margin-top: 20px;
 }
+/*Title for TOdays Matches*/
+#today_matches_title{
+ text-align: center;
+ margin-bottom: 0;
+}
