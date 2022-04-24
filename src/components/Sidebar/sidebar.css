@@ -149,3 +149,9 @@
 .awayTeam {
     border-bottom: 1px solid #000;
 }
+
+@media screen and (max-width: 950px) {
+    .sidebar {
+        display: none;
+    }
+}

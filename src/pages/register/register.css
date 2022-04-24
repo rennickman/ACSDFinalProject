@@ -99,3 +99,11 @@
     transform: scale(1.025);
     transition: all 0.3s ease;
 }   
+
+
+@media screen and (max-width: 950px) {
+    .loginWrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+}
