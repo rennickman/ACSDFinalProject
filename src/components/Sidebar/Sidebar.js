@@ -86,7 +86,7 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
             <div className='sidebar'>
                 <div className="sidebarContainer">
                     {username && (
-                        <div className="userSection">
+                        <Link style={{ textDecoration: "none", color: "black"}} to={'/club/' + favouriteTeam.name} state={favouriteTeam.name.toLowerCase()}><div className="userSection">
                             {/* Username */}
                             <div className='username'>Welcome {username}</div>
 
@@ -99,7 +99,8 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
                             <div className="clubName">
                                 <p>{favouriteTeam?.name}</p>
                             </div>
-                        </div>
+                        </div></Link>
+
                     )}
 
                     {last5Matches?.length && (
