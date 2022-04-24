@@ -76,7 +76,7 @@ const Sidebar = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }
 
     
     
-    console.log(nextMatch);
+
 
 
 

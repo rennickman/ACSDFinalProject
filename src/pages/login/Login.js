@@ -50,7 +50,7 @@ const Login = () => {
                         <span className="loginDesc">Log in for extra benifits</span>
                     </div>
 
-                    <div className="loginRight">
+                    <div className="loginRight" >
                         <form className="loginBox">
                             {/* Login Inputs */}
                             <input placeholder="Email" type="email" required className="loginInput" ref={emailRef} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import Home from './pages/Home/Home';
+import Home from './pages/home/Home';
 import LeaguesList from './pages/Leagues/Leagues';
 import LeagueDisplayed from './pages/League Displayed/LeagueDisplayed';
 import TeamDisplayed from './pages/Team Displayed/TeamDisplayed';
