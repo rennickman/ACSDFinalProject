@@ -2,6 +2,7 @@
 #top_scorer_table{
   margin-bottom: 0;
   background-color: #fff;
+  text-align: center;
 }
 #top_scorer_table:hover{
   margin-bottom: 0;
@@ -22,7 +23,7 @@
   width: 48px;
   height: 60px;
 }
-/*Links*/
+/*Links for top goal scorer*/
 #top_scorer_link{
   text-decoration: none;
   font-size: 14px;

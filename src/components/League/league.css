@@ -8,10 +8,37 @@
   margin-bottom: 2px;
   background-color: #1c2237;
   color: #fff;
+  text-align: center;
 }
 .top_gs_title{
   width: 200px;
 }
+/*leaguew table matches*/
+#league_table_headers_pos{
+  width: 25px;
+  max-width: 25px;
+  text-align: left;
+}
+.league_table_headers_name{
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  text-align: left;
+}
+.league_table_headers{
+  width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+#league_table_header_cont{
+  margin-bottom: 2px;
+  background-color: #1c2237;
+  color: #fff;
+  text-align: center;
+}
+/*headers for each section in leagues*/
 .league_table_titles{
   text-align: center;
+  margin-top: 20px;
 }
