@@ -36,7 +36,7 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
     //Stores the last five matches of both teams
     const [ last5Matches1, setLast5Matches1 ] = useState("");
     const [ last5Matches2, setLast5Matches2 ] = useState("");
-
+    console.log(query.state)
     useEffect(() => {
         //If a query came trhought useLocation and a team id was found for that query
         if (query.state) {
@@ -140,9 +140,8 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
             //If the state has come but there was no matches fot the team queried
             setError("There was an error, Please try again later");
         }
-    },[apiLength]);
-    console.log(last5Matches1)
-    console.log(last5Matches2)
+    },[apiLength,loading,query.state]);
+
     if (error) {
         //If there is an error, redirects to home page and sends the error to be displayed
         history('/', {state: error});
@@ -174,10 +173,9 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                             <Link to={'/leagues/' + leagueTitle.toLowerCase()} state={leagueTitle.toLowerCase()}>
                                 <div className='matchDisplayedHero'>
                                     <div>
-                                     {/* Breaking the match page 
                                      <div className='matchDisplayedImg'>
                                             <img src={"../"+competition.logo} alt={leagueTitle + ' logo'}></img>
-                                        </div>*/}
+                                        </div>
                                         <div>
                                             <div ><h2>{leagueTitle}</h2></div >
                                         </div>

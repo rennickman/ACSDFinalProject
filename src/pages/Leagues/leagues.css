@@ -5,11 +5,14 @@
 
 .leaguesContainer {
     flex: 12;
+    display: grid;
+
 }
 
 .content{
     display: grid;
     margin: 2% 10% 2% 10%;
+    justify-self: center;
 }
 
 .leagues-title{
@@ -61,11 +64,7 @@
     transition: .75s;
     background-color: #1c2237;
 }
-.card-style:hover{
-    text-decoration: none;
-    transition: .75s;
-    background-color: #1c2237;
-}
-.card-child:hover{
+
+.card-body-style div:hover{
     color: #fff;
 }

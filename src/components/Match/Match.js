@@ -16,7 +16,7 @@ const Match = ({ match, index }) => {
          <Card >
           <Card.Header>
            <Row className="match_headers">
-            <Col sm={6} id='match_day_capitalise_card'> <b>{match.competition.name} - {format2} </b></Col>
+            <Col sm={6} id='match_day_capitalise_card'> <b> {format2} </b></Col>
             <Col sm={6}> <b>{gameDate} </b></Col>                 
            </Row>
            </Card.Header >

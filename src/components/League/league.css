@@ -60,7 +60,7 @@
 
 }
 .leagueDisplayeHero > div{
-  width: 750px !important;
+  width: 700px !important;
   height: 150px !important;
 
 }
@@ -71,4 +71,13 @@
 }
 .tab-content{
   margin-bottom: 5%;
+}
+#uncontrolled-tab-example-tab-leagueTable{
+  font-weight: bold;
+}
+#uncontrolled-tab-example-tab-topScorers{
+  font-weight: bold;
+}
+#uncontrolled-tab-example-tab-resultsAndFixures{
+  font-weight: bold;
 }
