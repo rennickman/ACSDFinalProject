@@ -36,7 +36,7 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
     //Stores the last five matches of both teams
     const [ last5Matches1, setLast5Matches1 ] = useState("");
     const [ last5Matches2, setLast5Matches2 ] = useState("");
-
+    console.log(query.state)
     useEffect(() => {
         //If a query came trhought useLocation and a team id was found for that query
         if (query.state) {
@@ -173,10 +173,9 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                             <Link to={'/leagues/' + leagueTitle.toLowerCase()} state={leagueTitle.toLowerCase()}>
                                 <div className='matchDisplayedHero'>
                                     <div>
-                                     {/* Breaking the match page 
                                      <div className='matchDisplayedImg'>
                                             <img src={"../"+competition.logo} alt={leagueTitle + ' logo'}></img>
-                                        </div>*/}
+                                        </div>
                                         <div>
                                             <div ><h2>{leagueTitle}</h2></div >
                                         </div>

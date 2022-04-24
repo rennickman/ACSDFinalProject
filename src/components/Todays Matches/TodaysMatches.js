@@ -19,7 +19,7 @@ const TodaysMatches = ({ match}) => {
           <Card >
               <Card.Header>
               <Row className="game_week_headers">
-                  <Col sm={6} id='match_day_capitalise'> {match.competition.name} - {format2}</Col>
+                  <Col sm={6} id='match_day_capitalise'> {format2}</Col>
                   <Col sm={6} id='game_date_header'> {gameDate} </Col>
               </Row>
               </Card.Header >
