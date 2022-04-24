@@ -14,7 +14,7 @@ const Odds = ({ username, favouriteTeam, favouriteFixtures, favouriteLeague }) =
          )}
               <div className="leaguesContainer">
                 <div className='content' >
-                  <div className='leagues-title' >
+                  <div data-testid="oddsTitle" className='leagues-title' >
                     <h1>Leagues</h1>
                     <h3>SEASON 2021/2022</h3>
                   </div>
@@ -22,7 +22,7 @@ const Odds = ({ username, favouriteTeam, favouriteFixtures, favouriteLeague }) =
                 <div className='leagues-list' >
                 {mapOddsLeagues.map((OddsLeague, index) => {
                    return (
-                     <Link to={'/odds/' + OddsLeague.code_link} state={OddsLeague.code_link} className="link" key={index}>
+                     <Link data-testid={"oddsOption" + index} to={'/odds/' + OddsLeague.code_link} state={OddsLeague.code_link} className="link" key={index}>
                        <div className="card-style">
                          <div className='card-body-style'>
                            <div>

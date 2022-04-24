@@ -36,7 +36,7 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
             )}
             <div className='oddsLeaguesDisplayedContent'>
-                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+                <ReactLoading data-testid="oddsLoading" type="bars" color="#1c2237" height="30%" width="30%" />
             </div>
         </div>
       </>
@@ -50,7 +50,7 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
         )}
   
-        <div className="oddsLeaguesDisplayedContent">
+        <div data-testid="oddsContainer" className="oddsLeaguesDisplayedContent">
         {
           !loading && 
           odds.map((odd, index) => 

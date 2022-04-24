@@ -84,6 +84,8 @@ test('can change inputs in registration form', () => {
 });
 
 
+// NOT FINISHED
+/*
 test('email required by form', async () => {
   render(<App />);
 
@@ -105,9 +107,89 @@ test('email required by form', async () => {
   // Update all inputs except username
   fireEvent.change(passwordInput, { target: { value: testPasswordValue } });
   fireEvent.change(verifyInput, { target: { value: testVerifyValue } });
-
   
+});
+*/
+/*
+test("user can login", async () => {
+  render(<App />);
+
+  // Get Login Link
+  const loginLink = screen.getByTestId("loginLink");
+  // Navigate to Login Page
+  fireEvent.click(loginLink);
+
+  // Set test Values and grab inputs
+  const testEmailValue = "pedro@gmail.com";
+  const testPasswordValue = "123456";
+  const emailInput = screen.getByPlaceholderText(/email/i);
+  const passwordInput = screen.getByPlaceholderText(/password/i);
+
+  // Change Input values
+  fireEvent.change(emailInput, { target: { value: testEmailValue } });
+  expect(emailInput.value).toBe(testEmailValue);
+  fireEvent.change(passwordInput, { target: { value: testPasswordValue } });
+  expect(passwordInput.value).toBe(testPasswordValue);
+  
+  // Verify Login worked
+  const loginButton = screen.getByTestId("loginButton");
+  fireEvent.click(loginButton);
+})
+*/
+
+
+test("can access leagues page", () => {
+  render(<App />);
+
+  // Get Leagues Link
+  const leaguesLink = screen.getByTestId("leaguesLink");
+  // Navigate To Leagues Page
+  fireEvent.click(leaguesLink);
+
+  // Validate we access leagues page
+  const leaguesTitle = screen.getByTestId("leaguesTitle");
+  expect(leaguesTitle).toBeInTheDocument();
+
+  // Find link for Premier League
+  const premLeaguesLink = screen.getByTestId("leaguesOption0");
+  fireEvent.click(premLeaguesLink);
+
+  const leaguesResults = screen.getByTestId("leagueLoading");
+  expect(leaguesResults).toBeInTheDocument();
+});
+
+
+test ("can access odds page", () => {
+  render(<App />);
+
+  // Get Leagues Link
+  const oddsLink = screen.getByTestId("oddsLink");
+  // Navigate To Leagues Page
+  fireEvent.click(oddsLink);
+
+  // Validate we access odds page
+  const oddsTitle = screen.getByTestId("oddsTitle");
+  expect(oddsTitle).toBeInTheDocument();
+
+  // Find link for Premier League
+  const premOddsLink = screen.getByTestId("oddsOption0");
+  fireEvent.click(premOddsLink);
+
+  const oddsResults =  screen.getByTestId("oddsLoading");
+  expect(oddsResults).toBeInTheDocument();
+}); 
+
+
+test("team API call works", () => {
   
 });
 
 
+test("standings API call works", () => {
+
+});
+
+
+test("fixtures API call works", () => {
+
+})
