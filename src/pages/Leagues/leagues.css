@@ -9,7 +9,7 @@
 
 .content{
     display: grid;
-    margin: 2%;
+    margin: 2% 10% 2% 10%;
 }
 
 .leagues-title{
@@ -55,8 +55,17 @@
     color: #000;
     transition: .35s;
 }
-.card-child:hover{
-    color: #f00946;
-    transition: .35s;
+.card-style:hover{
+    text-decoration: none;
+    color: #fff;
+    transition: .75s;
+    background-color: #1c2237;
 }
-
+.card-style:hover{
+    text-decoration: none;
+    transition: .75s;
+    background-color: #1c2237;
+}
+.card-child:hover{
+    color: #fff;
+}

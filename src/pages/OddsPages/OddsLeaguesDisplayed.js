@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import ReactLoading from 'react-loading';
 
 import { OddsApi1 } from '../../apiKeys';
 import OddsResults from '../../components/Odds Comps/OddsResults';
@@ -9,7 +10,7 @@ import './oddsLeaguesDisplayed.css';
 function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) {
   //UseStates used
   const [odds, setOdds] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   //Determining the which league to display for API from pathname
   let path = (`${window.location.pathname}`)
@@ -21,37 +22,55 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
     const results = getOdds.data
     setOdds(results);
     console.log(results)
-    setLoading(true);
+    setLoading(false);
   }
   useEffect(() => {
     fetchOddsData();
   }, [oddsCode])
-
-  return (
-    <div className='oddsLeaguesDisplayed'>
-      {username && (
-        <Sidebar username={username} favouriteTeam={favouriteTeam}
-          favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
-      )}
-
-      <div className="oddsLeaguesDisplayedContent">
-      {
-        loading && 
-        odds.map((odd, index) => 
-          <OddsResults key={index}
-            home_team={odd.bookmakers[0].markets[0].outcomes[0].name}
-            away_team={odd.bookmakers[0].markets[0].outcomes[1].name}
-            home_team_odds={odd.bookmakers[0].markets[0].outcomes[0].price}
-            away_team_odds={odd.bookmakers[0].markets[0].outcomes[1].price}
-            draw={odd.bookmakers[0].markets[0].outcomes[2].price}
-            title={odd.bookmakers[0].title}
-            date={odd.commence_time}
-            competitionName={odd.sport_title}
-            />  
+  if(loading){
+    return (
+      <>
+        <div className='oddsLeaguesDisplayed'>
+            {username && (
+                <Sidebar username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+            )}
+            <div className='oddsLeaguesDisplayedContent'>
+                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+            </div>
+        </div>
+      </>
+    );
+  }else {
+    return (
+      <>
+      <div className='oddsLeaguesDisplayed'>
+        {username && (
+          <Sidebar username={username} favouriteTeam={favouriteTeam}
+            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
         )}
+  
+        <div className="oddsLeaguesDisplayedContent">
+        {
+          !loading && 
+          odds.map((odd, index) => 
+            <OddsResults key={index}
+              home_team={odd.bookmakers[0].markets[0].outcomes[0].name}
+              away_team={odd.bookmakers[0].markets[0].outcomes[1].name}
+              home_team_odds={odd.bookmakers[0].markets[0].outcomes[0].price}
+              away_team_odds={odd.bookmakers[0].markets[0].outcomes[1].price}
+              draw={odd.bookmakers[0].markets[0].outcomes[2].price}
+              title={odd.bookmakers[0].title}
+              date={odd.commence_time}
+              competitionName={odd.sport_title}
+              />  
+          )}
+        </div>
       </div>
-    </div>
-  );
+      </>
+    );
+  }
+
 } 
 
 export default OddsLeaguesDisplayed

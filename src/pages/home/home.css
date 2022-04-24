@@ -19,7 +19,7 @@
 /*hero image*/
 .home-img{
     width: 950px;
-    height: 425px;
+    height: 380px;
     margin: 7% 5% 3% 5%;
 
 }
@@ -32,11 +32,21 @@
 
 /*Search window tab*/
 .home-search-window{
-    margin: 2% 5% 5% 7%;
+    margin: 2% 5% 0% 7%;
 }
 
 .loadingContainer {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+/*Title for TOdays Matches*/
+#today_matches_title{
+ text-align: center;
+}
+.home-search-window ul{
+    justify-content: center;
+}
+.todaysMatchesContainer{
+    margin-bottom: 3%;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Tabs, Tab, Form, Button} from 'react-bootstrap';
 import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import ReactLoading from 'react-loading';
 
 
 import './home.css';
@@ -65,6 +65,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     //If the status of the request is ok it stores matches in useState, stops the loop, and displays the data in the webpage
                     if(getTodaysMatches.status ===  200){
                         setTodaysMatches(getTodaysMatches);
+                        console.log(getTodaysMatches)
                         apiCall = false;
                         setLoading(false);
                     }
@@ -136,7 +137,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <Tab eventKey="league" title="League">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>League</Form.Label>
+                                        <Form.Label><b>Search by League</b></Form.Label>
                                         <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setLeagueSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleleLeagueSubmit} >
@@ -147,7 +148,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <Tab eventKey="team" title="Team">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Club</Form.Label>
+                                        <Form.Label><b>Search by Club</b></Form.Label>
                                         <Form.Control type="text" name="league" placeholder="Type club name here" onChange={e => setTeamSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleTeamSubmit} >
@@ -158,7 +159,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <Tab eventKey="match" title="Match">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Match</Form.Label>
+                                        <Form.Label><b>Search by Match</b></Form.Label>
                                         <Form.Control type="text" placeholder="Type first club here" onChange={e => setTeam1SearchValue(e.target.value.toLowerCase())} />
                                         <Form.Control type="text" placeholder="Type second club here" onChange={e => setTeam2SearchValue(e.target.value.toLowerCase())} />
                                     </Form.Group>
@@ -171,7 +172,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             </Tabs>
                         </div>
                         <div className='loadingContainer'>
-                            <BiDotsHorizontalRounded style={{ fontSize: "100px" }} />
+                            <ReactLoading type="bars" color="#1c2237"/>
                         </div>
                     </div>
                 </div>
@@ -200,7 +201,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <Tab eventKey="league" title="League">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>League</Form.Label>
+                                        <Form.Label><b>Search by League</b></Form.Label>
                                         <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setLeagueSearchValue(e.target.value)}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleleLeagueSubmit} >
@@ -211,7 +212,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <Tab eventKey="team" title="Team">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Team</Form.Label>
+                                        <Form.Label><b>Search by Team</b></Form.Label>
                                         <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setTeamSearchValue(e.target.value)}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleTeamSubmit} >
@@ -222,7 +223,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <Tab eventKey="match" title="Match">
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label>Match</Form.Label>
+                                        <Form.Label><b>Search by Match</b></Form.Label>
                                         <Form.Control type="text" placeholder="Type first club here" onChange={e => setTeam1SearchValue(e.target.value.toLowerCase())} />
                                         <Form.Control type="text" placeholder="Type second club here" onChange={e => setTeam2SearchValue(e.target.value.toLowerCase())} />
                                     </Form.Group>
@@ -233,8 +234,8 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             </Tab>
                             </Tabs>
                         </div>
-                        <div>
-                            <h1>Today's Matches</h1>
+                        <div className='todaysMatchesContainer'>
+                            <h1 id='today_matches_title'>Today's Matches</h1>
                             {todaysMatches.data.matches.map((match, index) => 
                                 <TodaysMatches match={match} key={index}/>
                             )}

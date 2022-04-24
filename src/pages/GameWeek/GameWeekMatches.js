@@ -4,8 +4,8 @@ import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { footballApi3, config, config1, config2 } from '../../apiKeys'
 import CurrentGameWeek from '../../components/Game Week Comps/CurrentGameWeek'
-import Sidebar from '../../components/Sidebar/Sidebar';
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import Sidebar from '../../components/Sidebar/Sidebar'
+import ReactLoading from 'react-loading';
 
 import './gameWeekMatches.css'
 
@@ -72,6 +72,7 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
 
   if (plMatches.length !== 0) {
     return (
+      <>
       <div class="gameWeekMatches">
         {username && (
           <Sidebar username={username} favouriteTeam={favouriteTeam}
@@ -102,23 +103,23 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
           <br></br>
         </div>
       </div>
+      </>
     )
   } else {
     return (
-      <div className="gameWeekMatches">
-        {username && (
-          <Sidebar username={username} favouriteTeam={favouriteTeam}
-            favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
-        )}
-        <div className="gameWeekMatchesContent">
-          <div className='loadingContainer'>
-            <BiDotsHorizontalRounded style={{ fontSize: "100px" }} />
-          </div>
+      <>
+        <div className='home'>
+            {username && (
+                <Sidebar username={username} favouriteTeam={favouriteTeam}
+                    favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
+            )}
+            <div className='home-content'>
+                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+            </div>
         </div>
-      </div>
+      </>
     )
   }
-  
 }
 
-export default GameWeekMatches
+export default GameWeekMatches;

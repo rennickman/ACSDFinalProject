@@ -4,7 +4,6 @@ export const mapAPIs = [
     {link: "https://api.football-data.org/v2/", token: "1cfee8f9f61b44f4b23a018e25914193"},
     {link: "https://api.football-data.org/v2/", token: "db0116e51f3b4caa98292319ba53525c"},
     {link: "https://api.football-data.org/v2/", token: "6714f12b78e949bb817b1aff3faa958a"},
-    {link: "https://api.football-data.org/v2/", token: "a2cf6fa547064a6a9d80531db3796c20"},
     {link: "https://api.football-data.org/v2/", token: "26f4013cfd3f4e1083ebfd1ba0e1d699"},
     {link: "https://api.football-data.org/v2/", token: "8bc6c2578c61463b8afc51d5c7975075"},
     {link: "https://api.football-data.org/v2/", token: "9fc8399837ca4bfdaaaae8b75857712c"},
