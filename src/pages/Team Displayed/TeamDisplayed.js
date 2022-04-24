@@ -145,6 +145,7 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
             //If the state has come but there was no matches fot the team queried
             setError("There were no matches for that Club")
         }
+        
     },[query.state,team,apiLength]);
 
 
@@ -192,7 +193,7 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
                         </div>
                         {
                             teamMatches.map((league, index) => 
-                                <div key={-index}>
+                                <div key={-index}  className='heroContainer'>
                                     <div className='teamLeagueName'>
                                         <Link to={'/leagues/' + league.leagueName} state={league.leagueName.toLowerCase()}>
                                             <h1>{league.leagueName}</h1>

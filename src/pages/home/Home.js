@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Tabs, Tab, Form, Button} from 'react-bootstrap';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {Tabs, Tab, Form, Button, Carousel, Container} from 'react-bootstrap';
+import {useNavigate, useLocation, Link} from 'react-router-dom';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 
@@ -9,7 +9,7 @@ import './home.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
 import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
-
+import { mapCarousel} from '../../helperFunctions';
 
 
 
@@ -65,7 +65,6 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     //If the status of the request is ok it stores matches in useState, stops the loop, and displays the data in the webpage
                     if(getTodaysMatches.status ===  200){
                         setTodaysMatches(getTodaysMatches);
-                        console.log(getTodaysMatches)
                         apiCall = false;
                         setLoading(false);
                     }
@@ -127,44 +126,74 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     )}
 
                     <div className='home-content'>
-                        <div className='home-hero'>
-                            <div className='home-img'>
-                                <img src="gods-hand.jpg" alt="God's hand"></img>
-                            </div>
-                        </div>
+                        <Container fluid="md" className='carouselContainer'>
+                            <Carousel variant="dark">
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (1).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (2).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (3).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (4).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (5).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (6).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (7).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (8).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (9).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (10).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (11).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                            </Carousel>
+                        </Container>
                         <div className='home-search-window'>
+                            <h1>Hello</h1>
                             <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
-                            <Tab eventKey="league" title="League">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label><b>Search by League</b></Form.Label>
+                            <Tab eventKey="league" title="By League">
+                                <Form className="homeForm">
+                                    <Form.Group className="mb-3 inputForm" controlId="formBasicEmail">
                                         <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setLeagueSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleleLeagueSubmit} >
-                                        Go
+                                        Search
                                     </Button>
                                 </Form>
                             </Tab>
-                            <Tab eventKey="team" title="Team">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label><b>Search by Club</b></Form.Label>
+                            <Tab eventKey="team" title="By Team">
+                                <Form className="homeForm">
+                                    <Form.Group className="mb-3 inputForm" controlId="formBasicEmail">
                                         <Form.Control type="text" name="league" placeholder="Type club name here" onChange={e => setTeamSearchValue(e.target.value.toLowerCase())}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleTeamSubmit} >
-                                        Go
+                                        Search
                                     </Button>
                                 </Form>
                             </Tab>
-                            <Tab eventKey="match" title="Match">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label><b>Search by Match</b></Form.Label>
+                            <Tab eventKey="match" title="By Match">
+                                <Form className="homeForm">
+                                    <Form.Group className="mb-3 inputForm" controlId="formBasicEmail">
                                         <Form.Control type="text" placeholder="Type first club here" onChange={e => setTeam1SearchValue(e.target.value.toLowerCase())} />
                                         <Form.Control type="text" placeholder="Type second club here" onChange={e => setTeam2SearchValue(e.target.value.toLowerCase())} />
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleMatchSubmit} >
-                                        Go
+                                        Search
                                     </Button>
                                 </Form>
                             </Tab>
@@ -191,44 +220,83 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     )}
 
                     <div className='home-content'>
-                            <div className='home-hero'>
-                                <div className='home-img'>
-                                    <img src="gods-hand.jpg" alt="God's hand"></img>
-                                </div>
-                            </div>
+                        <Container fluid="md" className='carouselContainer'>
+                            <Carousel variant="dark">
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (1).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (2).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (3).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (4).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (5).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (6).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (7).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (8).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (9).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (10).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="God's hand" src="photo (11).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                            </Carousel>
+                        </Container>
                         <div className='home-search-window'>
+                            <div className='welcomeMessage'>
+                                <h3>Search all scores here! You can search by League, Club, or Match.</h3>
+                                <h6>
+                                    You can also 
+                                    <Link to="/login">
+                                        <b> sign up </b>
+                                    </Link>
+                                     to get info of your favourite team in the page
+                                </h6>
+                            </div>
                             <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
-                            <Tab eventKey="league" title="League">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label><b>Search by League</b></Form.Label>
+                            <Tab eventKey="league" title="By League">
+                                <Form className="homeForm" >
+                                    <Form.Group className="mb-3 inputForm" controlId="formBasicEmail">
                                         <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setLeagueSearchValue(e.target.value)}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleleLeagueSubmit} >
-                                        Go
+                                        Search
                                     </Button>
                                 </Form>
                             </Tab>
-                            <Tab eventKey="team" title="Team">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label><b>Search by Team</b></Form.Label>
-                                        <Form.Control type="text" name="league" placeholder="Type league name here" onChange={e => setTeamSearchValue(e.target.value)}/>
+                            <Tab eventKey="team" title="By Team">
+                                <Form className="homeForm" >
+                                    <Form.Group className="mb-3 inputForm" controlId="formBasicEmail">
+                                        <Form.Control type="text" name="league" placeholder="Type club name here" onChange={e => setTeamSearchValue(e.target.value)}/>
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleTeamSubmit} >
-                                        Go
+                                        Search
                                     </Button>
                                 </Form>
                             </Tab>
-                            <Tab eventKey="match" title="Match">
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Label><b>Search by Match</b></Form.Label>
+                            <Tab eventKey="match" title="By Match">
+                                <Form className="homeForm" >
+                                    <Form.Group className="mb-3 inputForm" controlId="formBasicEmail">
                                         <Form.Control type="text" placeholder="Type first club here" onChange={e => setTeam1SearchValue(e.target.value.toLowerCase())} />
                                         <Form.Control type="text" placeholder="Type second club here" onChange={e => setTeam2SearchValue(e.target.value.toLowerCase())} />
                                     </Form.Group>
                                     <Button variant="success" type="submit" onClick={handleMatchSubmit} >
-                                        Go
+                                        Search
                                     </Button>
                                 </Form>
                             </Tab>
