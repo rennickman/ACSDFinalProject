@@ -9,7 +9,7 @@ const LeagueMatches = ({ leagueMatch }) => {
 
 //Formatting Time
 const gameDate = format(new Date(`${leagueMatch.utcDate}`), 'dd-MM-yyyy');
-const gameTime = format(new Date(`${leagueMatch.utcDate}`), 'dd-MM-yyyy');
+const gameTime = format(new Date(`${leagueMatch.utcDate}`), 'k.mm');
 
     return (
           <Container >
