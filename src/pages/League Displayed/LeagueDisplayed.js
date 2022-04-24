@@ -129,14 +129,14 @@ const LeagueDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFi
         //Renders Loading
         return(
             <>  
-                <div className='league-displayed'>
+                <div className='league-displayed league-displayed-loading'>
                     {username && (
                         <Sidebar username={username} favouriteTeam={favouriteTeam}
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='league-container'>
                         <div className="loadingContainer">
-                            <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+                            <ReactLoading type="bars" color="#1c2237" height="15%" width="15%" />
                         </div>
                         
                     </div>

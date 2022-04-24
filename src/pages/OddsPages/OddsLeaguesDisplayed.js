@@ -30,13 +30,13 @@ function OddsLeaguesDisplayed({ username, favouriteTeam, favouriteLeague, favour
   if(loading){
     return (
       <>
-        <div className='oddsLeaguesDisplayed'>
+        <div className='oddsLeaguesDisplayed oddsLeaguesDisplayedContent-loading'>
             {username && (
                 <Sidebar username={username} favouriteTeam={favouriteTeam}
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
             )}
             <div className='oddsLeaguesDisplayedContent'>
-                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+                <ReactLoading type="bars" color="#1c2237" height="15%" width="15%" />
             </div>
         </div>
       </>

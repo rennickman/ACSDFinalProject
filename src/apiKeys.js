@@ -11,6 +11,7 @@ export const mapAPIs = [
     {link: "https://api.football-data.org/v2/", token: "929962cc8ff544f1ad964aa9248ded09"},
     {link: "https://api.football-data.org/v2/", token: "0bbc5f3284754868ae046ed60e38cba5"},
     {link: "https://api.football-data.org/v2/", token: "0d2b67c04c584c048ba0c71ccb204242"},
+    {link: "https://api.football-data.org/v2/", token: "1f4378d15ed74b3a83b86f7603d3b1ed"}
 ];
 
 export const footballApi = {

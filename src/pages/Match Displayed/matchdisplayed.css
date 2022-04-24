@@ -108,3 +108,7 @@ height: 60px;
 .date_last_5{
  font-size: 12px;
 }
+.matchDisplayed-loading{
+    min-width: 30vw;
+    min-height: 30vw;
+}

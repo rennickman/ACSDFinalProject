@@ -108,13 +108,13 @@ const GameWeekMatches = ({ username, favouriteTeam, favouriteLeague, favouriteFi
   } else {
     return (
       <>
-        <div className='home'>
+        <div className='gameWeek-loading gameWeekMatches'>
             {username && (
                 <Sidebar username={username} favouriteTeam={favouriteTeam}
                     favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
             )}
-            <div className='home-content'>
-                <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+            <div className='gameWeekMatchesContent'>
+                <ReactLoading type="bars" color="#1c2237" height="15%" width="15%" />
             </div>
         </div>
       </>

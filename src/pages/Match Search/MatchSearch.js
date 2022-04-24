@@ -149,14 +149,14 @@ const MatchSearch = ({ username, favouriteTeam, favouriteLeague, favouriteFixtur
     } else if(loading){
         //Id the API call hasn't arrived yet renders Loading...
         return (
-            <div className='matchSearch'>
+            <div className='matchSearch-loading'>
                 {username && (
                     <Sidebar username={username} favouriteTeam={favouriteTeam}
                         favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                 )}
                 <div className='matchSearchContent'>
                     <div className='team-container'>
-                        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+                            <ReactLoading type="bars" color="#1c2237" height="15%" width="15%" />
                     </div>
                 </div>
             </div>

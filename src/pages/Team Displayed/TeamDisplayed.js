@@ -157,13 +157,13 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
         //Id the API call hasn't arrived yet renders Loading...
         return (
             <>      
-                <div className='team-displayed'>
+                <div className='team-displayed-loading team-displayed'>
                     {username && (
                         <Sidebar username={username} favouriteTeam={favouriteTeam}
                             favouriteFixtures={favouriteFixtures} favouriteLeague={favouriteLeague} />
                     )}
                     <div className='team-container'>
-                        <ReactLoading type="bars" color="#1c2237" height="30%" width="30%" />
+                        <ReactLoading type="bars" color="#1c2237" height="15%" width="15%" />
                     </div>
                 </div>
             </>

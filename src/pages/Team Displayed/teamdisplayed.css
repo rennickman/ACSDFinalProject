@@ -90,3 +90,7 @@
     background-color: #1c2237;
     color:white;
 }
+.team-displayed-loading{
+    min-width: 30vw;
+    min-height: 30vw;
+}

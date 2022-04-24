@@ -9,7 +9,6 @@ import './home.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { mapAPIs } from '../../apiKeys';
 import TodaysMatches from '../../components/Todays Matches/TodaysMatches';
-import { mapCarousel} from '../../helperFunctions';
 
 
 
@@ -126,45 +125,57 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     )}
 
                     <div className='home-content'>
+                        <div className='welcomeMessage'>
+                            <h3>Search all scores here! You can search by League, Club, or Match.</h3>
+                            <h6>
+                                You can also 
+                                <Link to="/login">
+                                    <b> sign up </b>
+                                </Link>
+                                    to get info of your favourite team in the page
+                            </h6>
+                        </div>
                         <Container fluid="md" className='carouselContainer'>
                             <Carousel variant="dark">
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (1).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(1)" src="photo (1).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (2).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(2)" src="photo (2).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (3).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(3)" src="photo (3).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (4).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(4)" src="photo (4).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (5).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(5)" src="photo (5).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (6).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(6)" src="photo (6).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (7).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(7)" src="photo (7).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (8).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(8)" src="photo (8).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (9).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(9)" src="photo (9).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (10).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(10)" src="photo (10).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (11).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(11)" src="photo (11).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="Football  For Slider(12)" src="photo (12).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                             </Carousel>
                         </Container>
                         <div className='home-search-window'>
-                            <h1>Hello</h1>
                             <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
                             <Tab eventKey="league" title="By League">
                                 <Form className="homeForm">
@@ -220,54 +231,57 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                     )}
 
                     <div className='home-content'>
+                        <div className='welcomeMessage'>
+                            <h3>Search all scores here! You can search by League, Club, or Match.</h3>
+                            <h6>
+                                You can also 
+                                <Link to="/login">
+                                    <b> sign up </b>
+                                </Link>
+                                    to get info of your favourite team in the page
+                            </h6>
+                        </div>
                         <Container fluid="md" className='carouselContainer'>
                             <Carousel variant="dark">
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (1).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(1)" src="photo (1).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (2).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(2)" src="photo (2).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (3).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(3)" src="photo (3).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (4).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(4)" src="photo (4).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (5).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(5)" src="photo (5).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (6).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(6)" src="photo (6).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (7).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(7)" src="photo (7).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (8).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(8)" src="photo (8).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (9).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(9)" src="photo (9).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (10).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(10)" src="photo (10).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                                 <Carousel.Item interval={4000}>
-                                        <img className="d-block w-100" alt="God's hand" src="photo (11).jpg" height="400" width="850"/>
+                                        <img className="d-block w-100" alt="Football  For Slider(11)" src="photo (11).jpg" height="400" width="850"/>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                        <img className="d-block w-100" alt="Football  For Slider(12)" src="photo (12).jpg" height="400" width="850"/>
                                 </Carousel.Item>
                             </Carousel>
                         </Container>
                         <div className='home-search-window'>
-                            <div className='welcomeMessage'>
-                                <h3>Search all scores here! You can search by League, Club, or Match.</h3>
-                                <h6>
-                                    You can also 
-                                    <Link to="/login">
-                                        <b> sign up </b>
-                                    </Link>
-                                     to get info of your favourite team in the page
-                                </h6>
-                            </div>
                             <Tabs defaultActiveKey="league" id="uncontrolled-tab-example" className="mb-3">
                             <Tab eventKey="league" title="By League">
                                 <Form className="homeForm" >
