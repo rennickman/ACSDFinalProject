@@ -1,8 +1,10 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from './App';
+import axios from 'axios';
+import { footballApi, footballApi1, sideBarApi } from './apiKeys';
 
-
+jest.mock('axios');
 
 test('can access login page', () => {
   render (<App />);
@@ -180,16 +182,5 @@ test ("can access odds page", () => {
 }); 
 
 
-test("team API call works", () => {
-  
-});
 
 
-test("standings API call works", () => {
-
-});
-
-
-test("fixtures API call works", () => {
-
-})
