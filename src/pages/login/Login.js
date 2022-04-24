@@ -65,7 +65,7 @@ const Login = () => {
 
 
                             {/* Register Button - Pushes to registration page */}
-                            <button className="loginRegisterButton" onClick={() => history("/register")}>
+                            <button data-testid="registrationLink" className="loginRegisterButton" onClick={() => history("/register")}>
                                 Create new Account
                             </button>   
                         </form>

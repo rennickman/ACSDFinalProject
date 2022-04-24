@@ -99,7 +99,7 @@ const Navbar = () => {
                                     Log Out
                                 </button>
                             ) : (
-                                <button className="signupButton" onClick={() => history("/login")}>
+                                <button data-testid="loginLink" className="signupButton" onClick={() => history("/login")}>
                                     Log In
                                 </button>
                             )}
