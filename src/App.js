@@ -23,7 +23,6 @@ import GameWeekMatches from './pages/GameWeek/GameWeekMatches';
 
 
 
-
 function App() {
 
     // Get current user if logged in
@@ -103,8 +102,8 @@ function App() {
     return (
 
         <Router>
-            <Navbar />
             
+            <Navbar />
             <Routes>
                 {/* Home Route */}
                 <Route 
