@@ -9,7 +9,7 @@ export const mapCompetitions = [
     {name: 'serie A', code: 'SA'},
     {name: 'primera division', code: 'PD'},
     {name: 'la liga', code: 'PD'},
-    {name: 'elf championship', code: 'ELC'}
+    {name: 'efl championship', code: 'ELC'}
 ];
 
 // Takes the name of a league and returns the search ID
