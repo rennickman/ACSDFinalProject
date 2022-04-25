@@ -173,9 +173,9 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                             <Link to={'/leagues/' + leagueTitle.toLowerCase()} state={leagueTitle.toLowerCase()}>
                                 <div className='matchDisplayedHero'>
                                     <div>
-                                    <div className='matchDisplayedImg'>
-                                           {/* <img src={"../"+competition.logo} alt={leagueTitle + ' logo'}></img>*/} 
-                                        </div>
+                                    {/*<div className='matchDisplayedImg'>
+                                            <img src={"../"+competition.logo} alt={leagueTitle + ' logo'}></img> 
+                                        </div>*/}
                                         <div>
                                             <div ><h2>{leagueTitle}</h2></div >
                                         </div>

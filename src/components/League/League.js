@@ -21,11 +21,11 @@ const League = ({ competition, leagueTable, topScorersTable, matches }) => {
           <div className='leagueDisplayedHeroContainer'>
                   <div className='matchDisplayedHero leagueDisplayeHero'>
                       <div>
-                          <div className='matchDisplayedImg leagueDisplayedImg'>
-                              <img src={"../"+competitionSearch.logo} alt={competition.name + ' logo'}></img>
-                          </div>
+                          {/*<div className='matchDisplayedImg leagueDisplayedImg'>
+                              <img src={"../"+ competitionSearch.logo} alt={competition.name + ' logo'}></img>
+                          </div>*/}
                           <div>
-                              <div ><h2>{competition.name}</h2></div >
+                              <div id='league_title_leagues_page'><h2>{competition.name}</h2></div >
                           </div>
                           <div>
                               <div ><h4>{competition.area.name}</h4></div >
