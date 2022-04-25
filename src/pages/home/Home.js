@@ -129,7 +129,7 @@ const Home = ({ username, favouriteTeam, favouriteLeague, favouriteFixtures }) =
                             <h3>Search all scores here! You can search by League, Club, or Match.</h3>
                             <h6>
                                 You can also 
-                                <Link to="/login">
+                                <Link to="/register">
                                     <b> sign up </b>
                                 </Link>
                                     to get info of your favourite team in the page
