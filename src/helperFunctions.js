@@ -6,7 +6,7 @@ export const mapCompetitions = [
     {name: 'bundesliga', code: 'BL1'},
     {name: 'ligue 1', code: 'FL1'},
     {name: 'ligue1', code: 'FL1'},
-    {name: 'serie A', code: 'SA'},
+    {name: 'serie a', code: 'SA'},
     {name: 'primera division', code: 'PD'},
     {name: 'la liga', code: 'PD'},
     {name: 'efl championship', code: 'ELC'}
@@ -42,10 +42,10 @@ export const findLeagueId = leagueName => {
 
 // Object to display the leagues in Leagues page
 export const mapLeagues = [
+    {name: 'serie a', logo: 'serie-a-logo.jpg'},
     {name: 'premier league', logo: 'pl-l-logo.jpg'},
     {name: 'bundesliga', logo: 'bundesliga-logo.jpg'},
     {name: 'ligue 1', logo: 'ligue-1-logo.jpg'},
-    {name: 'serie A', logo: 'serie-a-logo.jpg'},
     {name: 'primera division', logo: 'la-liga-logo.jpg'},
     {name: 'efl championship', logo: 'english-championship-logo.jpg'},
 ];

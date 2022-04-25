@@ -11,19 +11,19 @@ import './league.css'
 
 const League = ({ competition, leagueTable, topScorersTable, matches }) => {
     //Finds the img for the competition
-    const competitionSearch = Object.values(mapLeagues).find((competition) => {
-        return competition.name.includes(competition.name.toLowerCase());
+    const competitionSearch = Object.values(mapLeagues).find((competitionSearch) => {
+        return competitionSearch.name.includes(competition.name.toLowerCase());
     });
-    console.log(competition)
+    console.log(competition.name.toLowerCase())
     return (
         <div className='league_table_titles'>
           <Container>
           <div className='leagueDisplayedHeroContainer'>
                   <div className='matchDisplayedHero leagueDisplayeHero'>
                       <div>
-                          {/*<div className='matchDisplayedImg leagueDisplayedImg'>
+                          <div className='matchDisplayedImg leagueDisplayedImg'>
                               <img src={"../"+ competitionSearch.logo} alt={competition.name + ' logo'}></img>
-                          </div>*/}
+                          </div>
                           <div>
                               <div id='league_title_leagues_page'><h2>{competition.name}</h2></div >
                           </div>

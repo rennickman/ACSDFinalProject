@@ -75,8 +75,8 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                 }
         
                 //Finds the img for the competition
-                const competitionSearch = Object.values(mapLeagues).find((competition) => {
-                    return competition.name.includes(LeagueName.toLowerCase());
+                const competitionSearch = Object.values(mapLeagues).find((competitionSearch) => {
+                    return competitionSearch.name.includes(LeagueName.toLowerCase());
                 });
                 setCompetition(competitionSearch)
             }
@@ -173,9 +173,9 @@ const MatchDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFix
                             <Link to={'/leagues/' + leagueTitle.toLowerCase()} state={leagueTitle.toLowerCase()}>
                                 <div className='matchDisplayedHero'>
                                     <div>
-                                    {/*<div className='matchDisplayedImg'>
+                                    <   div className='matchDisplayedImg'>
                                             <img src={"../"+competition.logo} alt={leagueTitle + ' logo'}></img> 
-                                        </div>*/}
+                                        </div>
                                         <div>
                                             <div ><h2>{leagueTitle}</h2></div >
                                         </div>
