@@ -66,9 +66,9 @@ export const mapOddsLeagues = [
 // Object to search a team by name and find the id
 export const clubId = [
      // Prem Teams
-    {name: 'manchester city fc', id: 66},
-    {name: 'man city', id: 66},
-    {name: 'manchester united', id: 66},
+    {name: 'manchester city fc', id: 65},
+    {name: 'man city', id: 65},
+    {name: 'manchester united', id: 65},
     {name: 'manchester utd', id: 66},
     {name: 'man utd', id: 66},
     {name: 'liverpool fc', id: 64},
@@ -234,7 +234,7 @@ export const findClubId = clubName => {
         // Prem Teams
         case "manchester city":
         case "man city":
-            return 66;
+            return 65;
         case "liverpool":
             return 64;
         case "chelsea":

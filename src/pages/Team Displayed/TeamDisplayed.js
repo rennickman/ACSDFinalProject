@@ -185,7 +185,7 @@ const TeamDisplayed = ({ username, favouriteTeam, favouriteLeague, favouriteFixt
                                         <img className='match_crests' src={clubCrests.link1 + team.id + clubCrests.link2} alt={team.name}></img>
                                         </div>
                                         <div>
-                                            <div ><h2>{team.name}</h2></div >
+                                            <div ><h2 className='capatilise_team_name'>{team.name}</h2></div >
                                         </div>
                                     </div>
                                 </div>
