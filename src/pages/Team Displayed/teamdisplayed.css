@@ -97,3 +97,7 @@
 .capatilise_team_name{
     text-transform: capitalize;
 }
+#match_crests_club{
+    width: 180px;
+    height: 200px;
+}

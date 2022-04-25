@@ -79,6 +79,7 @@ export const clubId = [
     {name: 'chelsea f.c.', id: 61},
     {name: 'tottenham hotspur', id: 73},
     {name: 'tottenham hotspur fc', id: 73},
+    {name: 'tottenham', id: 73},
     {name: 'spurs', id: 73},
     {name: 'arsenal fc', id: 57},
     {name: 'west ham', id: 563},
